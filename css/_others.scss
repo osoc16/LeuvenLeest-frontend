@@ -1,0 +1,97 @@
+.splash-page {
+    background-color: $accent-blue-transp;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+}
+
+.logo-big {
+    width: 50%;
+    margin-top: 30%;
+}
+
+.start-button {
+    color: $primary-white;
+    width: 50%;
+    border: .2em solid $primary-white;
+    height: 7em;
+    border-radius: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10em;
+
+    .button-content {
+        position: relative;
+        bottom: 3.5em;
+    }
+
+    p {
+        display: inline-block;
+        font-size: 4em;
+        font-weight: 600;
+        position: relative;
+        bottom: 0em;
+    }
+
+    .lines-icon {
+        display: inline-block;
+        font-size : 4em;
+        font-weight: 700;
+        position: relative;
+        left: .3em;
+        top: .15em;
+    }
+}
+
+.add-home {
+    font-size: 3em;
+    color: $light-grey;
+    position: fixed;
+    bottom: 0;
+    background: url("../css/img/oval.svg");
+    background-repeat: no-repeat;
+
+    p {
+        width: 59%;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1em;
+    }
+
+    b {
+        font-family: 'Suez One';
+        font-weight: 400;
+    }
+
+    .app-icon {
+        width: 5em;
+        height: 5em;
+        background-color: $accent-blue;
+        margin-left: auto;
+        margin-right: auto;
+        margin-top: 1em;
+        border-radius: 1em;
+    }
+
+    .bottom-bg {
+        height: 50%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-color: #fff;
+        z-index: -1;
+    }
+}
+
+.logo-small {
+    opacity: 0.4;
+    height: 9em;
+    margin-left: 5em;
+    margin-top: 5em;
+}

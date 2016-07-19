@@ -1,0 +1,124 @@
+
+
+.carrousel{
+    background: $primary-white;
+    text-align: center;
+    padding: 0;
+    height: 100%;
+    margin: 0;
+    position: relative;
+    overflow: hidden;
+    order: 2;
+}
+.carrousel h2{
+    margin: 0;
+    margin-top: -1.7em;
+    padding: 0;
+    font-size: 1em;
+    text-align: center;
+    color: #bbbbbb;
+}
+.carrousel .slides{
+    width: 400%;
+    height: 100%;
+    max-height: 52vh;
+    padding-left: 0;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    list-style: none;
+    position: relative;
+
+    -webkit-transition: left .75s ease-out;
+    -moz-transition: left .75s ease-out;
+    -o-transition: left .75s ease-out;
+    transition: left .75s ease-out;
+}
+.carrousel .slides li{
+    width: 25%;
+    position: relative;
+    float: left;
+    display: inline-block;
+    height: 100%;
+}
+.carrousel li p{
+    margin-top: 0;
+    height: 100%;
+}
+.carrousel li q{
+    max-width: 90%;
+    margin: auto;
+    color: #666666;
+    font-size: 1.3em;
+    font-weight: bold;
+}
+.carrousel li img{
+    height: 100%;
+    vertical-align: middle;
+    text-align: center;
+    object-position: center;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    object-fit: cover;
+    -webkit-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+            transform: translate(-50%,-50%);
+}
+.carrousel li span.author{
+    margin-top:0.5em;
+    font-size: 1.2em;
+    color: #777777;
+    display: block;
+}
+.carrousel .slidesNavigation{
+    display: block;
+    list-style: none;
+    text-align: center;
+    bottom: 15em;
+
+        position: absolute; 
+
+        width: 148px;
+        left: 50%;
+        margin-left: -90px;
+}
+.carrousel input{
+    display: none;
+}
+.carrousel .slidesNavigation label{
+    float: left;
+    margin: 6px;
+    display: block;
+    height: 25px;
+    width: 25px;
+    -webkit-border-radius: 50%;
+    border-radius: 50%;
+    background-color: $dark-grey;
+    font-size: 0;
+}
+
+#radio-1:checked ~ .slides{
+    left: 0;
+}
+#radio-2:checked ~ .slides{
+    left: -100%;
+}
+#radio-3:checked ~ .slides{
+    left: -200%;
+}
+#radio-4:checked ~ .slides{
+    left: -300%;
+}
+
+.carrousel .slidesNavigation label:hover{
+     cursor: pointer;
+}
+
+.carrousel #radio-1:checked ~ .slidesNavigation label#dotForRadio-1,
+.carrousel #radio-2:checked ~ .slidesNavigation label#dotForRadio-2,
+.carrousel #radio-3:checked ~ .slidesNavigation label#dotForRadio-3,
+.carrousel #radio-4:checked ~ .slidesNavigation label#dotForRadio-4{
+    background: $primary-black;
+}
