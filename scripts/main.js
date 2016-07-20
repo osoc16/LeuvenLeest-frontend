@@ -488,7 +488,7 @@ function handleCoordinate(position) {
             var settings = {
                 "crossDomain": true,
                 "url": "http://95.85.15.210/auth/logout",
-                "method": "GET",
+                "method": "POST",
                 "processData": false,
                 "contentType": false,
                 "mimeType": "multipart/form-data",
