@@ -1117,18 +1117,15 @@ function handleCoordinate(position) {
 
     var routes = (
         <Router history={browserHistory}>
-
-        <Route path='/' component={SplashPage}/>
-        <Route path='/home' component={OntdekPage_NLI}/>
-        <Route path='/global' component={HalfNHalf}/>
-        <Route path='/map' component={MapView}/>
-        <Route path='/addLocation' component={Plaats_TV}/>
-        <Route path='/profiel' component={Profiel}/>
-        <Route path='/listViewLocation' component={ListView}/>
-        <Route path='/Login' component={LoginPage}/>
-        <Route path='/details' component={Detail_MapView}/>
-
-
+            <Route path='/' component={SplashPage}/>
+            <Route path='/home' component={OntdekPage_NLI}/>
+            <Route path='/global' component={HalfNHalf}/>
+            <Route path='/map' component={MapView}/>
+            <Route path='/addLocation' component={Plaats_TV}/>
+            <Route path='/profiel' component={Profiel}/>
+            <Route path='/listViewLocation' component={ListView}/>
+            <Route path='/Login' component={LoginPage}/>
+            <Route path='/details' component={Detail_MapView}/>
         </Router>);
 
     ReactDOM.render(routes, document.querySelector('#main'));
