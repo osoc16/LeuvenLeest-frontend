@@ -316,6 +316,12 @@ body {
 .map {
   width: 100%; }
 
+#map1 {
+  height: 100%; }
+
+#map-con {
+  margin-top: 160px; }
+
 .location-text i {
   font-size: 3em;
   font-weight: 100;

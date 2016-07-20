@@ -19,48 +19,50 @@ var historyApiFallback = require('connect-history-api-fallback')
 
 /*
   Styles Task
-*/
+  */
 
-gulp.task('styles',function() {
+  gulp.task('styles',function() {
   // move over fonts
 
   gulp.src('css/fonts/**.*')
-    .pipe(gulp.dest('build/css/fonts'))
+  .pipe(gulp.dest('build/css/fonts'))
 
   // Compiles CSS
   gulp.src('css/style.scss')
-    .pipe(sass())
-    .pipe(autoprefixer())
-    .pipe(gulp.dest('./build/css/'))
-    .pipe(reload({stream:true}))
+  .pipe(sass())
+  .pipe(autoprefixer())
+  .pipe(gulp.dest('./build/css/'))
+  .pipe(reload({stream:true}))
 });
 
 /*
   Images
-*/
-gulp.task('images',function(){
-  gulp.src('css/images/**')
+  */
+  gulp.task('images',function(){
+    gulp.src('css/images/**')
     .pipe(gulp.dest('./build/css/images'))
-});
+  });
 
 /*
   Browser Sync
-*/
-gulp.task('browser-sync', function() {
+  */
+  gulp.task('browser-sync', function() {
     browserSync({
         // we need to disable clicks and forms for when we test multiple rooms
-        server : {},
+        server : {
+          port: 8000,
+        },
         middleware : [ historyApiFallback() ],
         ghostMode: false
-    });
-});
+      });
+  });
 
-function handleErrors() {
-  var args = Array.prototype.slice.call(arguments);
-  notify.onError({
-    title: 'Compile Error',
-    message: '<%= error.message %>'
-  }).apply(this, args);
+  function handleErrors() {
+    var args = Array.prototype.slice.call(arguments);
+    notify.onError({
+      title: 'Compile Error',
+      message: '<%= error.message %>'
+    }).apply(this, args);
   this.emit('end'); // Keep gulp from hanging on this task
 }
 
@@ -79,16 +81,16 @@ function buildScript(file, watch) {
   function rebundle() {
     var stream = bundler.bundle();
     return stream
-      .on('error', handleErrors)
-      .pipe(source(file))
-      .pipe(gulp.dest('./build/'))
+    .on('error', handleErrors)
+    .pipe(source(file))
+    .pipe(gulp.dest('./build/'))
       // If you also want to uglify it
       // .pipe(buffer())
       // .pipe(uglify())
       // .pipe(rename('app.min.js'))
       // .pipe(gulp.dest('./build'))
       .pipe(reload({stream:true}))
-  }
+    }
 
   // listen for an update and run rebundle
   bundler.on('update', function() {
