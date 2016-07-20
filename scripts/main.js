@@ -22,7 +22,7 @@ var idLoc = 0;
 
 /* Function for testing other functions*/
 
-$(document).ready(function() { 
+$(document).ready(function() {
   //getAccessToken();
   //getPlaceNear();
   //getCoordinate();
@@ -174,8 +174,8 @@ function getCoordinate(){
 
 /*Callback function that will be trigger when a location is available */
 function handleCoordinate(position) {
-    var msg = "Latitude: " + position.coords.latitude + 
-    " Longitude: " + position.coords.longitude; 
+    var msg = "Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude;
     console.log(msg);
 
 
@@ -464,21 +464,46 @@ function handleCoordinate(position) {
         }
     })
 
-/*
+    /*
     Profiel block (photo + name + logout)
     <ProfielBlock/>
     */
     var ProfielBlock = React.createClass({
         render : function(){
+            console.log(this.props.user);
+            var user = this.props.user;
             return (
                 <div className="profiel-block">
-                <h1>Je profiel</h1>
-                <div className="profile-pic"></div>
-                <h2>Bruce Wayne</h2>
-                <p>bruce@wayne.com</p>
-                <h3>Uitloggen</h3>
+                    <h1>Je profiel</h1>
+                <div className="profile-pic">
                 </div>
-                )
+                    <h2>{user.name}</h2>
+                    <p>{user.email}</p>
+                    <h3><a onClick={this.logout}>Uitloggen</a></h3>
+                </div>
+            )
+        },
+
+        logout : function(){
+            var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/auth/logout",
+                "method": "GET",
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                'header' : {
+                    'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTEwNzMsImV4cCI6MTQ2OTAxNDY3MywibmJmIjoxNDY5MDExMDczLCJqdGkiOiI1MDI1YWQ3ZDY0MWJmOGVjNTAxYzY0ZWU1ZGM3NjI2MyJ9.I_Ap2i1lszoQ0ZToWebTWJVlhUHKiAyePE4sRW3U9-k'
+                }
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                document.location.href='/profiel';
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
@@ -521,12 +546,12 @@ function handleCoordinate(position) {
             return (
                 <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
-                
+
                 <div className="location-text">
-                
+
                 <i> {this.props.data === undefined ? "" : this.props.data.name}</i>
                 <p> {this.props.data === undefined ? "" : this.props.data.address}</p>
-                
+
                 </div>
                 </div>
                 </div>
@@ -604,7 +629,7 @@ function handleCoordinate(position) {
 
                 {this.state.places.map(function(object, i) {
                     return <LocationRow data={object} key={i} />;
-                })}          
+                })}
                 </div>
                 );
         }
@@ -933,15 +958,68 @@ function handleCoordinate(position) {
     */
     var Profiel = React.createClass({
         render : function(){
+            var user = this.state.user;
             return (
                 <div id="profiel-page">
                 <div id="page-content">
-                <ProfielBlock/>
+                <ProfielBlock  user={user}/>
                 <Recent/>
                 </div>
                 <NavBar/>
                 </div>
                 )
+        },
+
+        getInitialState : function(){
+            return {
+                user :{},
+                places : {}
+            }
+        },
+
+        componentWillMount : function(){
+            this.getAccountDetails();
+            this.getRecentPlaces();
+        },
+
+        getRecentPlaces : function(){
+            var self = this;
+             var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/checkin/recent",
+                "method": "GET",
+                "headers": {
+                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+                },
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                self.setState({places : response});
+            })
+            .fail(function(){
+                self.setState({places : null});
+            });
+        },
+
+        getAccountDetails : function(){
+            var self = this;
+            var settings = {
+            'crossDomain': true,
+            'url': 'http://95.85.15.210/user/current',
+            'method': 'GET',
+            "headers": {
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+            },
+        }
+
+        $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                self.setState({user: response});
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
