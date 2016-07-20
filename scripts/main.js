@@ -14,11 +14,12 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 var placeNear;
 var userLocation;
 var locationNearUser;
+var infoOfPlace;
 
 var id = 0;
 var idPos = 0;
 var idLoc = 0;
-
+var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjUxMzksImV4cCI6MTQ2OTAyODczOSwibmJmIjoxNDY5MDI1MTM5LCJqdGkiOiI5MTE4ZjZlNjllNTk4NGVhNDE4MjJkYWJiZmQ0NzQ0YSJ9.idoRWgj54wjghwEHctz663OrykOhRrmA6Fk9EJvzldI";
 
 /* Function for testing other functions*/
 
@@ -122,12 +123,12 @@ function login() {
           },
      }
      $.ajax(settings)
-        .done(function (response, textStatus, xhr) {
-            return response;
-        })
-        .fail(function(){
-            console.log('fail');
-        });
+    .done(function (response, textStatus, xhr) {
+        return response;
+    })
+    .fail(function(){
+        console.log('fail');
+    });
 }
 
 
@@ -139,7 +140,7 @@ function getPlaceNear() {
           "url": "http://95.85.15.210/places/50/40",//+userLocation.lat+"/"+userLocation.lon,
           "method": "GET",
           "headers": {
-              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMDY3NzcsImV4cCI6MTQ2OTAxMDM3NywibmJmIjoxNDY5MDA2Nzc3LCJqdGkiOiIwMzQ2OGE2NDZhNjFjZDA2NmIzNDZhY2YyZDk0NmU4MSJ9.vRQYIvtyi4rr0GzDPIUUtodEK-l-USBok3SiNte7dVI",
+              "Authorization": "Bearer "+accessToken,
               "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
        },
@@ -351,7 +352,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="map-container">
-                <img src="../build/css/img/map.svg" className="map"/>
+                <img src="../../css/img/map.svg" className="map"/>
                 </div>
                 )
         }
@@ -365,7 +366,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="map-container-small">
-                <img src="../build/css/img/map.svg" className="map"/>
+                <img src="../../css/img/map.svg" className="map"/>
                 </div>
                 )
         }
@@ -425,7 +426,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="welcome-block">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-small"/>
+                <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
                 <span className="profiel-button">
                 <i className="lines-icon icon-user"></i>
                 </span>
@@ -446,7 +447,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="welcome-block wb-NLI">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-small"/>
+                <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
                 <div className="welcome-text wt-NLI">
                 <h2>Hey</h2>
                 <h1>Stranger!</h1>
@@ -490,7 +491,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="add-home">
-                <img src="../build/css/img/LeuvenLeest_Icon.svg" className="app-icon"/>
+                <img src="../assets/img/LeuvenLeest_Icon.svg" className="app-icon"/>
                 <p>Tap hier om <b>LeuvenLeest</b> toe te voegen aan je homescreen</p>
                 <span className="bottom-bg"></span>
                 </div>
@@ -503,29 +504,25 @@ function handleCoordinate(position) {
     <LocationRow/>
     */
     var LocationRow = React.createClass({
+        redirect: function(){
+            //alert(this.props.data.id);
+            document.location.href="/details/"+this.props.data.id;
 
-        redirect: function(id){
-            console.log(id);
-            document.location.href="/details"
         },
 
         componentWillMount:function(){
 
         },
         render : function(){
-
-
-
             console.log("locationROw");
-
             return (
                 <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
                 
                 <div className="location-text">
                 
-                <i> {this.props.data === undefined ? "" : this.props.data.name}</i>
-                <p> {this.props.data === undefined ? "" : this.props.data.address}</p>
+                <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
                 
                 </div>
                 </div>
@@ -561,23 +558,23 @@ function handleCoordinate(position) {
             var settings = {
                   "async": true,
                   "crossDomain": true,
-          "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
-          "method": "GET",
-          "headers": {
-              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTEwNzMsImV4cCI6MTQ2OTAxNDY3MywibmJmIjoxNDY5MDExMDczLCJqdGkiOiI1MDI1YWQ3ZDY0MWJmOGVjNTAxYzY0ZWU1ZGM3NjI2MyJ9.I_Ap2i1lszoQ0ZToWebTWJVlhUHKiAyePE4sRW3U9-k",
-              "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+                  "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
+                  "method": "GET",
+                   "headers": {
+                        "Authorization": "Bearer "+accessToken,
+                                 "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
-       },
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data"
-      }
+                },
+                "processData": false,
+                 "contentType": false,
+                 "mimeType": "multipart/form-data"
+               }
 
-    $.ajax(settings).done(function (response) {
-     console.log('get places');
-     var data = JSON.parse(response);
-     self.setState({places : data});
-     console.log(self.state.places);
+             $.ajax(settings).done(function (response) {
+             console.log('get places');
+             var data = JSON.parse(response);
+             self.setState({places : data});
+             console.log(self.state.places);
             // return data;
          });
             // this.setState({places : getPlaceNear()});
@@ -631,13 +628,14 @@ function handleCoordinate(position) {
     */
     var AdresBlock = React.createClass({
         render : function(){
+            console.log(this.props.data);
             return (
                 <div className="adres-block">
                 <div className="adres-text">
-                <h3>Adres</h3>
+                <h3>{this.props.data === undefined ? "" : this.props.data.name}</h3>
                 <p>
-                Straatnaam, n°<br/>
-                Postcode Plaats
+                {this.props.data === undefined ? "" : this.props.data.address}<br/>
+                3000
                 </p>
                 </div>
                 <div className="route-button">
@@ -676,14 +674,16 @@ function handleCoordinate(position) {
     <LocationMap/>
     */
     var LocationMap = React.createClass({
+
+
         render : function(){
             return (
                 <div className="detail-map">
                 <LeuvenMapSmall/>
                 <div className="name-n-checkin">
                 <div className="location-text">
-                <i>Type plaats</i>
-                <p>Plaatsnaam</p>
+                <i>{this.props.data.category === undefined ? "" : this.props.data.category}</i>
+                <p>{this.props.data.name === undefined ? "" : this.props.data.name}</p>
                 </div>
                 <div className="checkin">
                 <div className="button-content">
@@ -712,22 +712,22 @@ function handleCoordinate(position) {
                 <ul className="slides">
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park1.jpg"/>
+                <img src="../assets/css/img/park1.jpg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park2.jpg"/>
+                <img src="../assets/css/img/park2.jpg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park3.jpeg"/>
+                <img src="../assets/css/img/park3.jpeg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park4.jpg"/>
+                <img src="../assets/css/img/park4.jpg"/>
                 </p>
                 </li>
                 </ul>
@@ -774,9 +774,11 @@ function handleCoordinate(position) {
     */
     var LocationDetails = React.createClass({
         render : function(){
+            //The state will always contain 1 row
+            console.log(this.props.data);
             return (
                 <div className="detail-infos">
-                <AdresBlock/>
+                <AdresBlock data={this.props.data}/>
                 <Openings/>
                 </div>
                 )
@@ -797,7 +799,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="splash-page">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-big"/>
+                <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-big"/>
                 <div className="start-button">
                 <div className="button-content" id="start-button" onClick={this.redirect}>
                 <p>Start</p>
@@ -821,7 +823,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="login-page">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-big"/>
+                <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-big"/>
                 <div className="login-button" onClick={this.redirect}>
                 <i className="fa fa-facebook"></i>
                 <p>Sign in with Facebook</p>
@@ -950,13 +952,58 @@ function handleCoordinate(position) {
     <Detail_MapView/>
     */
     var Detail_MapView = React.createClass({
+
+       getInitialState: function() {
+        return {
+            place : {},
+
+        };
+    },
+
+
+    componentWillMount:function(){
+        var self = this;
+
+        var currentURL = document.location.href;
+        console.log(currentURL);
+        var splitString = currentURL.split("/");
+        var idPlace = splitString[splitString.length-1];
+
+
+        var settings = {
+              "async": true,
+              "crossDomain": true,
+                  "url": "http://95.85.15.210/places/"+idPlace, //+userLocation.lat+"/"+userLocation.lon,
+                  "method": "GET",
+                   "headers": {
+                        "Authorization": "Bearer "+accessToken,
+                                 "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+
+                },
+                "processData": false,
+                 "contentType": false,
+                 "mimeType": "multipart/form-data"
+               }
+
+             $.ajax(settings).done(function (response) {
+                console.log('get places By id');
+
+                var data = JSON.parse(response);
+                console.log(data);
+                self.setState({place : data});
+                infoOfPlace = data;
+                console.log(self.state.place);
+
+             });
+        },
+
         render : function(){
             return (
                 <div className="detail-page">
                 <HeadBar/>
                 <div className="page-content">
-                <LocationMap/>
-                <LocationDetails/>
+                <LocationMap data={this.state.place}/>
+                <LocationDetails data={this.state.place}/>
                 </div>
                 <NavBar/>
                 </div>
@@ -1048,7 +1095,7 @@ function handleCoordinate(position) {
         <Route path='/profiel' component={Profiel}/>
         <Route path='/listViewLocation' component={ListView}/>
         <Route path='/Login' component={LoginPage}/>
-        <Route path='/details' component={Detail_MapView}/>
+        <Route path='/details/:id' component={Detail_MapView}/>
 
 
         </Router>);
