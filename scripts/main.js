@@ -21,9 +21,12 @@ var idLoc = 0;
 
 
 /* Function for testing other functions*/
-$(document).ready(function() {
-  // getAccessToken();
-  // getPlaceNear();
+
+$(document).ready(function() { 
+  //getAccessToken();
+  //getPlaceNear();
+  //getCoordinate();
+  //getPlaceNear();
 
 });
 
@@ -101,8 +104,8 @@ renderMap : function(){
         );
     console.log(map);
 
-//    getPlaceNear();
-return (map);
+    getPlaceNear();
+    return (map);
 }
 
 
@@ -133,24 +136,56 @@ function getPlaceNear() {
      var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://95.85.15.210/places/"+userLocation.lat+"/"+userLocation.lon,
+          "url": "http://95.85.15.210/places/50/40",//+userLocation.lat+"/"+userLocation.lon,
           "method": "GET",
           "headers": {
-            "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMDY3NzcsImV4cCI6MTQ2OTAxMDM3NywibmJmIjoxNDY5MDA2Nzc3LCJqdGkiOiIwMzQ2OGE2NDZhNjFjZDA2NmIzNDZhY2YyZDk0NmU4MSJ9.vRQYIvtyi4rr0GzDPIUUtodEK-l-USBok3SiNte7dVI",
-            "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMDY3NzcsImV4cCI6MTQ2OTAxMDM3NywibmJmIjoxNDY5MDA2Nzc3LCJqdGkiOiIwMzQ2OGE2NDZhNjFjZDA2NmIzNDZhY2YyZDk0NmU4MSJ9.vRQYIvtyi4rr0GzDPIUUtodEK-l-USBok3SiNte7dVI",
+              "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
-     },
-      "processData": false,
-      "contentType": false,
-      "mimeType": "multipart/form-data"
-  }
+       },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data"
+    }
 
-  $.ajax(settings).done(function (response) {
-    console.log(JSON.parse(response));
+    $.ajax(settings).done(function (response) {
+    console.log('get places');
+    var data = JSON.parse(response);
+    return data;
 
  });
 };
 
+
+
+
+
+function getCoordinate(){
+
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(handleCoordinate);
+    }else{
+        console.log("Sorry the location is not available");
+    }
+
+
+};
+
+
+/*Callback function that will be trigger when a location is available */
+function handleCoordinate(position) {
+    var msg = "Latitude: " + position.coords.latitude + 
+    " Longitude: " + position.coords.longitude; 
+    console.log(msg);
+
+
+    var coordinate =  {
+        lat : position.coords.latitude,
+        long : position.coords.longitude
+    };
+
+    userLocation = coordinate;
+};
 
 
 
@@ -473,22 +508,29 @@ function getPlaceNear() {
             console.log(id);
             document.location.href="/details"
         },
+
+        componentWillMount:function(){
+
+        },
         render : function(){
+
+
+
+            console.log("locationROw");
+
             return (
                 <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
+                
                 <div className="location-text">
-                <i>Park</i>
-                <p>Grasmushof</p>
-                </div>
-                </div>
-                <div className="location-small">
-                <div className="location-text">
-                <i>Park</i>
-                <p>Grasmushof</p>
+                
+                <i> {this.props.data === undefined ? "" : this.props.data.name}</i>
+                <p> {this.props.data === undefined ? "" : this.props.data.address}</p>
+                
                 </div>
                 </div>
                 </div>
+
                 )
         }
     })
@@ -513,29 +555,58 @@ function getPlaceNear() {
     <Dichtbij/>
     */
     var Dichtbij = React.createClass({
-        getInitialState : function(){
-            return {
-                counters : {},
+        componentWillMount : function(){
+            var self = this;
 
+            var settings = {
+                  "async": true,
+                  "crossDomain": true,
+          "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
+          "method": "GET",
+          "headers": {
+              "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTEwNzMsImV4cCI6MTQ2OTAxNDY3MywibmJmIjoxNDY5MDExMDczLCJqdGkiOiI1MDI1YWQ3ZDY0MWJmOGVjNTAxYzY0ZWU1ZGM3NjI2MyJ9.I_Ap2i1lszoQ0ZToWebTWJVlhUHKiAyePE4sRW3U9-k",
+              "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+
+       },
+        "processData": false,
+        "contentType": false,
+        "mimeType": "multipart/form-data"
+      }
+
+    $.ajax(settings).done(function (response) {
+     console.log('get places');
+     var data = JSON.parse(response);
+     self.setState({places : data});
+     console.log(self.state.places);
+            // return data;
+         });
+            // this.setState({places : getPlaceNear()});
+            // console.log("dichtbij");
+            // //this.setstate({counters: this.state.counters});
+            // console.log(this.state.places);
+        },
+
+        getInitialState : function(){
+            console.log('initial');
+            return {
+                places : []
             }
         },
 
 
         render : function(){
-            console.log("dichtbij");
-            console.log(locationNearUser);
-            console.log(this.state);
-            this.state.counters = dummy;
-            //this.setstate({counters: this.state.counters});
 
-            console.log(this.state.counters);
-
+            console.log("render");
+            console.log(this.state.places[0]);
             return (
                 <div className="dichtbij home-row">
                 <h3>Dichtbij</h3>
-                <LocationRow/>
+
+                {this.state.places.map(function(object, i) {
+                    return <LocationRow data={object} key={i} />;
+                })}          
                 </div>
-                )
+                );
         }
     })
 
