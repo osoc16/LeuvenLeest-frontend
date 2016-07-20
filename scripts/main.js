@@ -15,15 +15,15 @@ var placeNear;
 var userLocation;
 var locationNearUser;
 
-var id = 0; 
+var id = 0;
 var idPos = 0;
 var idLoc = 0;
 
 
 /* Function for testing other functions*/
-$(document).ready(function() { 
-  //getAccessToken();
-  getPlaceNear();
+$(document).ready(function() {
+  // getAccessToken();
+  // getPlaceNear();
 
 });
 
@@ -32,7 +32,7 @@ var LeafletMap = React.createClass({
     getInitialState: function() {
         return {
           locations : {},
-          
+
       };
   },
 
@@ -48,11 +48,11 @@ var LeafletMap = React.createClass({
     }
 
 
-  
+
 },
 handleCoordinate: function (position) {
-    var msg = "Latitude: " + position.coords.latitude + 
-    " Longitude: " + position.coords.longitude; 
+    var msg = "Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude;
     console.log(msg);
 
 
@@ -65,15 +65,15 @@ handleCoordinate: function (position) {
 
     this.state.locations['pos-'+ idPos] = coordinate;
     idPos++;
-    this.setState({locations : this.state.locations});  
+    this.setState({locations : this.state.locations});
     console.log(this.state);
 },
 
 
 render: function(){
     console.log(this.state);
-    
-    return (  <div>{Object.keys(this.state.locations).map(this.renderMap)} </div>);
+
+    return (<div>{Object.keys(this.state.locations).map(this.renderMap)}</div>);
 },
 
 
@@ -99,8 +99,6 @@ renderMap : function(){
         </Map>
 
         );
-
-    console.log("render of mappp");
     console.log(map);
 
 //    getPlaceNear();
@@ -110,31 +108,23 @@ return (map);
 
 });
 
-function getAccessToken() {
+function login() {
      var settings = {
-          "async": true,
-          "crossDomain": true,
-          "url": "http://95.85.15.210/auth/login",
-          "method": "POST",
-          "headers": {
-            "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+          'crossDomain': true,
+          'url': 'http://95.85.15.210/auth/login',
+          'method': 'POST',
+          'data': {
+               'email': 'thibautvincent@icloud.com',
+               'password': 'thibaut'
           },
-          "processData": false,
-          "contentType": false,
-          "mimeType": "multipart/form-data",
-          "data": {
-               "email": "thibautvincent@icloud.com",
-               "password": "thibaut"
-          }
      }
-
-     $.ajax(settings).done(function (response) {
-            console.log(response);
-        var response = JSON.parse(response);
-            console.log(response);
-
-
-     });
+     $.ajax(settings)
+        .done(function (response, textStatus, xhr) {
+            return response;
+        })
+        .fail(function(){
+            console.log('fail');
+        });
 }
 
 
@@ -370,7 +360,7 @@ function getPlaceNear() {
     })
 
 /*
-    Checked-in location in list 
+    Checked-in location in list
     <ListedLocation_CI/>
     */
     var ListedLocation_CI = React.createClass({
@@ -467,7 +457,7 @@ function getPlaceNear() {
                 <div className="add-home">
                 <img src="../build/css/img/LeuvenLeest_Icon.svg" className="app-icon"/>
                 <p>Tap hier om <b>LeuvenLeest</b> toe te voegen aan je homescreen</p>
-                <span className="bottom-bg"></span>        
+                <span className="bottom-bg"></span>
                 </div>
                 )
         }
@@ -543,7 +533,7 @@ function getPlaceNear() {
             return (
                 <div className="dichtbij home-row">
                 <h3>Dichtbij</h3>
-                <LocationRow/>                
+                <LocationRow/>
                 </div>
                 )
         }
@@ -737,7 +727,7 @@ function getPlaceNear() {
             return (
                 <div className="splash-page">
                 <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-big"/>
-                <div className="start-button"> 
+                <div className="start-button">
                 <div className="button-content" id="start-button" onClick={this.redirect}>
                 <p>Start</p>
                 <i className="lines-icon icon-arrow-right"></i>
@@ -988,8 +978,8 @@ function getPlaceNear() {
         <Route path='/listViewLocation' component={ListView}/>
         <Route path='/Login' component={LoginPage}/>
         <Route path='/details' component={Detail_MapView}/>
-        
-        
+
+
         </Router>);
 
     ReactDOM.render(routes, document.querySelector('#main'));
