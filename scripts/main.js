@@ -446,7 +446,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="welcome-block wb-NLI">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-small"/>
+                <img src="../css/img/LeuvenLeestLogo.svg" className="logo-small"/>
                 <div className="welcome-text wt-NLI">
                 <h2>Hey</h2>
                 <h1>Stranger!</h1>
@@ -515,7 +515,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="add-home">
-                <img src="../build/css/img/LeuvenLeest_Icon.svg" className="app-icon"/>
+                <img src="../css/img/LeuvenLeest_Icon.svg" className="app-icon"/>
                 <p>Tap hier om <b>LeuvenLeest</b> toe te voegen aan je homescreen</p>
                 <span className="bottom-bg"></span>
                 </div>
@@ -582,7 +582,6 @@ function handleCoordinate(position) {
     var Dichtbij = React.createClass({
         componentWillMount : function(){
             var self = this;
-
             var settings = {
                   "async": true,
                   "crossDomain": true,
@@ -737,22 +736,22 @@ function handleCoordinate(position) {
                 <ul className="slides">
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park1.jpg"/>
+                <img src="../css/img/park1.jpg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park2.jpg"/>
+                <img src="../css/img/park2.jpg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park3.jpeg"/>
+                <img src="../css/img/park3.jpeg"/>
                 </p>
                 </li>
                 <li className="slide">
                 <p>
-                <img src="../build/css/img/park4.jpg"/>
+                <img src="../css/img/park4.jpg"/>
                 </p>
                 </li>
                 </ul>
@@ -846,7 +845,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="login-page">
-                <img src="../build/css/img/LeuvenLeestLogo.svg" className="logo-big"/>
+                <img src="../css/img/LeuvenLeestLogo.svg" className="logo-big"/>
                 <div className="login-button" onClick={this.redirect}>
                 <i className="fa fa-facebook"></i>
                 <p>Sign in with Facebook</p>
