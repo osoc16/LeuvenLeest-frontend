@@ -1016,7 +1016,8 @@ function handleCoordinate(position) {
             .done(function (response, textStatus, xhr) {
                 self.setState({user: response});
             })
-            .fail(function(){
+            .fail(function(response, textStatus, xhr){
+                console.log(xhr);
                 console.log('fail');
             });
         }
