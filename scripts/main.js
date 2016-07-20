@@ -514,9 +514,8 @@ function handleCoordinate(position) {
 
         },
         render : function(){
-            console.log("locationROw");
+            console.log("locationRow");
             return (
-                <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
 
                 <div className="location-text">
@@ -524,7 +523,6 @@ function handleCoordinate(position) {
                 <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
                 <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
 
-                </div>
                 </div>
                 </div>
 
@@ -598,10 +596,11 @@ function handleCoordinate(position) {
             return (
                 <div className="dichtbij home-row">
                 <h3>Dichtbij</h3>
-
+                <div className="location-row">
                 {this.state.places.map(function(object, i) {
                     return <LocationRow data={object} key={i} />;
                 })}
+                </div>
                 </div>
                 );
         }
