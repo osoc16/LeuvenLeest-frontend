@@ -19,11 +19,11 @@ var infoOfPlace;
 var id = 0;
 var idPos = 0;
 var idLoc = 0;
-var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjUxMzksImV4cCI6MTQ2OTAyODczOSwibmJmIjoxNDY5MDI1MTM5LCJqdGkiOiI5MTE4ZjZlNjllNTk4NGVhNDE4MjJkYWJiZmQ0NzQ0YSJ9.idoRWgj54wjghwEHctz663OrykOhRrmA6Fk9EJvzldI";
+var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjY3ODIsImV4cCI6MTQ2OTAzMDM4MiwibmJmIjoxNDY5MDI2NzgyLCJqdGkiOiIzZjRiYTQyM2JmODVjOTVkNjMxZTc0NWExYWUyYTk3NiJ9.nCD_SQMVBAx2UgDZqrgmaDSVFYlPgiV71tXSRcTEjI0";
 
 /* Function for testing other functions*/
 
-$(document).ready(function() { 
+$(document).ready(function() {
   //getAccessToken();
   //getPlaceNear();
   //getCoordinate();
@@ -175,8 +175,8 @@ function getCoordinate(){
 
 /*Callback function that will be trigger when a location is available */
 function handleCoordinate(position) {
-    var msg = "Latitude: " + position.coords.latitude + 
-    " Longitude: " + position.coords.longitude; 
+    var msg = "Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude;
     console.log(msg);
 
 
@@ -518,12 +518,12 @@ function handleCoordinate(position) {
             return (
                 <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
-                
+
                 <div className="location-text">
-                
+
                 <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
                 <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
-                
+
                 </div>
                 </div>
                 </div>
@@ -601,7 +601,7 @@ function handleCoordinate(position) {
 
                 {this.state.places.map(function(object, i) {
                     return <LocationRow data={object} key={i} />;
-                })}          
+                })}
                 </div>
                 );
         }
