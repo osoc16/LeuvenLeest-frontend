@@ -1,0 +1,36 @@
+/**
+ * Success page
+ */
+
+.success-page {
+	height: 100%;
+	width: 100%;
+	background-color: $accent-blue;
+	color: $primary-white;
+	text-align: center;
+
+	.icon-close {
+		position: absolute;
+		top: .6em;
+		right: .6em;
+		font-size: 5em;
+	}
+
+	.icon-check {
+		font-size: 35em;
+		display: inline-block;
+		margin-top: .9em;
+	}
+
+	p {
+		font-size: 2.5em;
+		margin-bottom: 0;
+	}
+
+	h2 {
+		font-size: 4.2em;
+		margin-top: 0;
+		font-family: 'Suez One';
+		font-weight: 200;
+	}
+}

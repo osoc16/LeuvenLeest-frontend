@@ -19,7 +19,7 @@ var infoOfPlace;
 var id = 0;
 var idPos = 0;
 var idLoc = 0;
-var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjUxMzksImV4cCI6MTQ2OTAyODczOSwibmJmIjoxNDY5MDI1MTM5LCJqdGkiOiI5MTE4ZjZlNjllNTk4NGVhNDE4MjJkYWJiZmQ0NzQ0YSJ9.idoRWgj54wjghwEHctz663OrykOhRrmA6Fk9EJvzldI";
+var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjY3ODIsImV4cCI6MTQ2OTAzMDM4MiwibmJmIjoxNDY5MDI2NzgyLCJqdGkiOiIzZjRiYTQyM2JmODVjOTVkNjMxZTc0NWExYWUyYTk3NiJ9.nCD_SQMVBAx2UgDZqrgmaDSVFYlPgiV71tXSRcTEjI0";
 
 /* Function for testing other functions*/
 
@@ -539,20 +539,14 @@ function handleCoordinate(position) {
 
         },
         render : function(){
-            console.log("locationROw");
+            console.log("locationRow");
             return (
-                <div className="location-row">
                 <div className="location-small" onClick={this.redirect}>
-
-                <div className="location-text">
-
-                <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
-                <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
-
+                    <div className="location-text">
+                        <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                        <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
+                    </div>
                 </div>
-                </div>
-                </div>
-
                 )
         }
     })
@@ -605,29 +599,30 @@ function handleCoordinate(position) {
             // console.log("dichtbij");
             // //this.setstate({counters: this.state.counters});
             // console.log(this.state.places);
-        },
+    },
 
-        getInitialState : function(){
-            console.log('initial');
-            return {
-                places : []
-            }
-        },
+    getInitialState : function(){
+        console.log('initial');
+        return {
+            places : []
+        }
+    },
 
 
-        render : function(){
+    render : function(){
 
-            console.log("render");
-            console.log(this.state.places[0]);
-            return (
-                <div className="dichtbij home-row">
-                <h3>Dichtbij</h3>
-
-                {this.state.places.map(function(object, i) {
-                    return <LocationRow data={object} key={i} />;
-                })}
+        console.log("render");
+        console.log(this.state.places[0]);
+        return (
+            <div className="dichtbij home-row">
+            <h3>Dichtbij</h3>
+                <div className="location-row">
+                    {this.state.places.map(function(object, i) {
+                        return <LocationRow data={object} key={i} />;
+                    })}
                 </div>
-                );
+            </div>
+            );
         }
     })
 
