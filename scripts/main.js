@@ -993,8 +993,10 @@ function handleCoordinate(position) {
             .done(function (response, textStatus, xhr) {
                 self.setState({places : response});
             })
-            .fail(function(){
-                self.setState({places : null});
+            .fail(function(response, textStatus, xhr){
+                if (xhr === 'Unauthorized'){
+                    document.location.href="/";
+                }
             });
         },
 
@@ -1014,6 +1016,7 @@ function handleCoordinate(position) {
                 self.setState({user: response});
             })
             .fail(function(response, textStatus, xhr){
+
                 console.log(xhr);
                 console.log('fail');
             });
