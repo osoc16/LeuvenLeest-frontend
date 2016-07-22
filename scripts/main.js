@@ -493,12 +493,15 @@ function handleCoordinate(position) {
                 <div className="ontdek-login">
                 <i className="know-eachother">Let's get to know eachother</i>
                 <div className="login-button fb-blue">
-                <i className="fa fa-facebook"></i>
-                <p><a href='/login'>Sign in</a></p>
+                <p><a onClick={this.redirect}>Sign in</a></p>
                 </div>
                 </div>
                 </div>
                 )
+        },
+
+        redirect : function(){
+            document.location.href= '/login';
         },
 
         login : function() {
