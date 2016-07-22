@@ -628,9 +628,14 @@ function handleCoordinate(position) {
     */
     var Recent = React.createClass({
         render : function(){
+            if (this.props) {
+                return (
+                    <Dichtbij/>
+                )
+            }
             return (
                 <div className="recent-act home-row">
-                <h3>Recente bezocht</h3>
+                <h3>Recent bezocht</h3>
                 <LocationRow/>
                 </div>
                 )
