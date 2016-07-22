@@ -20,6 +20,9 @@ var id = 0;
 var idPos = 0;
 var idLoc = 0;
 
+
+
+
 /* Function for testing other functions*/
 
 $(document).ready(function() {
@@ -42,6 +45,7 @@ var LeafletMap = React.createClass({
 
   componentWillMount : function() {
 
+//    if(this.props.data === undefined){
     if(navigator.geolocation){
         console.log("getting the location");
         navigator.geolocation.getCurrentPosition(this.handleCoordinate);
@@ -49,6 +53,7 @@ var LeafletMap = React.createClass({
     }else{
         console.log("Sorry the location is not available");
     }
+
 
 
 
@@ -76,27 +81,38 @@ handleCoordinate: function (position) {
 render: function(){
     console.log(this.state);
     console.log(this.props.divClass);
+
     return (<div className={this.props.divClass}>{Object.keys(this.state.locations).map(this.renderMap)}</div>);
 },
 
 
 renderMap : function(){
+
     var id = idPos -1;
-    const position = [this.state.locations['pos-'+id].lat, this.state.locations['pos-'+id].lon];
+    console.log(id);
     console.log("render");
-    console.log(position);
+    var position;
+
+    if(this.props.data === undefined){
+        console.log("data is undefined");
+        position = [this.state.locations['pos-'+id].lat, this.state.locations['pos-'+id].lon];
+        console.log(position);
+    } else{
+        console.log("data is not undefined");
+        position = [this.props.data.latitude, this.props.data.longitude];
+        console.log(position);
+    } 
 
     const map = (
-
-        <Map  center={position} zoom={12}>
+        <Map  center={position} zoom={15}>
         <TileLayer
         url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Marker position={position} >
+        <Marker position={position}>
 
         <Popup>
-        <span> You are here !</span>
+        <span> <i> {this.props.data === undefined ? "" :  this.props.data.address}</i></span>
         </Popup>
 
         </Marker>
@@ -105,7 +121,7 @@ renderMap : function(){
         );
     console.log(map);
 
-    getPlaceNear();
+    
     return (map);
 }
 
@@ -368,7 +384,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="map-container-small">
-                <LeafletMap divClass="map-container-small-leaftlet"/>
+                <LeafletMap divClass="map-container-small-leaftlet" data={this.props.data}/>
                 </div>
                 )
         }
@@ -739,19 +755,39 @@ function handleCoordinate(position) {
     */
     var Openings = React.createClass({
         render : function(){
-            return (
-                <div className="openingsuren">
-                <div className="op-text">
-                <h3>Openingsuren</h3>
-                <p>
-                0:00 - 0:00<br/>
 
-                </p>
-                </div>
-                </div>
-                )
-        }
-    })
+        //  if(this.props.data === undefined){
+        //     console.log("the opening data is undefined")
+        //  }else{
+
+        //     var date = new Date();
+        //     var dayNumber = date.getDay(); 
+        //     var openingArray = this.props.data.openingHours;
+        //     console.log("opening");
+        //     console.log(this.props.data);
+        //     console.log(dayNumber);
+        //     console.log("Opening array");
+        //     console.log(openingArray);
+        //     console.log(openingArray[1]);
+
+        //     //console.log(openingData[0]);
+        // }
+
+
+        
+        return (
+            <div className="openingsuren">
+            <div className="op-text">
+            <h3>Openingsuren</h3>
+            <p>
+            0:00 - 0:00<br/>
+
+            </p>
+            </div>
+            </div>
+            )
+    }
+})
 
 /*
     Map of a specific location on said location's page
@@ -763,7 +799,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="detail-map">
-                <LeuvenMapSmall/>
+                <LeuvenMapSmall data={this.props.data}/>
                 <div className="name-n-checkin">
                 <div className="location-text">
                 <i>{this.props.data.category === undefined ? "" : this.props.data.category}</i>
@@ -859,11 +895,13 @@ function handleCoordinate(position) {
     var LocationDetails = React.createClass({
         render : function(){
             //The state will always contain 1 row
+            console.log("detail");
             console.log(this.props.data);
+
             return (
                 <div className="detail-infos">
                 <AdresBlock data={this.props.data}/>
-                <Openings/>
+                <Openings data={this.props.data}/>
                 </div>
                 )
         }
@@ -1143,6 +1181,7 @@ function handleCoordinate(position) {
        getInitialState: function() {
         return {
             place : {},
+            detailLocation: {},
 
         };
     },
@@ -1150,11 +1189,12 @@ function handleCoordinate(position) {
 
     componentWillMount:function(){
         var self = this;
-
         var currentURL = document.location.href;
         console.log(currentURL);
         var splitString = currentURL.split("/");
         var idPlace = splitString[splitString.length-1];
+        var geolocation = getCoordinate();
+        
 
 
         var settings = {
@@ -1170,20 +1210,28 @@ function handleCoordinate(position) {
                 "processData": false,
                  "contentType": false,
                  "mimeType": "multipart/form-data"
-               }
+               };
 
              $.ajax(settings).done(function (response) {
                 console.log('get places By id');
-
                 var data = JSON.parse(response);
                 console.log(data);
                 self.setState({place : data});
                 infoOfPlace = data;
                 console.log(self.state.place);
 
-             });
-        },
 
+
+
+
+             });
+            
+
+
+
+
+
+        },
         render : function(){
             return (
                 <div className="detail-page">
