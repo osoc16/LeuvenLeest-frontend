@@ -424,7 +424,15 @@ function handleCoordinate(position) {
     <WelcomeBlock/>
     */
     var WelcomeBlock = React.createClass({
+
+        getInitialState : function() {
+            return {
+                user : {}
+            }
+        },
+
         render : function(){
+            var user = this.state.user;
             return (
                 <div className="welcome-block">
                 <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
@@ -433,10 +441,37 @@ function handleCoordinate(position) {
                 </span>
                 <div className="welcome-text">
                 <h2>Hey</h2>
-                <h1 className="user-name">Bruce!</h1>
+                <h1 className="user-name">{user.name}!</h1>
                 </div>
                 </div>
                 )
+        },
+
+        componentWillMount : function() {
+            this.getUserDetails();
+        },
+
+        getUserDetails : function() {
+            var self = this;
+            var token = 'Bearer ' + localStorage.getItem('oAuth_token');
+            var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/user/current",
+                "method": "GET",
+                "processData": false,
+                "contentType": false,
+                'headers' : {
+                    'Authorization' : token
+                }
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                self.setState({user : response});
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
@@ -458,29 +493,78 @@ function handleCoordinate(position) {
                 <i className="know-eachother">Let's get to know eachother</i>
                 <div className="login-button fb-blue">
                 <i className="fa fa-facebook"></i>
-                <p>Sign in with Facebook</p>
+                <p><a onClick={this.login} >Sign in with Facebook</a></p>
                 </div>
                 </div>
                 </div>
                 )
+        },
+
+        login : function() {
+                document.location.href ='http://95.85.15.210/auth/login/fb';
+            var settings = {
+                "crossDomain": true,
+                "Access-Control-Allow-Origin": "*",
+                "url": "http://95.85.15.210/auth/login/fb",
+                "processData": false,
+                "contentType": false,
+                "method": "GET",
+                'header' : {
+
+                }
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                console.log(response);
+                // document.location.href= response;
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
-/*
+    /*
     Profiel block (photo + name + logout)
     <ProfielBlock/>
     */
     var ProfielBlock = React.createClass({
         render : function(){
+            console.log(this.props.user);
+            var user = this.props.user;
             return (
                 <div className="profiel-block">
-                <h1>Je profiel</h1>
-                <div className="profile-pic"></div>
-                <h2>Bruce Wayne</h2>
-                <p>bruce@wayne.com</p>
-                <h3>Uitloggen</h3>
+                    <h1>Je profiel</h1>
+                <div className="profile-pic">
                 </div>
-                )
+                    <h2>{user.name}</h2>
+                    <p>{user.email}</p>
+                    <h3><a onClick={this.logout}>Uitloggen</a></h3>
+                </div>
+            )
+        },
+
+        logout : function(){
+            var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/auth/logout",
+                "method": "POST",
+                "processData": false,
+                "contentType": false,
+                "mimeType": "multipart/form-data",
+                'header' : {
+                    'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTEwNzMsImV4cCI6MTQ2OTAxNDY3MywibmJmIjoxNDY5MDExMDczLCJqdGkiOiI1MDI1YWQ3ZDY0MWJmOGVjNTAxYzY0ZWU1ZGM3NjI2MyJ9.I_Ap2i1lszoQ0ZToWebTWJVlhUHKiAyePE4sRW3U9-k'
+                }
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                document.location.href='/profiel';
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
@@ -518,15 +602,11 @@ function handleCoordinate(position) {
             console.log("locationRow");
             return (
                 <div className="location-small" onClick={this.redirect}>
-
-                <div className="location-text">
-
-                <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
-                <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
-
+                    <div className="location-text">
+                        <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                        <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
+                    </div>
                 </div>
-                </div>
-
                 )
         }
     })
@@ -553,7 +633,6 @@ function handleCoordinate(position) {
     var Dichtbij = React.createClass({
         componentWillMount : function(){
             var self = this;
-
             var settings = {
                   "async": true,
                   "crossDomain": true,
@@ -580,30 +659,30 @@ function handleCoordinate(position) {
             // console.log("dichtbij");
             // //this.setstate({counters: this.state.counters});
             // console.log(this.state.places);
-        },
+    },
 
-        getInitialState : function(){
-            console.log('initial');
-            return {
-                places : []
-            }
-        },
+    getInitialState : function(){
+        console.log('initial');
+        return {
+            places : []
+        }
+    },
 
 
-        render : function(){
+    render : function(){
 
-            console.log("render");
-            console.log(this.state.places[0]);
-            return (
-                <div className="dichtbij home-row">
-                <h3>Dichtbij</h3>
+        console.log("render");
+        console.log(this.state.places[0]);
+        return (
+            <div className="dichtbij home-row">
+            <h3>Dichtbij</h3>
                 <div className="location-row">
-                {this.state.places.map(function(object, i) {
-                    return <LocationRow data={object} key={i} />;
-                })}
+                    {this.state.places.map(function(object, i) {
+                        return <LocationRow data={object} key={i} />;
+                    })}
                 </div>
-                </div>
-                );
+            </div>
+            );
         }
     })
 
@@ -857,6 +936,9 @@ function handleCoordinate(position) {
     */
     var OntdekPage_NLI = React.createClass({
         render : function(){
+            if (localStorage.getItem('oAuth_token')) {
+                return (<OntdekPage_LI />);
+            }
             return (
                 <div className="ontdek-page">
                 <div className="page-content">
@@ -935,15 +1017,72 @@ function handleCoordinate(position) {
     */
     var Profiel = React.createClass({
         render : function(){
+            var user = this.state.user;
             return (
                 <div id="profiel-page">
                 <div id="page-content">
-                <ProfielBlock/>
+                <ProfielBlock  user={user}/>
                 <Recent/>
                 </div>
                 <NavBar/>
                 </div>
                 )
+        },
+
+        getInitialState : function(){
+            return {
+                user :{},
+                places : {}
+            }
+        },
+
+        componentWillMount : function(){
+            this.getAccountDetails();
+            this.getRecentPlaces();
+        },
+
+        getRecentPlaces : function(){
+            var self = this;
+             var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/checkin/recent",
+                "method": "GET",
+                "headers": {
+                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+                },
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                self.setState({places : response});
+            })
+            .fail(function(response, textStatus, xhr){
+                if (xhr === 'Unauthorized'){
+                    document.location.href="/";
+                }
+            });
+        },
+
+        getAccountDetails : function(){
+            var self = this;
+            var settings = {
+            'crossDomain': true,
+            'url': 'http://95.85.15.210/user/current',
+            'method': 'GET',
+            "headers": {
+                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+            },
+        }
+
+        $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                self.setState({user: response});
+            })
+            .fail(function(response, textStatus, xhr){
+
+                console.log(xhr);
+                console.log('fail');
+            });
         }
     })
 
@@ -1083,10 +1222,79 @@ function handleCoordinate(position) {
         }
     })
 
+    var RegisterComponent = React.createClass({
+
+        getInitialState : function(){
+            return {
+                name : '',
+                email : '',
+                password : '',
+                confirm_password : ''
+            }
+        },
+
+        render : function() {
+            return (
+                <div>
+                    <form>
+                    <input name='name' type='text' onChange={this.handleChange} /><br/>
+                    <input name='email' type='text' onChange={this.handleChange} /> <br/>
+                    <input name='password' type='text' onChange={this.handleChange} /> <br/>
+                    <input name='confirm_password' type='text' onChange={this.handleChange} />
+                    <input type='submit' onClick={this.register} />
+                    </form>
+                </div>
+            );
+
+        },
+
+        handleChange : function(event) {
+            var name = event.target.name;
+            var value = event.target.value;
+            if (name === 'name') {
+                this.setState({name : value});
+            }
+            if (name === 'email') {
+                this.setState({email : value});
+            }
+            if (name === 'password') {
+                this.setState({password : value});
+            }
+            if (name === 'confirm_password') {
+                this.setState({confirm_password : value});
+            }
+
+        },
+
+        register : function(event) {
+            event.preventDefault();
+            console.log('register');
+            var settings = {
+                "crossDomain": true,
+                "url": "http://95.85.15.210/auth/register",
+                "method": "PUT",
+                'data': {
+                    'name' : this.state.name,
+                    'email': this.state.email,
+                    'password': this.state.password,
+                    'password_confirmation' : this.state.confirm_password
+                },
+            }
+             $.ajax(settings)
+                .done(function (response, textStatus, xhr) {
+                    localStorage.setItem('oAuth_token', response.oAuth_token);
+                    document.location.href = '/home';
+
+                })
+                .fail(function(){
+                    console.log('fail');
+                });
+        }
+    })
+
 
     var routes = (
         <Router history={browserHistory}>
-
         <Route path='/' component={SplashPage}/>
         <Route path='/home' component={OntdekPage_NLI}/>
         <Route path='/global' component={HalfNHalf}/>
@@ -1096,9 +1304,8 @@ function handleCoordinate(position) {
         <Route path='/listViewLocation' component={ListView}/>
         <Route path='/Login' component={LoginPage}/>
         <Route path='/details/:id' component={Detail_MapView}/>
-
-
-        </Router>);
+        <Route path='/register' component={RegisterComponent} />
+    </Router>);
 
     ReactDOM.render(routes, document.querySelector('#main'));
 
