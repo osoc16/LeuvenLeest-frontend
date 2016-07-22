@@ -597,18 +597,19 @@ function handleCoordinate(position) {
     */
     var LocationRow = React.createClass({
         redirect: function(){
-            //alert(this.props.data.id);
             document.location.href="/details/"+this.props.data.id;
-
         },
 
         componentWillMount:function(){
-
+            this.setState(this.props.data);
         },
+
         render : function(){
-            console.log("locationRow");
+            var style = {
+                backgroundImage: 'url("'+ this.state.photo +'")'
+            }
             return (
-                <div className="location-small" onClick={this.redirect}>
+                <div className="location-small" onClick={this.redirect} style={style} >
                     <div className="location-text">
                         <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
                         <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
