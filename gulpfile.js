@@ -28,7 +28,7 @@ var historyApiFallback = require('connect-history-api-fallback')
   .pipe(gulp.dest('build/css/fonts'))
 
   // Compiles CSS
-  gulp.src('css/style.scss')
+  gulp.src('assets/css/style.scss')
   .pipe(sass())
   .pipe(autoprefixer())
   .pipe(gulp.dest('./build/css/'))
@@ -108,6 +108,6 @@ gulp.task('scripts', function() {
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['styles','scripts','browser-sync'], function() {
-  gulp.watch('css/*', ['styles']); // gulp watch for stylus changes
+  gulp.watch('assets/css/*', ['styles']); // gulp watch for stylus changes
   return buildScript('main.js', true); // browserify watch for JS changes
 });

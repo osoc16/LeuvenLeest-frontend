@@ -7,6 +7,12 @@
     overflow: hidden;
 }
 
+.full-map-container{
+    height: 100%;
+    margin-top: 160px;
+}
+
+
 .map-container-small {
     margin: 0;
     width: 100%;
@@ -21,12 +27,15 @@
 .map {
     width: 100%;
 }
-
 #map1{
-    height: 100%;
+    height: 90%;
 }
 
 
 #map-con{
     margin-top: 160px;
+}
+
+.map-container-small-leaftlet{
+    height: 120%;
 }

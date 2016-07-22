@@ -19,7 +19,7 @@ var infoOfPlace;
 var id = 0;
 var idPos = 0;
 var idLoc = 0;
-var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMjY3ODIsImV4cCI6MTQ2OTAzMDM4MiwibmJmIjoxNDY5MDI2NzgyLCJqdGkiOiIzZjRiYTQyM2JmODVjOTVkNjMxZTc0NWExYWUyYTk3NiJ9.nCD_SQMVBAx2UgDZqrgmaDSVFYlPgiV71tXSRcTEjI0";
+var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvcmVnaXN0ZXIiLCJpYXQiOjE0NjkxNzc5MTAsImV4cCI6MTQ2OTE4MTUxMCwibmJmIjoxNDY5MTc3OTEwLCJqdGkiOiI1MjJiYTg5YWEzMGFmZGIyMGQ1MTk2OTExOTNmY2RmZiJ9.rYBruJBYSN9yjcsDr6_cu2Zpz4VUnaIwTQg8GRwZ8wQ";
 
 /* Function for testing other functions*/
 
@@ -76,13 +76,14 @@ handleCoordinate: function (position) {
 
 render: function(){
     console.log(this.state);
-
-    return (<div>{Object.keys(this.state.locations).map(this.renderMap)}</div>);
+    console.log(this.props.divClass);
+    return (<div className={this.props.divClass}>{Object.keys(this.state.locations).map(this.renderMap)}</div>);
 },
 
 
 renderMap : function(){
-    const position = [this.state.locations['pos-'+0].lat, this.state.locations['pos-'+0].lon];
+    var id = idPos -1;
+    const position = [this.state.locations['pos-'+id].lat, this.state.locations['pos-'+id].lon];
     console.log("render");
     console.log(position);
 
@@ -137,7 +138,7 @@ function getPlaceNear() {
      var settings = {
           "async": true,
           "crossDomain": true,
-          "url": "http://95.85.15.210/places/50/40",//+userLocation.lat+"/"+userLocation.lon,
+          "url": "http://95.85.15.210/places/50.873737/4.702240",//+userLocation.lat+"/"+userLocation.lon,
           "method": "GET",
           "headers": {
               "Authorization": "Bearer "+accessToken,
@@ -366,7 +367,7 @@ function handleCoordinate(position) {
         render : function(){
             return (
                 <div className="map-container-small">
-                <img src="../../css/img/map.svg" className="map"/>
+                <LeafletMap divClass="map-container-small-leaftlet"/>
                 </div>
                 )
         }
@@ -880,7 +881,7 @@ function handleCoordinate(position) {
                 <div id="app">
                 <HeadBar/>
                 <div className="map-container">
-                <LeafletMap/>
+                <LeafletMap divClass="full-map-container"/>
                 </div>
                 <NavBar/>
                 </div>
