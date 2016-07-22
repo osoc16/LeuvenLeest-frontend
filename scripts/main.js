@@ -494,7 +494,7 @@ function handleCoordinate(position) {
                 <i className="know-eachother">Let's get to know eachother</i>
                 <div className="login-button fb-blue">
                 <i className="fa fa-facebook"></i>
-                <p><a onClick={this.login} >Sign in with Facebook</a></p>
+                <p><a href='/login'>Sign in</a></p>
                 </div>
                 </div>
                 </div>
@@ -546,7 +546,12 @@ function handleCoordinate(position) {
             )
         },
 
+        removeToken : function() {
+            localStorage.removeItem('oAuth_token');
+        },
+
         logout : function(){
+            var self = this;
             var settings = {
                 "crossDomain": true,
                 "url": "http://95.85.15.210/auth/logout",
@@ -555,14 +560,14 @@ function handleCoordinate(position) {
                 "contentType": false,
                 "mimeType": "multipart/form-data",
                 'header' : {
-                    'Authorization' : 'Bearer ' .localStorage.getItem('oAuth_token')
+                    'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
                 }
             }
 
             $.ajax(settings)
             .done(function (response, textStatus, xhr) {
-                localStorage.removeItem('oAuth_token');
-                document.location.href='/profiel';
+                self.removeToken();
+                document.location.href='/';
             })
             .fail(function(){
                 console.log('fail');
@@ -641,7 +646,7 @@ function handleCoordinate(position) {
                   "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
                   "method": "GET",
                    "headers": {
-                        "Authorization": 'Bearer "'+ localStorage.getItem('oAuth_token'),
+                        "Authorization": 'Bearer '+ localStorage.getItem('oAuth_token'),
                 },
                 "processData": false,
                  "contentType": false,
