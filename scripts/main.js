@@ -554,7 +554,7 @@ function handleCoordinate(position) {
                 "contentType": false,
                 "mimeType": "multipart/form-data",
                 'header' : {
-                    'Authorization' : 'Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjMsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTEwNzMsImV4cCI6MTQ2OTAxNDY3MywibmJmIjoxNDY5MDExMDczLCJqdGkiOiI1MDI1YWQ3ZDY0MWJmOGVjNTAxYzY0ZWU1ZGM3NjI2MyJ9.I_Ap2i1lszoQ0ZToWebTWJVlhUHKiAyePE4sRW3U9-k'
+                    'Authorization' : 'Bearer ' .localStorage.getItem('oAuth_token')
                 }
             }
 
