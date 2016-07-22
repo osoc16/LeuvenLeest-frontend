@@ -19,7 +19,6 @@ var infoOfPlace;
 var id = 0;
 var idPos = 0;
 var idLoc = 0;
-var accessToken ="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjEsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvcmVnaXN0ZXIiLCJpYXQiOjE0NjkxNzc5MTAsImV4cCI6MTQ2OTE4MTUxMCwibmJmIjoxNDY5MTc3OTEwLCJqdGkiOiI1MjJiYTg5YWEzMGFmZGIyMGQ1MTk2OTExOTNmY2RmZiJ9.rYBruJBYSN9yjcsDr6_cu2Zpz4VUnaIwTQg8GRwZ8wQ";
 
 /* Function for testing other functions*/
 
@@ -123,6 +122,8 @@ function login() {
                'password': 'thibaut'
           },
      }
+
+
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
         return response;
@@ -141,7 +142,7 @@ function getPlaceNear() {
           "url": "http://95.85.15.210/places/50.873737/4.702240",//+userLocation.lat+"/"+userLocation.lon,
           "method": "GET",
           "headers": {
-              "Authorization": "Bearer "+accessToken,
+              "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),
               "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
        },
@@ -560,6 +561,7 @@ function handleCoordinate(position) {
 
             $.ajax(settings)
             .done(function (response, textStatus, xhr) {
+                localStorage.removeItem('oAuth_token');
                 document.location.href='/profiel';
             })
             .fail(function(){
@@ -639,9 +641,7 @@ function handleCoordinate(position) {
                   "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
                   "method": "GET",
                    "headers": {
-                        "Authorization": "Bearer "+accessToken,
-                                 "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
-
+                        "Authorization": 'Bearer "'+ localStorage.getItem('oAuth_token'),
                 },
                 "processData": false,
                  "contentType": false,
@@ -896,19 +896,62 @@ function handleCoordinate(position) {
     <LoginPage/>
     */
     var LoginPage = React.createClass({
-        redirect : function(){
 
+        getInitialState : function() {
+            return {
+                email : '',
+                password : ''
+            };
         },
+
         render : function(){
             return (
                 <div className="login-page">
                 <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-big"/>
-                <div className="login-button" onClick={this.redirect}>
-                <i className="fa fa-facebook"></i>
-                <p>Sign in with Facebook</p>
-                </div>
+                <p>Login</p>
+                <form>
+                    <input type='text' name='email' onChange={this.handleChange} />
+                    <input type='text' name='password' onChange={this.handleChange} />
+                    <input type='submit' onClick={this.login} />
+                </form>
                 </div>
                 )
+        },
+
+        handleChange : function(event) {
+            if (event.target.name === 'email') {
+                this.setState({email : event.target.value});
+            }
+            if (event.target.name === 'password') {
+                this.setState({password : event.target.value});
+            }
+        },
+
+        login : function(event) {
+            event.preventDefault();
+            var self = this;
+             var settings = {
+                'crossDomain': true,
+                'url': 'http://95.85.15.210/auth/login',
+                "method": "POST",
+                'data' : {
+                    'email' : this.state.email,
+                    'password' : this.state.password
+                }
+            }
+
+            $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                localStorage.setItem('oAuth_token', response.oAuth_token);
+                document.location.href = '/home';
+               console.log(response);
+            })
+            .fail(function(response, textStatus, xhr){
+                console.log(response);
+                if (xhr === 'Unauthorized'){
+                    console.log('fail');
+                }
+            });
         }
     })
 
@@ -1115,7 +1158,7 @@ function handleCoordinate(position) {
                   "url": "http://95.85.15.210/places/"+idPlace, //+userLocation.lat+"/"+userLocation.lon,
                   "method": "GET",
                    "headers": {
-                        "Authorization": "Bearer "+accessToken,
+                        "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),
                                  "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
                 },
