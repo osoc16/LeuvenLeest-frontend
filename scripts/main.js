@@ -1048,7 +1048,7 @@ function handleCoordinate(position) {
                 "url": "http://95.85.15.210/checkin/recent",
                 "method": "GET",
                 "headers": {
-                    "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+                    "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
                 },
             }
 
@@ -1070,7 +1070,7 @@ function handleCoordinate(position) {
             'url': 'http://95.85.15.210/user/current',
             'method': 'GET',
             "headers": {
-                "Authorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOjIsImlzcyI6Imh0dHA6XC9cLzk1Ljg1LjE1LjIxMFwvYXV0aFwvbG9naW4iLCJpYXQiOjE0NjkwMTk0MTksImV4cCI6MTQ2OTAyMzAxOSwibmJmIjoxNDY5MDE5NDE5LCJqdGkiOiIxZjZiNTAzOTBjNTk3YjFlMmVkZjBiOWUxNmE5ODFhNyJ9.z1vtpe4jwU_2HkVLDriKelxa2g_YfAzVg8RPRn_Ettk",
+                "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
             },
         }
 
