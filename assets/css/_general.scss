@@ -130,7 +130,7 @@ body {
 }    
 
 .headbar {
-    height: 9em;
+    height: 3em;
     background-color: $clear-grey;
     border-bottom: 1px solid $light-grey;
     font-family: 'Suez One';
@@ -149,14 +149,14 @@ body {
         margin-top: 0;
         position: relative;
         top: .2em;
-        font-size: 5em;
+        font-size: 2em;
         margin-right: .3em;
     }
 
     .title-text {
         display: inline-block;
         margin-top: .8em;
-        font-size: 3em;
+        font-size: 1em;
     }
 
     .icon-map {
