@@ -61,8 +61,12 @@
     }
 }
 
+.detail-infos {
+    height: 12.4em;
+}
+
 .adres-block {
-    height: 8.2em;
+    height: 50%;
     border-bottom: 1px solid $light-grey;
     font-size: 2em;
     position: relative;
@@ -75,10 +79,12 @@
     h3 {
         color: $dark-grey;
         margin-bottom: .5em;
+        font-size: .45em;
+        font-weight: 600;
     }
 
     p {
-        font-size: 1.2em;
+        font-size: .5em;
         font-weight: 100;
     }
 
@@ -89,7 +95,8 @@
         height: 100%;
         color: $dark-grey;
         text-align: center;
-        width: 5em;
+        width: 5.6em;
+        font-size: .4em;
         height: 100%;
     }
 
@@ -108,8 +115,8 @@
 
     .adres-text {
         position: relative;
-        top: 1.3em;
-        left: 1.5em;
+        top: .6em;
+        left: .7em;
     }
 }
 
