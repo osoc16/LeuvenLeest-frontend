@@ -28,30 +28,28 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 
 var AuthorizationCheck = function(nextState, replace) {
-    if (!localStorage.getItem('oAuth_token')) {
-        replace({
-          pathname: '/login',
-          state: { nextPathname: nextState.location.pathname }
-      })
+   if (!localStorage.getItem('oAuth_token')) {
+       replace({
+         pathname: '/login',
+         state: { nextPathname: nextState.location.pathname }
+     })
 
-    }
+   }
 }
 
 var routes = (
-    <Router history={browserHistory}>
-    <Route path='/' component={SplashPageComponent} />
-    <Route path='/home' component={OntdekPage_NLI_Component}/>
-    <Route path='/global' component={HalfNHalfComponent} onEnter={AuthorizationCheck} />
-    <Route path='/map' component={MapViewComponent} onEnter={AuthorizationCheck}/>
-    <Route path='/addLocation' component={Plaats_TV_Component}/>
-    <Route path='/profiel' component={ProfielComponent} onEnter={AuthorizationCheck} />
-    <Route path='/listViewLocation' component={ListViewComponent} onEnter={AuthorizationCheck} />
-    <Route path='/Login' component={LoginPageComponent}/>
-    <Route path='/details/:id' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
-    <Route path='/register' component={RegisterComponent} />
-    <Router path='/addPlace' component={AddPlaceComponent} onEnter={AuthorizationCheck} />
-    </Router>);
+   <Router history={browserHistory}>
+   <Route path='/' component={SplashPageComponent} />
+   <Route path='/home' component={OntdekPage_NLI_Component}/>
+   <Route path='/global' component={HalfNHalfComponent} onEnter={AuthorizationCheck} />
+   <Route path='/map' component={MapViewComponent} onEnter={AuthorizationCheck}/>
+   <Route path='/addLocation' component={Plaats_TV_Component}/>
+   <Route path='/profiel' component={ProfielComponent} onEnter={AuthorizationCheck} />
+   <Route path='/listViewLocation' component={ListViewComponent} onEnter={AuthorizationCheck} />
+   <Route path='/Login' component={LoginPageComponent}/>
+   <Route path='/details/:id' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
+   <Route path='/register' component={RegisterComponent} />
+   <Router path='/addPlace' component={AddPlaceComponent} onEnter={AuthorizationCheck} />
+   </Router>);
 
 ReactDOM.render(routes, document.querySelector('#main'));
-
-
