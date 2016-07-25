@@ -1,6 +1,8 @@
 var React = require('react');
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 /*Map component */
+var idPos = 0;
 module.exports = React.createClass({
     getInitialState: function() {
         return {
@@ -33,24 +35,16 @@ module.exports = React.createClass({
         long : position.coords.longitude
     };
 
-    userLocation = coordinate;
 },
 
-
-  componentWillMount : function() {
-
-//    if(this.props.data === undefined){
+componentWillMount : function() {
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(this.handleCoordinate);
-
     }else{
         console.log("Sorry the location is not available");
     }
-
-
-
-
 },
+
 handleCoordinate: function (position) {
     var msg = "Latitude: " + position.coords.latitude +
     " Longitude: " + position.coords.longitude;
@@ -61,17 +55,15 @@ handleCoordinate: function (position) {
         lat : position.coords.latitude,
         lon : position.coords.longitude
     };
-
-    return coordinate;
-
     this.state.locations['pos-'+ idPos] = coordinate;
     idPos++;
     this.setState({locations : this.state.locations});
     console.log(this.state);
+    return coordinate;
 },
 
-
 render: function(){
+    console.log("render in leaftlet");
     console.log(this.state);
     console.log(this.props.divClass);
 
@@ -80,10 +72,9 @@ render: function(){
 
 
 renderMap : function(){
-
     var id = idPos -1;
     console.log(id);
-    console.log("render");
+    console.log("render in renderMap");
     var position;
 
     if(this.props.data === undefined){
@@ -112,9 +103,6 @@ renderMap : function(){
         </Map>
 
         );
-    console.log(map);
-
-
     return (map);
 }
 
