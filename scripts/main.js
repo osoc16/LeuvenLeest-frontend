@@ -1,5 +1,7 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
+var RegisterComponent = require('./RegisterComponent.jsx');
+
 
 /*Route related var*/
 var ReactRouter = require('react-router');
@@ -47,7 +49,6 @@ var LeafletMap = React.createClass({
 
 //    if(this.props.data === undefined){
     if(navigator.geolocation){
-        console.log("getting the location");
         navigator.geolocation.getCurrentPosition(this.handleCoordinate);
 
     }else{
@@ -101,7 +102,7 @@ renderMap : function(){
         console.log("data is not undefined");
         position = [this.props.data.latitude, this.props.data.longitude];
         console.log(position);
-    } 
+    }
 
     const map = (
         <Map  center={position} zoom={15}>
@@ -121,7 +122,7 @@ renderMap : function(){
         );
     console.log(map);
 
-    
+
     return (map);
 }
 
@@ -300,14 +301,20 @@ function handleCoordinate(position) {
             document.location.href="/profiel";
         },
 
+        isActivePage : function() {
+            console.log(document.location.href);
+            //if ()
+        },
+
         render : function(){
+            this.isActivePage();
             return (
                 <div className="navbar">
                 <span className="discover-button nav-button" onClick={this.redirectHome}>
                 <i className="lines-icon icon-compass" aria-hidden="true"></i>
                 <p>Ontdek</p>
                 </span>
-                <span className="checkin-button nav-button highlight" onClick={this.redirectAantLezen}>
+                <span className="checkin-button nav-button" onClick={this.redirectAantLezen}>
                 <i className="lines-icon icon-eyeglass" aria-hidden="true"></i>
                 <p>Aan't Lezen</p>
                 </span>
@@ -519,30 +526,6 @@ function handleCoordinate(position) {
         redirect : function(){
             document.location.href= '/login';
         },
-
-        login : function() {
-                document.location.href ='http://95.85.15.210/auth/login/fb';
-            var settings = {
-                "crossDomain": true,
-                "Access-Control-Allow-Origin": "*",
-                "url": "http://95.85.15.210/auth/login/fb",
-                "processData": false,
-                "contentType": false,
-                "method": "GET",
-                'header' : {
-
-                }
-            }
-
-            $.ajax(settings)
-            .done(function (response, textStatus, xhr) {
-                console.log(response);
-                // document.location.href= response;
-            })
-            .fail(function(){
-                console.log('fail');
-            });
-        }
     })
 
     /*
@@ -679,10 +662,8 @@ function handleCoordinate(position) {
                }
 
              $.ajax(settings).done(function (response) {
-             console.log('get places');
              var data = JSON.parse(response);
              self.setState({places : data});
-             console.log(self.state.places);
             // return data;
          });
             // this.setState({places : getPlaceNear()});
@@ -692,7 +673,6 @@ function handleCoordinate(position) {
     },
 
     getInitialState : function(){
-        console.log('initial');
         return {
             places : []
         }
@@ -700,9 +680,6 @@ function handleCoordinate(position) {
 
 
     render : function(){
-
-        console.log("render");
-        console.log(this.state.places[0]);
         return (
             <div className="dichtbij home-row">
             <h3>Dichtbij</h3>
@@ -737,7 +714,6 @@ function handleCoordinate(position) {
     */
     var AdresBlock = React.createClass({
         render : function(){
-            console.log(this.props.data);
             return (
                 <div className="adres-block">
                 <div className="adres-text">
@@ -770,7 +746,7 @@ function handleCoordinate(position) {
         //  }else{
 
         //     var date = new Date();
-        //     var dayNumber = date.getDay(); 
+        //     var dayNumber = date.getDay();
         //     var openingArray = this.props.data.openingHours;
         //     console.log("opening");
         //     console.log(this.props.data);
@@ -783,7 +759,7 @@ function handleCoordinate(position) {
         // }
 
 
-        
+
         return (
             <div className="openingsuren">
             <div className="op-text">
@@ -904,9 +880,6 @@ function handleCoordinate(position) {
     var LocationDetails = React.createClass({
         render : function(){
             //The state will always contain 1 row
-            console.log("detail");
-            console.log(this.props.data);
-
             return (
                 <div className="detail-infos">
                 <AdresBlock data={this.props.data}/>
@@ -996,10 +969,8 @@ function handleCoordinate(position) {
             .done(function (response, textStatus, xhr) {
                 localStorage.setItem('oAuth_token', response.oAuth_token);
                 document.location.href = '/home';
-               console.log(response);
             })
             .fail(function(response, textStatus, xhr){
-                console.log(response);
                 if (xhr === 'Unauthorized'){
                     console.log('fail');
                 }
@@ -1174,8 +1145,6 @@ function handleCoordinate(position) {
                 self.setState({user: response});
             })
             .fail(function(response, textStatus, xhr){
-
-                console.log(xhr);
                 console.log('fail');
             });
         }
@@ -1199,11 +1168,10 @@ function handleCoordinate(position) {
     componentWillMount:function(){
         var self = this;
         var currentURL = document.location.href;
-        console.log(currentURL);
         var splitString = currentURL.split("/");
         var idPlace = splitString[splitString.length-1];
         var geolocation = getCoordinate();
-        
+
 
 
         var settings = {
@@ -1222,25 +1190,12 @@ function handleCoordinate(position) {
                };
 
              $.ajax(settings).done(function (response) {
-                console.log('get places By id');
                 var data = JSON.parse(response);
-                console.log(data);
                 self.setState({place : data});
                 infoOfPlace = data;
-                console.log(self.state.place);
-
-
-
-
-
              });
-            
-
-
-
-
-
         },
+
         render : function(){
             return (
                 <div className="detail-page">
@@ -1327,88 +1282,29 @@ function handleCoordinate(position) {
         }
     })
 
-    var RegisterComponent = React.createClass({
 
-        getInitialState : function(){
-            return {
-                name : '',
-                email : '',
-                password : '',
-                confirm_password : ''
-            }
-        },
 
-        render : function() {
-            return (
-                <div>
-                    <form>
-                    <input name='name' type='text' onChange={this.handleChange} /><br/>
-                    <input name='email' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='password' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='confirm_password' type='text' onChange={this.handleChange} />
-                    <input type='submit' onClick={this.register} />
-                    </form>
-                </div>
-            );
-
-        },
-
-        handleChange : function(event) {
-            var name = event.target.name;
-            var value = event.target.value;
-            if (name === 'name') {
-                this.setState({name : value});
-            }
-            if (name === 'email') {
-                this.setState({email : value});
-            }
-            if (name === 'password') {
-                this.setState({password : value});
-            }
-            if (name === 'confirm_password') {
-                this.setState({confirm_password : value});
-            }
-
-        },
-
-        register : function(event) {
-            event.preventDefault();
-            console.log('register');
-            var settings = {
-                "crossDomain": true,
-                "url": "http://95.85.15.210/auth/register",
-                "method": "PUT",
-                'data': {
-                    'name' : this.state.name,
-                    'email': this.state.email,
-                    'password': this.state.password,
-                    'password_confirmation' : this.state.confirm_password
-                },
-            }
-             $.ajax(settings)
-                .done(function (response, textStatus, xhr) {
-                    localStorage.setItem('oAuth_token', response.oAuth_token);
-                    document.location.href = '/home';
-
-                })
-                .fail(function(){
-                    console.log('fail');
-                });
+    var AuthorizationCheck = function(nextState, replace) {
+        if (!localStorage.getItem('oAuth_token')) {
+            replace({
+              pathname: '/login',
+              state: { nextPathname: nextState.location.pathname }
+            })
         }
-    })
+    }
 
 
     var routes = (
         <Router history={browserHistory}>
-        <Route path='/' component={SplashPage}/>
+        <Route path='/' component={SplashPage} />
         <Route path='/home' component={OntdekPage_NLI}/>
-        <Route path='/global' component={HalfNHalf}/>
-        <Route path='/map' component={MapView}/>
+        <Route path='/global' component={HalfNHalf} onEnter={AuthorizationCheck} />
+        <Route path='/map' component={MapView} onEnter={AuthorizationCheck}/>
         <Route path='/addLocation' component={Plaats_TV}/>
-        <Route path='/profiel' component={Profiel}/>
-        <Route path='/listViewLocation' component={ListView}/>
+        <Route path='/profiel' component={Profiel} onEnter={AuthorizationCheck} />
+        <Route path='/listViewLocation' component={ListView} onEnter={AuthorizationCheck} />
         <Route path='/Login' component={LoginPage}/>
-        <Route path='/details/:id' component={Detail_MapView}/>
+        <Route path='/details/:id' component={Detail_MapView} onEnter={AuthorizationCheck} />
         <Route path='/register' component={RegisterComponent} />
     </Router>);
 
