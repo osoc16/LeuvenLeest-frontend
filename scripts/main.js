@@ -59,9 +59,6 @@ var LeafletMap = React.createClass({
 
 },
 handleCoordinate: function (position) {
-    var msg = "Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude;
-    console.log(msg);
 
 
     var coordinate =  {
@@ -74,7 +71,7 @@ handleCoordinate: function (position) {
     this.state.locations['pos-'+ idPos] = coordinate;
     idPos++;
     this.setState({locations : this.state.locations});
-    console.log(this.state);
+    
 },
 
 
@@ -158,16 +155,16 @@ function getPlaceNear() {
           "url": "http://95.85.15.210/places/50.873737/4.702240",//+userLocation.lat+"/"+userLocation.lon,
           "method": "GET",
           "headers": {
-              "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),
-              "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+            "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),
+            "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
-       },
-        "processData": false,
-        "contentType": false,
-        "mimeType": "multipart/form-data"
-    }
+     },
+      "processData": false,
+      "contentType": false,
+      "mimeType": "multipart/form-data"
+  }
 
-    $.ajax(settings).done(function (response) {
+  $.ajax(settings).done(function (response) {
     console.log('get places');
     var data = JSON.parse(response);
     return data;
@@ -521,7 +518,7 @@ function handleCoordinate(position) {
         },
 
         login : function() {
-                document.location.href ='http://95.85.15.210/auth/login/fb';
+            document.location.href ='http://95.85.15.210/auth/login/fb';
             var settings = {
                 "crossDomain": true,
                 "Access-Control-Allow-Origin": "*",
@@ -555,14 +552,14 @@ function handleCoordinate(position) {
             var user = this.props.user;
             return (
                 <div className="profiel-block">
-                    <h1>Je profiel</h1>
+                <h1>Je profiel</h1>
                 <div className="profile-pic">
                 </div>
-                    <h2>{user.name}</h2>
-                    <p>{user.email}</p>
-                    <h3><a onClick={this.logout}>Uitloggen</a></h3>
+                <h2>{user.name}</h2>
+                <p>{user.email}</p>
+                <h3><a onClick={this.logout}>Uitloggen</a></h3>
                 </div>
-            )
+                )
         },
 
         removeToken : function() {
@@ -629,10 +626,10 @@ function handleCoordinate(position) {
             }
             return (
                 <div className="location-small" onClick={this.redirect} style={style} >
-                    <div className="location-text">
-                        <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
-                        <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
-                    </div>
+                <div className="location-text">
+                <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
+                </div>
                 </div>
                 )
         }
@@ -647,7 +644,7 @@ function handleCoordinate(position) {
             if (this.props) {
                 return (
                     <Dichtbij/>
-                )
+                    )
             }
             return (
                 <div className="recent-act home-row">
@@ -664,11 +661,93 @@ function handleCoordinate(position) {
     */
     var Dichtbij = React.createClass({
         componentWillMount : function(){
-            var self = this;
-            var settings = {
-                  "async": true,
-                  "crossDomain": true,
-                  "url": "http://95.85.15.210/places/50/40", //+userLocation.lat+"/"+userLocation.lon,
+            // var self = this;
+
+            // if(navigator.geolocation){
+            //     navigator.geolocation.getCurrentPosition(function(position){
+            //         var msg = "Latitude: " + position.coords.latitude +
+            //         " Longitude: " + position.coords.longitude;
+            //         console.log(msg);
+
+            //         var coordinate =  {
+            //             lat : position.coords.latitude,
+            //             long : position.coords.longitude
+            //         };
+            //         userLocation = coordinate;
+            //         self.setState({userLocation : coordinate});
+            //     });
+
+            // }else{
+            //     console.log("Sorry the location is not available");
+            // }
+
+
+
+        //     var settings = {
+        //           "async": true,
+        //           "crossDomain": true,
+        //           "url": "http://95.85.15.210/places/50/40"+self.state.userLocation['lat']+"/"+self.state.userLocation['long'], //+userLocation.lat+"/"+userLocation.lon,
+        //           "method": "GET",
+        //            "headers": {
+        //                 "Authorization": 'Bearer '+ localStorage.getItem('oAuth_token'),
+        //         },
+        //         "processData": false,
+        //          "contentType": false,
+        //          "mimeType": "multipart/form-data"
+        //        }
+
+        //      $.ajax(settings).done(function (response) {
+        //        console.log('get places');
+        //        var data = JSON.parse(response);
+        //        self.setState({places : data});
+        //        console.log(self.state.places);
+        //     // return data;
+        //  });
+            // this.setState({places : getPlaceNear()});
+            // console.log("dichtbij");
+            // //this.setstate({counters: this.state.counters});
+            // console.log(this.state.places);
+        },
+
+        getInitialState : function(){
+            console.log('initial');
+            return {
+                places : [],
+                userLocation: {},
+            }
+        },
+
+        /*
+            * All the logical stuff should be in a 'ComponentWillMount' but it cause too much problem
+            * The setState trigger the render method
+            * -> a infinite cercle of ajax call will begin 
+            * -> I check if the state are empty before doing the ajax call.
+            */
+
+            render : function(){
+                var self = this;
+                if(navigator.geolocation && self.state.userLocation['lat'] == undefined){
+                    navigator.geolocation.getCurrentPosition(function(position){
+                        var msg = "Latitude: " + position.coords.latitude +
+                        " Longitude: " + position.coords.longitude;
+                        console.log(msg);
+
+                        var coordinate =  {
+                            lat : position.coords.latitude,
+                            lon : position.coords.longitude
+                        };
+                        userLocation = coordinate;
+                        self.setState({userLocation : coordinate});
+                    });
+
+                }else{
+                    console.log("Sorry the location is not available");
+                }
+
+                var settings = {
+                      "async": true,
+                      "crossDomain": true,
+                  "url": "http://95.85.15.210/places/"+self.state.userLocation['lat']+"/"+self.state.userLocation['lon'], //+userLocation.lat+"/"+userLocation.lon",
                   "method": "GET",
                    "headers": {
                         "Authorization": 'Bearer '+ localStorage.getItem('oAuth_token'),
@@ -677,42 +756,26 @@ function handleCoordinate(position) {
                  "contentType": false,
                  "mimeType": "multipart/form-data"
                }
-
-             $.ajax(settings).done(function (response) {
-             console.log('get places');
-             var data = JSON.parse(response);
-             self.setState({places : data});
-             console.log(self.state.places);
+            if(this.state.places[0] == undefined){
+                 $.ajax(settings).done(function (response) {
+                   console.log('get places');
+                   var data = JSON.parse(response);
+                   self.setState({places : data});
+                   console.log(self.state.places);
             // return data;
          });
-            // this.setState({places : getPlaceNear()});
-            // console.log("dichtbij");
-            // //this.setstate({counters: this.state.counters});
-            // console.log(this.state.places);
-    },
+            };
 
-    getInitialState : function(){
-        console.log('initial');
-        return {
-            places : []
-        }
-    },
-
-
-    render : function(){
-
-        console.log("render");
-        console.log(this.state.places[0]);
-        return (
-            <div className="dichtbij home-row">
-            <h3>Dichtbij</h3>
+            return (
+                <div className="dichtbij home-row">
+                <h3>Dichtbij</h3>
                 <div className="location-row">
-                    {this.state.places.map(function(object, i) {
-                        return <LocationRow data={object} key={i} />;
-                    })}
+                {this.state.places.map(function(object, i) {
+                    return <LocationRow data={object} key={i} />;
+                })}
                 </div>
-            </div>
-            );
+                </div>
+                );
         }
     })
 
@@ -765,46 +828,47 @@ function handleCoordinate(position) {
     var Openings = React.createClass({
         render : function(){
 
-        //  if(this.props.data === undefined){
-        //     console.log("the opening data is undefined")
-        //  }else{
+            var openingHourOfTheDay;            
+            if(this.props.data == undefined){
+                console.log("the opening data is undefined")
+            }else{
+                var date = new Date();
+                var dayNumber = date.getDay(); 
+                var openingArray = this.props.data.openingHours;
 
-        //     var date = new Date();
-        //     var dayNumber = date.getDay(); 
-        //     var openingArray = this.props.data.openingHours;
-        //     console.log("opening");
-        //     console.log(this.props.data);
-        //     console.log(dayNumber);
-        //     console.log("Opening array");
-        //     console.log(openingArray);
-        //     console.log(openingArray[1]);
+                if(this.props.data.openingHours !== undefined){
+                    openingHourOfTheDay = openingArray[dayNumber];
+                    if(openingHourOfTheDay == "")
+                        openingHourOfTheDay= "The opening hour is undefined";
 
-        //     //console.log(openingData[0]);
-        // }
+                }
+            }
 
 
-        
-        return (
-            <div className="openingsuren">
-            <div className="op-text">
-            <h3>Openingsuren</h3>
-            <p>
-            0:00 - 0:00<br/>
 
-            </p>
-            </div>
-            </div>
-            )
-    }
-})
+            return (
+                <div className="openingsuren">
+                <div className="op-text">
+                <h3>Openingsuren</h3>
+                <p>
+                <i>
+                {openingHourOfTheDay}
+                </i>
+
+                <br/>
+
+                </p>
+                </div>
+                </div>
+                )
+        }
+    })
 
 /*
     Map of a specific location on said location's page
     <LocationMap/>
     */
     var LocationMap = React.createClass({
-
-
         render : function(){
             return (
                 <div className="detail-map">
@@ -962,9 +1026,9 @@ function handleCoordinate(position) {
                 <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-big"/>
                 <p>Login</p>
                 <form>
-                    <input type='text' name='email' onChange={this.handleChange} />
-                    <input type='text' name='password' onChange={this.handleChange} />
-                    <input type='submit' onClick={this.login} />
+                <input type='text' name='email' onChange={this.handleChange} />
+                <input type='text' name='password' onChange={this.handleChange} />
+                <input type='submit' onClick={this.login} />
                 </form>
                 </div>
                 )
@@ -996,7 +1060,7 @@ function handleCoordinate(position) {
             .done(function (response, textStatus, xhr) {
                 localStorage.setItem('oAuth_token', response.oAuth_token);
                 document.location.href = '/home';
-               console.log(response);
+                console.log(response);
             })
             .fail(function(response, textStatus, xhr){
                 console.log(response);
@@ -1143,43 +1207,43 @@ function handleCoordinate(position) {
                 "url": "http://95.85.15.210/checkin/recent",
                 "method": "GET",
                 "headers": {
-                    "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
-                },
+                              "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
+             },
+         }
+
+         $.ajax(settings)
+         .done(function (response, textStatus, xhr) {
+            self.setState({places : response});
+        })
+         .fail(function(response, textStatus, xhr){
+            if (xhr === 'Unauthorized'){
+                document.location.href="/";
             }
+        });
+     },
 
-            $.ajax(settings)
-            .done(function (response, textStatus, xhr) {
-                self.setState({places : response});
-            })
-            .fail(function(response, textStatus, xhr){
-                if (xhr === 'Unauthorized'){
-                    document.location.href="/";
-                }
-            });
-        },
-
-        getAccountDetails : function(){
-            var self = this;
-            var settings = {
+     getAccountDetails : function(){
+        var self = this;
+        var settings = {
             'crossDomain': true,
             'url': 'http://95.85.15.210/user/current',
             'method': 'GET',
             "headers": {
-                "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
-            },
-        }
+                      "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
+         },
+     }
 
-        $.ajax(settings)
-            .done(function (response, textStatus, xhr) {
-                self.setState({user: response});
-            })
-            .fail(function(response, textStatus, xhr){
-
-                console.log(xhr);
-                console.log('fail');
-            });
-        }
+     $.ajax(settings)
+     .done(function (response, textStatus, xhr) {
+        self.setState({user: response});
     })
+     .fail(function(response, textStatus, xhr){
+
+        console.log(xhr);
+        console.log('fail');
+    });
+ }
+})
 
 /*
     Detail view (Map)
@@ -1187,7 +1251,7 @@ function handleCoordinate(position) {
     */
     var Detail_MapView = React.createClass({
 
-       getInitialState: function() {
+     getInitialState: function() {
         return {
             place : {},
             detailLocation: {},
@@ -1235,11 +1299,6 @@ function handleCoordinate(position) {
 
              });
             
-
-
-
-
-
         },
         render : function(){
             return (
@@ -1341,15 +1400,15 @@ function handleCoordinate(position) {
         render : function() {
             return (
                 <div>
-                    <form>
-                    <input name='name' type='text' onChange={this.handleChange} /><br/>
-                    <input name='email' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='password' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='confirm_password' type='text' onChange={this.handleChange} />
-                    <input type='submit' onClick={this.register} />
-                    </form>
+                <form>
+                <input name='name' type='text' onChange={this.handleChange} /><br/>
+                <input name='email' type='text' onChange={this.handleChange} /> <br/>
+                <input name='password' type='text' onChange={this.handleChange} /> <br/>
+                <input name='confirm_password' type='text' onChange={this.handleChange} />
+                <input type='submit' onClick={this.register} />
+                </form>
                 </div>
-            );
+                );
 
         },
 
@@ -1383,17 +1442,17 @@ function handleCoordinate(position) {
                     'email': this.state.email,
                     'password': this.state.password,
                     'password_confirmation' : this.state.confirm_password
-                },
+                    },
             }
              $.ajax(settings)
-                .done(function (response, textStatus, xhr) {
-                    localStorage.setItem('oAuth_token', response.oAuth_token);
-                    document.location.href = '/home';
+            .done(function (response, textStatus, xhr) {
+                localStorage.setItem('oAuth_token', response.oAuth_token);
+                document.location.href = '/home';
 
-                })
-                .fail(function(){
-                    console.log('fail');
-                });
+            })
+            .fail(function(){
+                console.log('fail');
+            });
         }
     })
 
@@ -1410,7 +1469,7 @@ function handleCoordinate(position) {
         <Route path='/Login' component={LoginPage}/>
         <Route path='/details/:id' component={Detail_MapView}/>
         <Route path='/register' component={RegisterComponent} />
-    </Router>);
+        </Router>);
 
     ReactDOM.render(routes, document.querySelector('#main'));
 
