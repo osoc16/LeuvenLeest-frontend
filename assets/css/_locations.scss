@@ -139,13 +139,15 @@
 
 .location-small {
     display: inline-block;
-    width: 15em;
-    height: 8em;
-    margin-right: .3em;
-    background-color: $accent-blue-transp;
+    width: 16.3em;
+    height: 10em;
+    margin-right: .1em;
+    color: $accent-blue-transp;
     flex-shrink: 0;
     color: $primary-white;
-    border: 2px solid $light-grey;
+    border: 1px solid $light-grey;
+    object-fit: cover;
+    background-size: 100%;
 
     .location-text {
         position: relative;
