@@ -33,6 +33,7 @@ body {
     display: flex;
     flex-direction: column;
     order: 3;
+    padding-bottom: 3.5em;
 
     * {
         flex-shrink: 0;
@@ -185,14 +186,15 @@ body {
         position: absolute;
         color: $accent-blue;
         top: .7em;
+        left: 1em;
     }
 
     .icon-arrow-left {
         font-size: 1.2em;
         font-weight: 900;
         position: relative;
-        left: .4em;
-        bottom: .1em;
+        left: 0em;
+        top: .15em;
     }
 
     .confirm {

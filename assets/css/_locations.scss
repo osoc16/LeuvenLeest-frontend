@@ -1,12 +1,13 @@
 .location-text {
     i {
-        font-size: 3em;
+        font-size: 1em;
         font-weight: 100;
         font-style: normal;
+        text-transform: capitalize;
     }
 
     p {
-        font-size: 5em;
+        font-size: 1.5em;
         margin-top: 0;
         margin-bottom: 0;
         font-weight: 600;
@@ -148,10 +149,13 @@
     border: 1px solid $light-grey;
     object-fit: cover;
     background-size: 100%;
+    position: relative;
 
     .location-text {
-        position: relative;
-        left: 4em;
-        top: 13em;
+        position: absolute;
+        left: 1.5em;
+        bottom: 0;
+        width: calc(100% - 1.8em);
+
     }
 }
