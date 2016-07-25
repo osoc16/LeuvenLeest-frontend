@@ -15,14 +15,14 @@ module.exports = React.createClass({
         }
         return (
             <div className="ontdek-page">
-            <div className="page-content">
-            <NLI_WelcomeBlockComponent />
-            <div className="home-locations">
-            <DichtbijComponent />
+                <div className="page-content">
+                    <NLI_WelcomeBlockComponent />
+                    <div className="home-locations">
+                        <DichtbijComponent />
+                    </div>
+                </div>
+                <NavbarComponent />
             </div>
-            </div>
-            <NavbarComponent />
-            </div>
-            )
+        )
     }
 })
