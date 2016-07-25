@@ -87,7 +87,7 @@ function buildScript(file, watch) {
       // If you also want to uglify it
       // .pipe(buffer())
       // .pipe(uglify())
-      // .pipe(rename('app.min.js'))
+      .pipe(rename('main.js'))
       // .pipe(gulp.dest('./build'))
       .pipe(reload({stream:true}))
     }
