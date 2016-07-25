@@ -66,7 +66,7 @@ var historyApiFallback = require('connect-history-api-fallback')
   this.emit('end'); // Keep gulp from hanging on this task
 }
 
-function buildScript(file, watch) { 
+function buildScript(file, watch) {
   var props = {
     entries: ['./scripts/' + file],
     debug : true,
@@ -75,7 +75,7 @@ function buildScript(file, watch) {
     transform:  [babelify.configure({stage : 0 })]
   };
 
-  // watchify() if watch requested, otherwise run browserify() once 
+  // watchify() if watch requested, otherwise run browserify() once
   var bundler = watch ? watchify(browserify(props)) : browserify(props);
 
   function rebundle() {
@@ -87,7 +87,7 @@ function buildScript(file, watch) {
       // If you also want to uglify it
       // .pipe(buffer())
       // .pipe(uglify())
-      // .pipe(rename('app.min.js'))
+      .pipe(rename('main.js'))
       // .pipe(gulp.dest('./build'))
       .pipe(reload({stream:true}))
     }
@@ -103,11 +103,11 @@ function buildScript(file, watch) {
 }
 
 gulp.task('scripts', function() {
-  return buildScript('main.js', false); // this will run once because we set watch to false
+  return buildScript('main.jsx', false); // this will run once because we set watch to false
 });
 
 // run 'scripts' task first, then watch for future changes
 gulp.task('default', ['styles','scripts','browser-sync'], function() {
   gulp.watch('assets/css/*', ['styles']); // gulp watch for stylus changes
-  return buildScript('main.js', true); // browserify watch for JS changes
+  return buildScript('main.jsx', true); // browserify watch for JS changes
 });
