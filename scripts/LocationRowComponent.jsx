@@ -10,21 +10,34 @@ module.exports = React.createClass({
     },
 
     componentWillMount:function(){
-        this.setState(this.props.data);
+        if (this.props.data){
+            this.setState(this.props.data);
+        }
     },
 
     render : function(){
-        var style = {
+
+        if (this.props.data) {
+            var style = {
             backgroundImage: 'url("'+ this.state.photo +'")'
+            }
+            return (
+                <div className="location-small" onClick={this.redirect} style={style} >
+                    <div className="location-text">
+                        <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                        <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
+                    </div>
+                </div>
+            )
         }
         return (
             <div className="location-small" onClick={this.redirect} style={style} >
                 <div className="location-text">
-                    <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
-                    <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
+                    <i>We are not able to show any places at the moment. Come back</i>
                 </div>
             </div>
-            )
+        )
+
     }
 })
 

@@ -49,7 +49,6 @@ $(document).ready(function() {
 
 });
 
-
 function login() {
      var settings = {
           'crossDomain': true,
@@ -129,27 +128,15 @@ function handleCoordinate(position) {
 };
 
 
+var AuthorizationCheck = function(nextState, replace) {
+    if (!localStorage.getItem('oAuth_token')) {
+        replace({
+          pathname: '/login',
+          state: { nextPathname: nextState.location.pathname }
+      })
 
-
-
-/*********************************************************************/
-
-
-    /* ------------- PAGES ELEMENTS ------------- */
-
-
-
-
-
-    var AuthorizationCheck = function(nextState, replace) {
-        if (!localStorage.getItem('oAuth_token')) {
-            replace({
-              pathname: '/login',
-              state: { nextPathname: nextState.location.pathname }
-            })
-        }
     }
-
+}
 
     var routes = (
         <Router history={browserHistory}>
@@ -165,6 +152,6 @@ function handleCoordinate(position) {
         <Route path='/register' component={RegisterComponent} />
     </Router>);
 
-    ReactDOM.render(routes, document.querySelector('#main'));
+ReactDOM.render(routes, document.querySelector('#main'));
 
 

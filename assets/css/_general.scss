@@ -68,16 +68,18 @@ body {
 }
 
 .navbar {
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    height: 9em;
+    height: 3.5em;
     background-color: $primary-white;
     text-align: center;
     order: 6;
     flex-grow: 1;
-    border-top: 2px solid $light-grey;
+    border-top: 1px solid $light-grey;
 
     .lines-icon {
-        font-size: 5em;
+        font-size: 1.8em;
         display: inline-block;
         margin-top: .1em;
     }
@@ -118,10 +120,10 @@ body {
     text-align: center;
     color: $dark-grey;
     width: 25%;
-    margin-top: .5em;
+    margin-top: .3em;
 
     p {
-        font-size: 1.8em;
+        font-size: .7em;
         margin-top: 0;
         display: block;
     }
