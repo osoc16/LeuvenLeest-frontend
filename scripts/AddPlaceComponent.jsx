@@ -12,29 +12,23 @@ module.exports = React.createClass({
 },
 
 render : function() {
-    console.log("render of addplace");
-    console.log(userLocation);
-
-    var pos = getCoordinate();
-    console.log(pos);
-
 
     return (
         <div>
         <form>
-        <label> 
+        <label>
         Type
         </label>
         <input name='type' type='text' onChange={this.handleChange} /><br/>
-        <label> 
+        <label>
         Name
         </label>
         <input name='name' type='text' onChange={this.handleChange} /> <br/>
-        <label> 
+        <label>
         Adress
         </label>
         <input name='address' type='text' onChange={this.handleChange} /> <br/>
-        <label> 
+        <label>
         Opening hour
         </label>
         <input name='openingHour' type='text' onChange={this.handleChange} />
