@@ -19,41 +19,45 @@
     bottom: 0;
     left: 0;
     right: 0;
-    height: 22%;
+    height: 27%;
     background-color: $primary-white-transp;
 
     i {
-        font-size: 2.6em;
+        font-size: 1.1em;
         font-weight: 100;
     }
 
     p {
         font-family: 'Suez One';
         font-weight: 300;
-        font-size: 4.5em;
-        margin-top: .1em;
+        font-size: 1.8em;
+        margin-top: .2em;
     }
 
     .location-text {
         position: absolute;
-        top: 1.8em;
-        left: 3em;
+        top: 1em;
+        left: 1em;
     }
 
     .checkin {
         color: $primary-white;
-        font-size: .8em;
+        font-size: .4em;
         background-color: $accent-blue;
-        width: 13em;
+        width: 11.2em;
+    }
+
+    .button-content {
+        margin-top: 1.2em;
     }
 
     .button-content .icon-eyeglass {
-        font-size: 6.5em;
+        font-size: 5.6em;
     }
 
     .button-content p {
         font-family: 'Open Sans';
-        font-size: 2em;
+        font-size: 1.8em;
     }
 }
 
