@@ -1,6 +1,8 @@
 var React = require('react');
+import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 /*Map component */
+var idPos = 0;
 module.exports = React.createClass({
     getInitialState: function() {
         return {
@@ -33,7 +35,6 @@ module.exports = React.createClass({
         long : position.coords.longitude
     };
 
-    userLocation = coordinate;
 },
 
 
@@ -62,16 +63,18 @@ handleCoordinate: function (position) {
         lon : position.coords.longitude
     };
 
-    return coordinate;
+
 
     this.state.locations['pos-'+ idPos] = coordinate;
     idPos++;
     this.setState({locations : this.state.locations});
     console.log(this.state);
+return coordinate;
 },
 
 
 render: function(){
+    console.log("render in leaftlet");
     console.log(this.state);
     console.log(this.props.divClass);
 
@@ -83,7 +86,7 @@ renderMap : function(){
 
     var id = idPos -1;
     console.log(id);
-    console.log("render");
+    console.log("render in renderMap");
     var position;
 
     if(this.props.data === undefined){
