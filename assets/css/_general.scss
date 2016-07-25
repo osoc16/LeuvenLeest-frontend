@@ -144,7 +144,7 @@ body {
     right: 0;
     order: 1;
 
-    .lines-icon {
+    .view-icon {
         display: inline-block;
         margin-top: 0;
         position: relative;
@@ -181,16 +181,18 @@ body {
 
     .back-button {
         font-family: 'Open Sans';
-        font-size: 2.5em;
+        font-size: 1em;
         position: absolute;
         color: $accent-blue;
+        top: .7em;
     }
 
     .icon-arrow-left {
         font-size: 1.2em;
         font-weight: 900;
         position: relative;
-        left: .3em;
+        left: .4em;
+        bottom: .1em;
     }
 
     .confirm {
