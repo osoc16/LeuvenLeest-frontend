@@ -1,6 +1,10 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 var RegisterComponent = require('./RegisterComponent.jsx');
+var NavbarComponent = require('./NavbarComponent.jsx');
+var Profiel = require('./ProfielComponent.jsx');
+var ProfielBlock = require('./ProfielBlockComponent.jsx');
+var SearchBarComponent = require('./SearchBarComponent.jsx')
 
 
 /*Route related var*/
@@ -214,22 +218,6 @@ function handleCoordinate(position) {
 /*********************************************************************/
 
 
-
-
-/*
-    Search bar
-    <SearchBar/>
-    */
-    var SearchBar = React.createClass({
-        render : function(){
-            return (
-                <form className="search-bar" onSubmit="">
-                <input type="text" defaultValue="Zoek of sleep de pin naar de exacte locatie" required/>
-                </form>
-                )
-        }
-    });
-
     /* ------------- PAGES ELEMENTS ------------- */
 
 /*
@@ -275,7 +263,7 @@ function handleCoordinate(position) {
     {/*<i className="lines-icon icon-map"></i>*/}
 {/*<i className="lines-icon icon-picture"></i>*/}
 <p className="confirm">Aanmaken</p>
-<SearchBar/>
+<SearchBarComponent />
 </div>
 )
         }
