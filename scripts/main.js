@@ -153,15 +153,15 @@ function handleCoordinate(position) {
 
     var routes = (
         <Router history={browserHistory}>
-        <Route path='/' component={SplashPage} />
-        <Route path='/home' component={OntdekPage_NLI}/>
-        <Route path='/global' component={HalfNHalf} onEnter={AuthorizationCheck} />
-        <Route path='/map' component={MapView} onEnter={AuthorizationCheck}/>
-        <Route path='/addLocation' component={Plaats_TV}/>
+        <Route path='/' component={SplashPageComponent} />
+        <Route path='/home' component={OntdekPage_NLI_Component}/>
+        <Route path='/global' component={HalfNHalfComponent} onEnter={AuthorizationCheck} />
+        <Route path='/map' component={MapViewComponent} onEnter={AuthorizationCheck}/>
+        <Route path='/addLocation' component={Plaats_TV_Component}/>
         <Route path='/profiel' component={Profiel} onEnter={AuthorizationCheck} />
-        <Route path='/listViewLocation' component={ListView} onEnter={AuthorizationCheck} />
-        <Route path='/Login' component={LoginPage}/>
-        <Route path='/details/:id' component={Detail_MapView} onEnter={AuthorizationCheck} />
+        <Route path='/listViewLocation' component={ListViewComponent} onEnter={AuthorizationCheck} />
+        <Route path='/Login' component={LoginPageComponent}/>
+        <Route path='/details/:id' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
         <Route path='/register' component={RegisterComponent} />
     </Router>);
 
