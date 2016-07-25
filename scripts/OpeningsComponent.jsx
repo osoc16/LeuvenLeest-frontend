@@ -5,35 +5,43 @@ var React = require('react');
 <Openings/>
 */
 module.exports = React.createClass({
+
     render : function(){
 
-        //  if(this.props.data === undefined){
-        //     console.log("the opening data is undefined")
-        //  }else{
+        var openingHourOfTheDay;            
+        if(this.props.data == undefined){
+            console.log("the opening data is undefined")
+        }else{
+            var date = new Date();
+            var dayNumber = date.getDay(); 
+            var openingArray = this.props.data.openingHours;
 
-        //     var date = new Date();
-        //     var dayNumber = date.getDay();
-        //     var openingArray = this.props.data.openingHours;
-        //     console.log("opening");
-        //     console.log(this.props.data);
-        //     console.log(dayNumber);
-        //     console.log("Opening array");
-        //     console.log(openingArray);
-        //     console.log(openingArray[1]);
+            if(this.props.data.openingHours !== undefined){
+                openingHourOfTheDay = openingArray[dayNumber];
+                if(openingHourOfTheDay == "")
+                    openingHourOfTheDay= "The opening hour is undefined";
 
-        //     //console.log(openingData[0]);
-        // }
+
+
+            };
+        };
 
         return (
             <div className="openingsuren">
             <div className="op-text">
             <h3>Openingsuren</h3>
             <p>
-            0:00 - 0:00<br/>
+            <i>
+            {openingHourOfTheDay}
+            </i>
+
+            <br/>
 
             </p>
             </div>
             </div>
-        )
+            )
+
     }
-})
+});
+
