@@ -1,12 +1,12 @@
 .welcome-block {
-    height: 38em;
+    height: 15em;
     width: 100%;
     background-color: $primary-black;
     order: 1;
 }
 
 .wb-NLI {
-    height: 68em;
+    height: 24em;
 }
 
 .profiel-block {
@@ -15,29 +15,32 @@
 
     text-align: center;
 
+    height: 27em;
+
     h1 {
-        color: $dark-grey;
+        color: $middle-grey;
         font-family: 'Suez One';
-        font-size: 3em;
+        font-size: 1.2em;
         margin-top: 0;
         padding-top: 2.5em;
+        font-weight: 200;
     }
 
     .profile-pic {
         box-sizing: border-box;
-        border: .5em solid $primary-white;
+        border: .2em solid $primary-white;
         border-radius: 50%;
-        width: 30em;
-        height: 30em;
+        width: 12em;
+        height: 12em;
         margin-left: auto;
         margin-right: auto;
         background: url(../../assets/img/batman.jpg) center;
-        background-size: auto 30em;
+        background-size: auto 12em;
     }
 
     h2 {
         color: $primary-white;
-        font-size: 5em;
+        font-size: 2em;
         margin: 0;
         margin-top: .4em;
         font-weight: 100;
@@ -45,30 +48,30 @@
 
     p {
         margin: 0;
-        font-size: 3em;
+        font-size: 1em;
         position: relative;
         bottom: .4em;
-        color: $dark-grey;
+        color: $middle-grey;
         font-weight: 100;
     }
 
     h3 {
         margin: 0;
-        font-size: 3.5em;
+        font-size: 1.1em;
         color: $primary-white;
         font-weight: 100;
         position: relative;
-        top: .8em;
+        top: 1em;
     }
 }
 
 .welcome-text {
     font-family: 'Suez One';
-    margin-top: 8em;
-    margin-left: 5em;
+    margin-top: 4em;
+    margin-left: 2em;
 
     h2 {
-        font-size: 5em;
+        font-size: 2em;
         color: $light-grey;
         font-weight: 500;
         margin: 0;
@@ -76,7 +79,7 @@
     }
 
     h1 {
-        font-size: 7em;
+        font-size: 3em;
         color: $primary-white;
         letter-spacing: .02em;
         font-weight: 500;
@@ -88,46 +91,56 @@
 }
 
 .wt-NLI {
-    margin-top: 12em;
+    margin-top: 3em;
+    height: 8.8em;
 
     h2 {
         color: $primary-white;
-        font-size: 6.5em;
+        font-size: 2.5em;
     }
 
     h1 {
-        font-size: 10em;
+        font-size: 4em;
         position: relative;
         bottom: .35em;
     }
 
     h3 {
         color: $light-grey;
-        font-size: 3.2em;
+        font-size: 1.3em;
         margin: 0;
         padding: 0;
         position: relative;
-        bottom: 2em;
+        bottom: 1.8em;
+        font-weight: 200;
     }
 }
 
-.ontdek-login {
+.ontdek-aanmelden {
+
     .know-eachother {
         margin-left: 2em;
-        font-size: 2.5em;
+        font-size: 1em;
         color: $dark-grey;
     }
 
-    .login-button {
+    .aanmelden-button {
         position: relative;
         width: 85%;
-        top: 1em;
+        top: .1em;
+    }
+
+    .lines-icon {
+        font-size: 1.5em;
+        position: relative;
+        top: .45em;
+        left: .6em;
     }
 
     p {
-        right: 4em;
-        bottom: .45em;
-        font-size: 2.9em;
+        right: 6em;
+        bottom: .2em;
+        font-size: 1em;
         font-weight: 100;
     }
 }
@@ -138,4 +151,12 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.ontdek-login {
+    display: inline-block;
+    color: $accent-blue;
+    position: relative;
+    bottom: 1.1em;
+    left: 14em;
 }

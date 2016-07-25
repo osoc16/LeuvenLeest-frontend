@@ -501,15 +501,17 @@ function handleCoordinate(position) {
             return (
                 <div className="welcome-block wb-NLI">
                 <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
+                <p className="ontdek-login">Log in</p>
                 <div className="welcome-text wt-NLI">
                 <h2>Hey</h2>
-                <h1>Stranger!</h1>
+                <h1>Reader!</h1>
                 <h3>Nice to meet you</h3>
                 </div>
-                <div className="ontdek-login">
+                <div className="ontdek-aanmelden">
                 <i className="know-eachother">Let's get to know eachother</i>
-                <div className="login-button fb-blue">
-                <p><a onClick={this.redirect}>Sign in</a></p>
+                <div className="aanmelden-button">
+                <i className="lines-icon icon-user-follow"></i>
+                <p><a onClick={this.redirect}>Aanmelden met email</a></p>
                 </div>
                 </div>
                 </div>
