@@ -457,9 +457,6 @@ function handleCoordinate(position) {
             return (
                 <div className="welcome-block">
                 <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
-                <span className="profiel-button">
-                <i className="lines-icon icon-user"></i>
-                </span>
                 <div className="welcome-text">
                 <h2>Hey</h2>
                 <h1 className="user-name">{user.name}!</h1>
