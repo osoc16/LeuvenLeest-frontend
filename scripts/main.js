@@ -5,7 +5,17 @@ var NavbarComponent = require('./NavbarComponent.jsx');
 var Profiel = require('./ProfielComponent.jsx');
 var ProfielBlock = require('./ProfielBlockComponent.jsx');
 var SearchBarComponent = require('./SearchBarComponent.jsx')
-
+var RecentComponent = require('./RecentComponent.jsx');
+var LocationRowComponent = require('./LocationRowComponent.jsx');
+var ListViewComponent = require('./ListViewComponent.jsx');
+var MapViewComponent = require('./MapViewComponent.jsx');
+var Detail_MapViewComponent = require('./Detail_MapViewComponent.jsx');
+var LeuvenMapSmallComponent = require('./LeuvenMapSmallComponent.jsx');
+var SplashPageComponent = require('./SplashPageComponent.jsx');
+var OntdekPage_NLI_Component = require('./OntdekPage_NLI_Component.jsx');
+var HalfNHalfComponent = require('./HalfNHalfComponent.jsx');
+var Plaats_TV_Component = require('./Plaats_TV_Component.jsx');
+var LoginPageComponent = require('./LoginPageComponent.jsx');
 
 /*Route related var*/
 var ReactRouter = require('react-router');
