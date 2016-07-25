@@ -1,4 +1,4 @@
-var React = require('react');
+    var React = require('react');
 var HeadBarComponent = require('./HeadBarComponent.jsx');
 var LeuvenMapSmallComponent = require('./LeuvenMapSmallComponent.jsx');
 var LocationsComponent = require('./LocationsComponent.jsx');
