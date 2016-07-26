@@ -89,7 +89,7 @@ render : function() {
     return (
         <div>
         <form>
-        <label> 
+        <label>
         Type :
         </label>
 
@@ -102,17 +102,17 @@ render : function() {
         <option value="Park" />
         <option value="Library" />
         </datalist>
-        
+
         <br/>
-        <label> 
+        <label>
         Name :
         </label>
         <input name='name' type='text' onChange={this.handleChange} /> <br/>
-        <label> 
+        <label>
         Adress :
         </label>
         <input name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
-        <label> 
+        <label>
         Opening hour :
         </label>
         <br/>
@@ -121,12 +121,12 @@ render : function() {
         </label>
         <input type='number' name='tot' min="00" max="23" step="1" onChange={this.handleChange}/>
         <label>
-        van: 
+        van:
         </label>
         <input type='number' name ='van' min="00" max="23" step="1" onChange={this.handleChange}/>
 
 
-        
+
 
         <input type='submit' onClick={this.addPlace} />
         </form>
@@ -149,15 +149,15 @@ handleChange : function(event) {
         case 'type':
         this.setState({type : value});
         break;
-        
+
         case 'name':
         this.setState({name : value});
         break;
-        
+
         case 'address':
         this.setState({address : value});
         break;
-        
+
         case 'openingHour':
         this.setState({openingHour : value});
         break;
@@ -168,7 +168,7 @@ handleChange : function(event) {
         break;
 
         case 'van':
-        
+
         this.setState({van : value});
         break;
     };
@@ -197,7 +197,7 @@ getAddressByCoordinate : function(){
         }
 
         if(response.address.house_number !== undefined)
-            address+= " "+response.address.house_number;        
+            address+= " "+response.address.house_number;
 
         if(response.address.town !== undefined)
             address+= " "+response.address.town;
@@ -216,6 +216,7 @@ getAddressByCoordinate : function(){
         self.getAddressByName();
 
 
+
         return response;
     })
     .fail(function(){
@@ -228,7 +229,7 @@ getAddressByCoordinate : function(){
 getAddressByName : function(){
 
     var self= this;
-    
+
     var res = this.state.address.replace(new RegExp(" ", 'g'), "+");
     console.log("Adress name in getAddressByName");
     console.log(res);
@@ -276,7 +277,7 @@ addPlace : function(event) {
         "url": "http://95.85.15.210/places/add",
         "method": "PUT",
         "headers": {
-               "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),       
+               "Authorization":  localStorage.getItem('oAuth_token'),       
         },
 
         'data': {
@@ -291,6 +292,7 @@ addPlace : function(event) {
             'openingHour' : this.state.openingH,
             },
 
+
     }
 
     console.log("The state before sending");
@@ -302,8 +304,8 @@ addPlace : function(event) {
 
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
-
         console.log(response);
+
         document.location.href = '/';
     })
     .fail(function(){

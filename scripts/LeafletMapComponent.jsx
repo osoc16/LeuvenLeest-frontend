@@ -89,7 +89,7 @@ renderMap : function(){
         />
         <Marker position={position}>
         <Popup>
-        <span> <i> {this.props.data === undefined ? "" : this.props.data.address}</i></span>
+        <span> <i> {this.props.data === undefined ? "You're here" : this.props.data.address}</i></span>
         </Popup>
         </Marker>
 

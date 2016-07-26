@@ -41,7 +41,9 @@ var LocationsComponent = React.createClass({
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
                 this.setState({places: response});
-                this.getLatestCheckin(function(response) {
+                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
+                this.getLatestCheckin(function(response, textStatus, xhr) {
+                    localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                     this.setState({latest : response});
                 });
             }.bind(this))
@@ -56,12 +58,13 @@ var LocationsComponent = React.createClass({
             'url': 'http://95.85.15.210/checkin/latest',
             'method': 'GET',
             'headers' : {
-                'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
+                'Authorization' : localStorage.getItem('oAuth_token')
             }
         }
 
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
+                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                 this.setState({latest : JSON.parse(response)})
             }.bind(this))
             .fail(function(response, textStatus, xhr){

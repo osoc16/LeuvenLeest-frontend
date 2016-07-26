@@ -33,7 +33,7 @@ module.exports = React.createClass({
                 "contentType": false,
                 "mimeType": "multipart/form-data",
                 'header' : {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
+                    'Authorization' : localStorage.getItem('oAuth_token')
                 }
             }
 
