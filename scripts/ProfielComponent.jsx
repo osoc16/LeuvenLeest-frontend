@@ -7,7 +7,7 @@ var NavbarComponent = require('./NavbarComponent.jsx');
     Profiel page
     <Profiel/>
 */
-module.exports = React.createClass({
+var ProfielComponent = React.createClass({
     render : function(){
         var user = this.state.user;
         return (
@@ -40,12 +40,13 @@ module.exports = React.createClass({
             "url": "http://95.85.15.210/checkin/recent",
             "method": "GET",
             "headers": {
-                'Authorization': 'Bearer ' +  window.localStorage.getItem('oAuth_token'),
+                'Authorization': localStorage.getItem('oAuth_token'),
             },
         }
 
         $.ajax(settings)
         .done(function (response, textStatus, xhr) {
+            localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
             self.setState({places : response});
         })
         .fail(function(response, textStatus, xhr){
@@ -62,16 +63,20 @@ module.exports = React.createClass({
         'url': 'http://95.85.15.210/user/current',
         'method': 'GET',
         "headers": {
-            "Authorization": 'Bearer ' +  localStorage.getItem('oAuth_token'),
+            "Authorization": localStorage.getItem('oAuth_token'),
         },
     }
 
     $.ajax(settings)
         .done(function (response, textStatus, xhr) {
             self.setState({user: response});
+            localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
         })
         .fail(function(response, textStatus, xhr){
             console.log('fail');
+            localStorage.setItem('oAuth_token', response.oAuth_token);
         });
     }
 })
+
+export default ProfielComponent;

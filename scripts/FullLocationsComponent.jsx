@@ -42,7 +42,7 @@ module.exports = React.createClass({
 
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
-                console.log(response);
+                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                 self.setState({places: response});
             })
             .fail(function(response, textStatus, xhr){

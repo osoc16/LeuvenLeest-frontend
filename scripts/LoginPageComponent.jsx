@@ -68,9 +68,7 @@ module.exports = React.createClass({
             document.location.href = '/';
         })
         .fail(function(response, textStatus, xhr){
-            if (xhr === 'Unauthorized'){
-                console.log('fail');
-            }
+            localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
         });
     }
 })
