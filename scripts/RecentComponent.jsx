@@ -32,10 +32,12 @@ var RecentComponent = React.createClass({
     render : function(){
         return (
             <div className='recent-act home-row'>
-                <h3>Recent bezocht</h3>
-                {this.state.places.map(function(place){
-                    return <LocationRowComponent key={place.id} data={place} />
-                })}
+                <div className="location-row">
+                    <h3>Recent bezocht</h3>
+                    {this.state.places.map(function(place){
+                        return <LocationRowComponent key={place.id} data={place} />
+                    })}
+                </div>
             </div>
         )
     }
