@@ -9,16 +9,16 @@ var HeadBarComponent = React.createClass({
         document.location.href="/map"
     },
 
-    redirectBack : function(){
-        //document.location.href="/"
-        history.go(-1);
+    redirectAdd: function(){
+        document.location.href="/addPlace"
+        //history.go(-1);
 
     },
     
     render : function(){
         return(
             <div className="headbar">
-                <i className="lines-icon icon-plus"></i>
+                <i className="lines-icon icon-plus" onClick={this.redirectAdd}></i>
                 {/*<p className="back-button">
                 <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
                 </p>*/}
