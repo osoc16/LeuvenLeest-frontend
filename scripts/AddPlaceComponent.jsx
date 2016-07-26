@@ -9,7 +9,7 @@ var categoryId={
 
 
 module.exports = React.createClass({
-   getInitialState : function(){
+ getInitialState : function(){
     this.getEmail();
     return {
         type : '',
@@ -292,7 +292,7 @@ addPlace : function(event) {
             },
 
     }
-    
+
     console.log("The state before sending");
     console.log(this.state);
     console.log("CatId");
@@ -304,7 +304,7 @@ addPlace : function(event) {
     .done(function (response, textStatus, xhr) {
 
         console.log(response);
-        //document.location.href = '/';
+        document.location.href = '/';
     })
     .fail(function(){
         console.log('fail');
