@@ -33,31 +33,30 @@
 }
 
 .listed-location {
-    height: 25em;
     width: 100%;
     color: $primary-white;
     background-color: $accent-blue-transp;
     flex-shrink: 0;
-    margin-bottom: .3em;
+    margin-bottom: .1em;
     flex-grow: 0;
     position: relative;
 
     .location-text {
         position: relative;
-        left: 4em;
+        left: 1.5em;
         top: 11em;
     }
 
     p {
         font-family: 'Suez One';
         font-weight: 200;
-        font-size: 5.5em;
+        font-size: 1.8em;
     }
 }
 
 .checkin {
     background-color: $accent-blue-transp;
-    width: 12em;
+    width: 5em;
     height: 100%;
     margin: 0;
     text-align: center;
@@ -66,14 +65,14 @@
     right: 0;
 
     p {
-        font-size: 2em;
+        font-size: .7em;
         font-family: 'Open Sans';
         margin: 0;
         font-weight: 600;
     }
 
     .lines-icon {
-        font-size: 6em;
+        font-size: 2em;
         margin: 0;
     }
 
@@ -98,11 +97,11 @@
     overflow-y: auto;
 
     .listed-location {
-        height: 14em;
+        height: 6em;
     }
 
     .location-text {
-        top: 2em;
+        top: 1.5em;
     }
 }
 
