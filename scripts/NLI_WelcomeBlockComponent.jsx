@@ -9,15 +9,17 @@ module.exports = React.createClass({
         return (
             <div className="welcome-block wb-NLI">
             <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
+            <span className="ontdek-login">Log in</span>
             <div className="welcome-text wt-NLI">
             <h2>Hey</h2>
-            <h1>Stranger!</h1>
-            <h3>Nice to meet you</h3>
+            <h1>Lezer!</h1>
+            <h3>Fijn je te ontmoeten</h3>
             </div>
-            <div className="ontdek-login">
-            <i className="know-eachother">Let's get to know eachother</i>
-            <div className="login-button fb-blue">
-            <p><a onClick={this.redirect}>Sign in</a></p>
+            <div className="ontdek-aanmelden">
+            <i className="know-eachother">Zullen we elkaar wat beter leren kennen?</i>
+            <div className="aanmelden-button">
+            <i className="lines-icon icon-user-follow"></i>
+            <p><a onClick={this.redirect}>Aanmelden</a></p>
             </div>
             </div>
             </div>

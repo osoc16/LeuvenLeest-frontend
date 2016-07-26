@@ -100,14 +100,14 @@
     }
 
     h1 {
-        font-size: 4em;
+        font-size: 3.5em;
         position: relative;
         bottom: .35em;
     }
 
     h3 {
         color: $light-grey;
-        font-size: 1.3em;
+        font-size: 1.1em;
         margin: 0;
         padding: 0;
         position: relative;
@@ -124,12 +124,6 @@
         color: $dark-grey;
     }
 
-    .aanmelden-button {
-        position: relative;
-        width: 85%;
-        top: .1em;
-    }
-
     .lines-icon {
         font-size: 1.5em;
         position: relative;
@@ -142,6 +136,31 @@
         bottom: .2em;
         font-size: 1em;
         font-weight: 100;
+    }
+}
+
+.aanmelden-button {
+    background-color: $light-grey;
+    color: $primary-white;
+    margin-left: auto;
+    margin-right: auto;
+    height: 3em;
+    border-radius: .5em;
+    position: relative;
+    width: 83%;
+    top: .1em;
+
+    .lines-icon {
+        position: absolute;
+        left: 1em;
+    }
+
+    p {
+        position: absolute;
+        top: 28%;
+        margin: 0;
+        font-weight: 100;
+        left: 4.5em;
     }
 }
 
