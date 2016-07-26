@@ -7,11 +7,11 @@ module.exports = React.createClass({
     getInitialState: function() {
         return {
           locations : {},
-
+          places : [],
       };
   },
 
-componentWillMount : function() {
+  componentWillMount : function() {
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(this.handleCoordinate);
     }else{
@@ -19,29 +19,17 @@ componentWillMount : function() {
     }
 },
 
-getCoordinate: function(){
-
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(handleCoordinate);
-    }else{
-        console.log("Sorry the location is not available");
-    }
-},
 
 handleCoordinate: function (position) {
     var msg = "Latitude: " + position.coords.latitude +
     " Longitude: " + position.coords.longitude;
     console.log(msg);
-
-
     var coordinate =  {
         lat : position.coords.latitude,
         lon : position.coords.longitude
     };
-    this.state.locations['pos-'+ idPos] = coordinate;
-    idPos++;
-    this.setState({locations : this.state.locations});
-
+    
+    this.setState({locations : coordinate});
     return coordinate;
 },
 
@@ -55,20 +43,43 @@ render: function(){
 
 
 renderMap : function(){
-    var id = idPos -1;
-    console.log(id);
-    console.log("render in renderMap");
     var position;
 
     if(this.props.data === undefined){
         console.log("data is undefined");
-        position = [this.state.locations['pos-'+id].lat, this.state.locations['pos-'+id].lon];
+        position = [this.state.locations.lat, this.state.locations.lon];
         console.log(position);
-    } else{
+
+        if(this.state.places[0] == undefined){
+
+
+            var settings = {
+                  "async": true,
+                  "crossDomain": true,
+                  "url": "http://95.85.15.210/places/"+this.state.locations.lat+"/"+this.state.locations.lon,
+                "method": "GET",
+                "processData": false,
+                  "contentType": false,
+                  "mimeType": "multipart/form-data",
+                'headers' : {
+                    'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
+                },
+            };
+
+            var self = this;
+             $.ajax(settings).done(function (response) {
+             var data = JSON.parse(response);
+             console.log(data);
+             self.setState({places : data});
+         });
+        }
+    }else{
         console.log("data is not undefined");
         position = [this.props.data.latitude, this.props.data.longitude];
         console.log(position);
     }
+
+
 
     const map = (
         <Map  center={position} zoom={15}>
@@ -77,12 +88,25 @@ renderMap : function(){
         attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
         <Marker position={position}>
-
         <Popup>
-        <span> <i> {this.props.data === undefined ? "" :  this.props.data.address}</i></span>
+        <span> <i> {this.props.data === undefined ? "" : this.props.data.address}</i></span>
         </Popup>
-
         </Marker>
+
+        {this.state.places.map(function(object, i) {
+            var pos = [object.latitude, object.longitude];
+            return <Marker position={pos} opacity={0.6}>
+            <Popup>
+            <span><h4>{object.name}</h4> <i> {object.address}</i>
+            <br/>
+            <a href={"/details/"+object.id}>Click for the detail</a>
+            </span>
+
+
+            </Popup>
+            </Marker>;
+        })}
+
         </Map>
 
         );
