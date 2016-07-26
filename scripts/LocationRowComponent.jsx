@@ -4,7 +4,7 @@ var React = require('react');
 Row of locations from Homescreen
 <LocationRow/>
 */
-module.exports = React.createClass({
+var LocationRowComponent = React.createClass({
     redirect: function(){
         document.location.href="/details/"+this.props.data.id;
     },
@@ -19,7 +19,7 @@ module.exports = React.createClass({
 
         if (this.props.data) {
             var style = {
-            backgroundImage: 'url("'+ this.state.photo +'")'
+                backgroundImage: 'url("'+ this.state.photo +'")'
             }
             return (
                 <div className="location-small" onClick={this.redirect} style={style} >
@@ -42,4 +42,4 @@ module.exports = React.createClass({
     }
 })
 
-
+export default LocationRowComponent;
