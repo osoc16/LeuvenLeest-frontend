@@ -15,13 +15,20 @@ var ListedLocationComponent = React.createClass({
 
     render : function(){
         var checkedIn;
+        var style;
         if (this.props.place.id === this.props.latest) {
              checkedIn = 'checkin ci-active';
         } else {
              checkedIn = 'checkin';
         }
+        if (this.props.place.photo) {
+            var style = {
+                backgroundImage: 'url("'+ this.props.place.photo +'")'
+            }
+        }
+
         return (
-            <div className="listed-location">
+            <div className="listed-location" style={style}>
                 <div className="location-text">
                     <i>{this.props.place.category}</i>
                     <p>{this.props.place.name}</p>
