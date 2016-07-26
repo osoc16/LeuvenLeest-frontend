@@ -34,6 +34,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         max-height: 100%;
+        text-shadow: 0 0 1px $primary-black;
+        padding-bottom: 2px;
     }
 }
 
@@ -42,7 +44,7 @@
     color: $primary-white;
     background-color: $accent-blue-transp;
     flex-shrink: 0;
-    margin-bottom: .1em;
+    margin-bottom: 1px;
     flex-grow: 0;
     position: relative;
 
@@ -166,7 +168,7 @@
     display: inline-block;
     width: 16.3em;
     height: 10em;
-    margin-right: .1em;
+    margin-right: 1px;
     color: $accent-blue-transp;
     flex-shrink: 0;
     color: $primary-white;
