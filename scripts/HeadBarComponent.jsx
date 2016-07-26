@@ -4,7 +4,7 @@ var React = require('react');
 Header
 <HeadBar/>
 */
-module.exports = React.createClass({
+var HeadBarComponent = React.createClass({
     redirect : function(){
         document.location.href="/map"
     },
@@ -30,3 +30,6 @@ module.exports = React.createClass({
         )
     }
 })
+
+
+export default HeadBarComponent;

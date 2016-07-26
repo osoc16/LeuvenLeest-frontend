@@ -11,35 +11,18 @@ module.exports = React.createClass({
       };
   },
 
-   getCoordinate: function(){
-
-    if(navigator.geolocation){
-        navigator.geolocation.getCurrentPosition(handleCoordinate);
-    }else{
-        console.log("Sorry the location is not available");
-    }
-
-
-},
-
-
-/*Callback function that will be trigger when a location is available */
- handleCoordinate : function(position) {
-    var msg = "Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude;
-    console.log(msg);
-
-
-    var coordinate =  {
-        lat : position.coords.latitude,
-        long : position.coords.longitude
-    };
-
-},
-
 componentWillMount : function() {
     if(navigator.geolocation){
         navigator.geolocation.getCurrentPosition(this.handleCoordinate);
+    }else{
+        console.log("Sorry the location is not available");
+    }
+},
+
+getCoordinate: function(){
+
+    if(navigator.geolocation){
+        navigator.geolocation.getCurrentPosition(handleCoordinate);
     }else{
         console.log("Sorry the location is not available");
     }
@@ -58,7 +41,7 @@ handleCoordinate: function (position) {
     this.state.locations['pos-'+ idPos] = coordinate;
     idPos++;
     this.setState({locations : this.state.locations});
-    console.log(this.state);
+
     return coordinate;
 },
 

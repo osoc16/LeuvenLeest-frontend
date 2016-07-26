@@ -5,7 +5,7 @@ var LeafletMapComponent = require('./LeafletMapComponent.jsx');
 Map Small (half-screen)
 <LeuvenMapSmall/>
 */
-module.exports = React.createClass({
+var LeuvenMapSmallComponent = React.createClass({
     render : function(){
         return (
             <div className="map-container-small">
@@ -14,3 +14,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default LeuvenMapSmallComponent;

@@ -11,3 +11,5 @@ var LeuvenMap = React.createClass({
             )
     }
 })
+
+return default LeuvenMap;

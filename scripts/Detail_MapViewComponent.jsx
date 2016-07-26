@@ -4,6 +4,7 @@ var LocationMapComponent = require('./LocationMapComponent.jsx');
 var LocationDetailsComponent = require('./LocationDetailsComponent.jsx');
 var NavbarComponent = require('./NavbarComponent.jsx');
 
+import { browserHistory } from 'react-router';
 /*
 Detail view (Map)
 <Detail_MapView/>
@@ -47,8 +48,6 @@ componentWillMount:function(){
     var splitString = currentURL.split("/");
     var idPlace = splitString[splitString.length-1];
     var geolocation = this.getCoordinate();
-
-
 
     var settings = {
           "async": true,
