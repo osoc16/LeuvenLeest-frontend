@@ -94,26 +94,15 @@ body {
     }
 }
 
-.swiper {
+.separation {
     width: 100%;
     margin: 0;
-    height: 1.5em;
+    height: .4em;
     background-color: $light-grey;
     text-align: center;
     order: 2;
+    flex-shrink: 0;
 }
-
-.swiper-center {
-    width: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $primary-white;
-    height: .8em;
-    margin-top: .3em;
-    display: inline-block;
-    border-radius: .01em;
-}
-
 
 .nav-button {
     font-family: 'Open Sans';
@@ -175,6 +164,7 @@ body {
     }
 
     .icon-plus {
+        @extend .view-icon;
         position: absolute;
         left: .6em;
         top: .6em;

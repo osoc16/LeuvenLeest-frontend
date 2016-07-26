@@ -5,7 +5,7 @@ var LocationRowComponent = require('./LocationRowComponent.jsx');
 Dichtbij
 <Dichtbij/>
 */
-module.exports = React.createClass({
+var DichtbijComponent = React.createClass({
 
 
     getInitialState : function(){
@@ -57,14 +57,13 @@ module.exports = React.createClass({
             <h3>Dichtbij</h3>
 
             <div className="location-row">
-            {this.state.places.map(function(object, i) {
-                return <LocationRowComponent data={object} key={i} />;
-            })}
+                {this.state.places.map(function(object, i) {
+                    return <LocationRowComponent data={object} key={i} />;
+                })}
             </div>
             </div>
             );
         }
 });
 
-
-
+export default DichtbijComponent;

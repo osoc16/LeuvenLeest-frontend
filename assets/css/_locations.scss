@@ -10,6 +10,7 @@
 
     img {
         height : 100%;
+        width: 100%;
         object-fit: cover;
     }
 }
@@ -29,35 +30,46 @@
         font-weight: 600;
         position: relative;
         bottom: .2em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        max-height: 100%;
     }
 }
 
 .listed-location {
-    height: 25em;
     width: 100%;
     color: $primary-white;
     background-color: $accent-blue-transp;
     flex-shrink: 0;
-    margin-bottom: .3em;
+    margin-bottom: .1em;
     flex-grow: 0;
     position: relative;
 
     .location-text {
-        position: relative;
-        left: 4em;
-        top: 11em;
+        position: absolute;
+        left: 1em;
+        bottom: 0;
+        width: 75%;
+        max-height: 100%;
     }
 
     p {
         font-family: 'Suez One';
         font-weight: 200;
-        font-size: 5.5em;
+        font-size: 1.4em;
+        line-height: 1em;
+    }
+
+    i {
+        position: relative;
+        bottom: .2em;
     }
 }
 
 .checkin {
     background-color: $accent-blue-transp;
-    width: 12em;
+    width: 5em;
     height: 100%;
     margin: 0;
     text-align: center;
@@ -66,14 +78,14 @@
     right: 0;
 
     p {
-        font-size: 2em;
+        font-size: .7em;
         font-family: 'Open Sans';
         margin: 0;
         font-weight: 600;
     }
 
     .lines-icon {
-        font-size: 6em;
+        font-size: 2em;
         margin: 0;
     }
 
@@ -98,11 +110,7 @@
     overflow-y: auto;
 
     .listed-location {
-        height: 14em;
-    }
-
-    .location-text {
-        top: 2em;
+        height: 6em;
     }
 }
 
