@@ -7,7 +7,7 @@ var React = require('react');
 module.exports = React.createClass({
 
         redirectHome : function(event){
-            document.location.href="/home";
+            document.location.href="/";
         },
         redirectAantLezen :  function(event){
             document.location.href="/global";
