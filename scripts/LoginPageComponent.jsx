@@ -1,4 +1,5 @@
 var React = require('react');
+var NavbarComponent = require('./NavbarComponent.jsx');
 
 /*
     Login page
@@ -15,13 +16,26 @@ module.exports = React.createClass({
     render : function(){
         return (
             <div className="login-page">
-            <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-big"/>
-            <p>Login</p>
-            <form>
-                <input type='text' name='email' onChange={this.handleChange} />
-                <input type='text' name='password' onChange={this.handleChange} />
-                <input type='submit' onClick={this.login} />
-            </form>
+                <p className="back-button">
+                    <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
+                </p>
+                <span className="register-link">Registeren</span>
+                <h1>Welcome terug!</h1>
+                <h2>Fijn dat je er weer bent.</h2>
+                <form>
+                    <div className="login-form">
+                        <div className="form-field">
+                            <label for="email">E-mail</label>
+                            <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@example.be"/>
+                        </div>
+                        <div className="form-field">
+                            <label for="password">Paswoord</label>
+                            <input type='password' name='password' onChange={this.handleChange} placeholder="*****"/>
+                        </div>
+                    </div>
+                    <button onClick={this.login}>Aanmelden</button>
+                </form>
+                <NavbarComponent/>
             </div>
             )
     },

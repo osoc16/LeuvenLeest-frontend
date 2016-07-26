@@ -1,9 +1,5 @@
-.fb-blue {
-    background-color: $fb-blue;
-}
-
 .login-page {
-    background-color: $accent-blue-transp;
+    background-color: $primary-black;
     position: absolute;
     top: 0;
     bottom: 0;
@@ -19,5 +15,111 @@
         margin-right: auto;
         position: relative;
         top: 20em;
+    }
+
+    h1 {
+        font-family: 'Suez One';
+        color: $primary-white;
+        font-weight: 400;
+        font-size: 2.5em;
+        margin-bottom: 0;
+        margin-top: 2.8em;
+    }
+
+    h2 {
+        font-family: 'Suez One';
+        color: $light-grey;
+        font-weight: 400;
+        font-size: 1.2em;
+        margin-top: 0;
+        position: relative;
+        bottom: .5em;
+    }
+
+    .back-button {
+        color: $accent-blue;
+        position: absolute;
+        top: 50px;
+        left: 1.4em;
+        margin: 0;
+    }
+
+    .back-button .lines-icon {
+        font-size: 1.4em;
+        position: relative;
+        top: 5px;
+        font-weight: 600;
+    }
+
+    .register-link {
+        color: $accent-blue;
+        position: absolute;
+        top: 53px;
+        right: 1.7em;
+    }
+
+    button {
+        width: 85%;
+        margin-top: 15px;
+        border: none;
+        box-shadow: none;
+        margin-left: auto;
+        margin-right: auto;
+        display:block;
+        box-sizing: border-box;
+        font-size: 1.05em;
+        background-color: $accent-blue;
+        color: #fff;
+        font-weight: 100;
+        font-family: 'Open Sans';
+        height: 2.8em;
+        border-radius: .5em;
+    }
+}
+
+.login-form {
+    width: 85%;
+    height: 136px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+}
+
+.form-field {
+    height: 50%;
+    flex-shrink: 0;
+    flex-grow: 0;
+    display: flex;
+    flex-direction: row;
+
+    label {
+        width: 85px;
+        flex-grow: 0;
+        flex-shrink: 0;
+        position: relative;
+        top: 2em;
+        left: 1em;
+        text-align: left;
+        font-family: 'Open Sans';
+        font-size: .8em;
+    }
+
+    input {
+        width: calc(100% - 85px);
+        flex-grow: 0;
+        flex-shrink: 0;
+        border: none;
+        font-family: 'Open Sans';
+        font-size: 1em;
+        padding-left: 5px;
+        box-sizing: border-box;
+    }
+
+    input::placeholder {
+        font-style: italic;
     }
 }
