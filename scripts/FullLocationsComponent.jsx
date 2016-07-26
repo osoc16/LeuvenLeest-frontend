@@ -7,6 +7,17 @@ Locations on the whole screen
 <FullLocations/>
 */
 module.exports = React.createClass({
+
+    getInitialState : function() {
+        return {
+            places : []
+        }
+    },
+
+    componentWillMount : function() {
+        this.getLocations();
+    },
+
     render : function(){
         return (
             <div className="locations-list list-full">
@@ -19,5 +30,24 @@ module.exports = React.createClass({
                 <ListedLocationComponent/>
             </div>
         )
-    }
+    },
+
+    getLocations : function() {
+        var self = this;
+        var settings = {
+            'crossDomain': true,
+            'url': 'http://95.85.15.210/places',
+            'method': 'GET',
+        }
+
+        $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                console.log(response);
+                self.setState({places: response});
+            })
+            .fail(function(response, textStatus, xhr){
+                console.log('fail');
+            });
+        }
+
 })

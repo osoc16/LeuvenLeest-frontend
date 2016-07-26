@@ -4,7 +4,7 @@ var React = require('react');
     Navigation bar
     <NavBar/>
     */
-module.exports = React.createClass({
+var NavbarComponent = React.createClass({
 
         redirectHome : function(event){
             document.location.href="/home";
@@ -47,3 +47,5 @@ module.exports = React.createClass({
             )
         }
     })
+
+export default NavbarComponent;

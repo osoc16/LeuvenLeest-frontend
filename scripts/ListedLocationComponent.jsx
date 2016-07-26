@@ -4,15 +4,29 @@ var React = require('react');
 Location in list
 <ListedLocation/>
 */
-module.exports = React.createClass({
+var ListedLocationComponent = React.createClass({
+
+    propTypes : {
+        place : React.PropTypes.object.isRequired,
+        coordinates : React.PropTypes.object.isRequired,
+        callBack: React.PropTypes.func.isRequired,
+        latest: React.PropTypes.number
+    },
+
     render : function(){
+        var checkedIn;
+        if (this.props.place.id === this.props.latest) {
+             checkedIn = 'checkin ci-active';
+        } else {
+             checkedIn = 'checkin';
+        }
         return (
             <div className="listed-location">
                 <div className="location-text">
-                    <i>Kade</i>
-                    <p>Vaartkom</p>
+                    <i>{this.props.place.category}</i>
+                    <p>{this.props.place.name}</p>
                 </div>
-                <div className="checkin">
+                <div className={checkedIn} onClick={this.checkin}>
                     <div className="button-content">
                     <i className="lines-icon icon-eyeglass"></i>
                     <p>Hier aan't lezen</p>
@@ -20,5 +34,32 @@ module.exports = React.createClass({
                 </div>
             </div>
         )
-    }
+    },
+
+    checkin : function(event) {
+        var self = this;
+        var settings = {
+            'crossDomain': true,
+            'url': 'http://95.85.15.210/checkin/',
+            'method': 'PUT',
+            'headers' : {
+                'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
+            },
+            'data' : {
+                'id' : this.props.place.id,
+                'longitude' : this.props.coordinates.long,
+                'latitude': this.props.coordinates.lat
+            }
+        }
+
+        $.ajax(settings)
+            .done(function (response, textStatus, xhr) {
+                this.props.callBack(true, this.props.place);
+            }.bind(this))
+            .fail(function(response, textStatus, xhr){
+                console.log('fail');
+            });
+    },
 })
+
+export default ListedLocationComponent;
