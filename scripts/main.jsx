@@ -18,12 +18,15 @@ var ReactRouter = require('react-router');
 var Router = ReactRouter.Router;
 var Route = ReactRouter.Route;
 var Navigation = ReactRouter.Navigation;
-import { browserHistory } from 'react-router'
+import { browserHistory } from 'react-router';
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 
 var AuthorizationCheck = function(nextState, replace) {
-   if (!localStorage.getItem('oAuth_token')) {
+   if (false) {
+      //Endpooint says we aren't authenticated
+      //Get new oAuth_token
+      //IF not possible, go to login and delete oAuth_token
        replace({
          pathname: '/login',
          state: { nextPathname: nextState.location.pathname }
@@ -37,14 +40,14 @@ var routes = (
    <Route path='/' component={OntdekPage_NLI_Component} />
    
    <Route path='/global' component={HalfNHalfComponent} onEnter={AuthorizationCheck} />
-   <Route path='/map' component={MapViewComponent} onEnter={AuthorizationCheck}/>
-   <Route path='/addLocation' component={Plaats_TV_Component}/>
+   <Route path='/map' component={MapViewComponent} />
+   <Route path='/addLocation' component={Plaats_TV_Component} onEnter={AuthorizationCheck} />
    <Route path='/profiel' component={ProfielComponent} onEnter={AuthorizationCheck} />
    <Route path='/listViewLocation' component={ListViewComponent} onEnter={AuthorizationCheck} />
    <Route path='/Login' component={LoginPageComponent}/>
-   <Route path='/details/:id' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
+   <Route path='/details/:placeId' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
    <Route path='/register' component={RegisterComponent} />
-   <Router path='/addPlace' component={AddPlaceComponent} onEnter={AuthorizationCheck} />
+   <Route path='/addPlace' component={AddPlaceComponent} onEnter={AuthorizationCheck} />
    </Router>);
 
 ReactDOM.render(routes, document.querySelector('#main'));
