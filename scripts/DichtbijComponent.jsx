@@ -46,6 +46,7 @@ var DichtbijComponent = React.createClass({
                      $.ajax(settings).done(function (response) {
                          var data = JSON.parse(response);
                          self.setState({places : data});
+                         
                     });
                 });
             });
