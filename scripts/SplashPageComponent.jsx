@@ -7,7 +7,7 @@ SplashPage
 */
 module.exports = React.createClass({
     redirect : function(){
-        document.location.href="/home";
+        document.location.href="/";
     },
 
     render : function(){

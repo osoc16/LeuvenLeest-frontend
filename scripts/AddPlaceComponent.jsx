@@ -256,11 +256,9 @@ addPlace : function(event) {
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
 
-        console.log(response);
-        
-
-        
-    //document.location.href = '/home';
+    console.log(response);
+    
+    document.location.href = '/';
 })
     .fail(function(){
         console.log('fail');
