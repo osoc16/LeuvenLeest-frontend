@@ -1,4 +1,6 @@
 var React = require('react');
+var NavbarComponent = require('./NavbarComponent.jsx');
+var HeadBarComponent  = require('./HeadBarComponent.jsx');
 
 module.exports = React.createClass({
 
@@ -13,14 +15,32 @@ module.exports = React.createClass({
 
         render : function() {
             return (
-                <div>
-                    <form>
-                    <input name='name' type='text' onChange={this.handleChange} /><br/>
-                    <input name='email' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='password' type='text' onChange={this.handleChange} /> <br/>
-                    <input name='confirm_password' type='text' onChange={this.handleChange} />
-                    <input type='submit' onClick={this.register} />
-                    </form>
+                <div className="register-page" id="app">
+                    <HeadBarComponent/>
+                    <div className="page-content">
+                        <form>
+                            <div className="register-form">
+                                <div className="form-field">
+                                    <label for="name">Naam</label>
+                                    <input name='name' type='text' onChange={this.handleChange} placeholder="John"/>
+                                </div>
+                                <div className="form-field">
+                                    <label for="email">E-mail</label>
+                                    <input name='email' type='text' onChange={this.handleChange} placeholder="jouw.email@example.com"/>
+                                </div>
+                                <div className="form-field">
+                                    <label for="password">Paswoord</label>
+                                    <input name='password' type='password' onChange={this.handleChange} placeholder="******"/>
+                                </div>
+                                <div className="form-field">
+                                    <label for="confirm_password"></label>
+                                    <input name='confirm_password' type='password' onChange={this.handleChange} placeholder="******"/>
+                                </div>
+                            </div>
+                            <button onClick={this.register}>Aanmelden</button>
+                        </form>
+                    </div>
+                    <NavbarComponent/>
                 </div>
             );
 

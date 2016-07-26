@@ -7,16 +7,6 @@
     right: 0;
     text-align: center;
 
-    .splash-logo{
-        width: 35em;
-        height: 35em;
-        background-color: $primary-white;
-        margin-left: auto;
-        margin-right: auto;
-        position: relative;
-        top: 20em;
-    }
-
     h1 {
         font-family: 'Suez One';
         color: $primary-white;
@@ -89,7 +79,7 @@
     box-sizing: border-box;
 }
 
-.form-field {
+.login-form .form-field {
     height: 50%;
     flex-shrink: 0;
     flex-grow: 0;
@@ -117,6 +107,12 @@
         font-size: 1em;
         padding-left: 5px;
         box-sizing: border-box;
+    }
+
+    input:focus {
+        outline: none;
+        color: $accent-blue;
+        font-weight: 600;
     }
 
     input::placeholder {
