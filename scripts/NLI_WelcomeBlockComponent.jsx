@@ -13,13 +13,12 @@ module.exports = React.createClass({
             <div className="welcome-text wt-NLI">
             <h2>Hey</h2>
             <h1>Lezer!</h1>
-            <h3>Fijn je te ontmoeten</h3>
+            <h3>Deel en bekijk jouw favoriete leesplekken</h3>
             </div>
             <div className="ontdek-aanmelden">
-            <i className="know-eachother">Zullen we elkaar wat beter leren kennen?</i>
             <div className="aanmelden-button">
             <i className="lines-icon icon-user-follow"></i>
-            <p><a onClick={this.redirect}>Aanmelden</a></p>
+            <p><a onClick={this.redirect}>Aanmelden met email</a></p>
             </div>
             </div>
             </div>

@@ -5,7 +5,18 @@ var LocationRowComponent = require('./LocationRowComponent.jsx');
 Recent activity
 <Recent/>
 */
-module.exports = React.createClass({
+var RecentComponent = React.createClass({
+
+    getInitialState : function(){
+        return {
+            places : []
+        }
+    },
+
+    componentWillMount : function() {
+
+    },
+
     render : function(){
         return (
             <div className="recent-act home-row">
@@ -15,3 +26,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default RecentComponent;

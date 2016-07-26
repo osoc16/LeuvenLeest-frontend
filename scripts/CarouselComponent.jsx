@@ -4,7 +4,7 @@ var React = require('react');
     Carousel for locations's pages
     <CarouselComponent/>
 */
-module.exports = React.createClass({
+var CarouselComponent = React.createClass({
     render : function(){
         return (
             <div className="carrousel">
@@ -44,3 +44,5 @@ module.exports = React.createClass({
             )
     }
 })
+
+export default CarouselComponent;

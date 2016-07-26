@@ -4,7 +4,7 @@ var React = require('react');
     Search bar
     <SearchBar/>
     */
-module.exports = React.createClass({
+var SearchBarComponent = React.createClass({
     render : function(){
         return (
             <form className="search-bar" onSubmit="">
@@ -13,3 +13,5 @@ module.exports = React.createClass({
         )
     }
 });
+
+export default SearchBarComponent;
