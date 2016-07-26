@@ -4,7 +4,7 @@ var React = require('react');
 "Hey *name*" block on Ontdek Page
 <WelcomeBlockComponent />
 */
-module.exports = React.createClass({
+var WelcomeBlockComponent = React.createClass({
 
     getInitialState : function() {
         return {
@@ -55,3 +55,5 @@ module.exports = React.createClass({
         });
     }
 })
+
+export default WelcomeBlockComponent;
