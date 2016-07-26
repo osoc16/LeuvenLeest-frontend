@@ -14,8 +14,7 @@ module.exports = React.createClass({
             <div id="app">
                 <HeadBarComponent />
                 <LeuvenMapSmallComponent />
-                <div className="swiper">
-                    <span className="swiper-center"></span>
+                <div className="separation">
                 </div>
                 <div className="page-content">
                     <LocationsComponent />
