@@ -25,11 +25,11 @@ module.exports = React.createClass({
                 <form>
                     <div className="login-form">
                         <div className="form-field">
-                            <label for="email">E-mail</label>
+                            <label htmlFor="email">E-mail</label>
                             <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@example.be"/>
                         </div>
                         <div className="form-field">
-                            <label for="password">Paswoord</label>
+                            <label htmlFor="password">Paswoord</label>
                             <input type='password' name='password' onChange={this.handleChange} placeholder="*****"/>
                         </div>
                     </div>
