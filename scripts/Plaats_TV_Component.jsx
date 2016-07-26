@@ -2,7 +2,7 @@ var React = require('react');
 var HeadBar_PlaatsTV_Component = require('./HeadBar_PlaatsTV_Component.jsx');
 var LocationMapComponent = require('./LocationMapComponent.jsx');
 var LocationDetailsComponent = require('./LocationDetailsComponent.jsx');
-var NavBarComponent = require('./NavBarComponent.jsx');
+var NavbarComponent = require('./NavbarComponent.jsx');
 
 /*
 Add location (Plaats toevoegen)
@@ -17,7 +17,7 @@ module.exports = React.createClass({
                     <LocationMapComponent />
                     <LocationDetailsComponent />
                 </div>
-                <NavBarComponent />
+                <NavbarComponent />
             </div>
         )
     }

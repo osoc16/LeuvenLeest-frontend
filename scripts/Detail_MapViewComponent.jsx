@@ -2,7 +2,7 @@ var React = require('react');
 var HeadBarComponent  = require('./HeadBarComponent.jsx');
 var LocationMapComponent = require('./LocationMapComponent.jsx');
 var LocationDetailsComponent = require('./LocationDetailsComponent.jsx');
-var NavBarComponent = require('./NavBarComponent.jsx');
+var NavbarComponent = require('./NavbarComponent.jsx');
 
 /*
 Detail view (Map)
@@ -80,7 +80,7 @@ module.exports = React.createClass({
                     <LocationMapComponent data={this.state.place}/>
                     <LocationDetailsComponent data={this.state.place}/>
                 </div>
-                <NavBarComponent />
+                <NavbarComponent />
             </div>
             )
     }
