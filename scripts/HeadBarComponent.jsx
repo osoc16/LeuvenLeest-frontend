@@ -6,14 +6,21 @@ Header
 */
 var HeadBarComponent = React.createClass({
     redirect : function(){
-        document.location.href="/"
+        document.location.href="/map"
     },
+
+    redirectBack : function(){
+        //document.location.href="/"
+        history.go(-1);
+
+    },
+    
     render : function(){
         return(
             <div className="headbar">
                 {/*<i className="lines-icon icon-plus"></i>*/}
                 <p className="back-button">
-                <i className="lines-icon icon-arrow-left"></i> Back
+                <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
                 </p>
                 <p className="title-text">Aan't Lezen</p>
                 {/*<i className="lines-icon icon-list head-list"></i>*/}
