@@ -6,7 +6,7 @@ var DichtbijComponent = require('./DichtbijComponent.jsx');
 Dichtbij & Recent activity
 <DichtbijCo/>
 */
-module.exports = React.createClass({
+var DichtbijCoComponent = React.createClass({
     render : function(){
         return (
             <div className="home-locations">
@@ -16,3 +16,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default DichtbijCoComponent;

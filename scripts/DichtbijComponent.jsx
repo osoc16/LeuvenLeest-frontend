@@ -5,7 +5,7 @@ var LocationRowComponent = require('./LocationRowComponent.jsx');
 Dichtbij
 <Dichtbij/>
 */
-module.exports = React.createClass({
+var DichtbijComponent = React.createClass({
 
 
     getInitialState : function(){
@@ -66,5 +66,4 @@ module.exports = React.createClass({
         }
 });
 
-
-
+export default DichtbijComponent;
