@@ -28,8 +28,7 @@ var HalfNHalfComponent = React.createClass({
             <div id="app">
                 <HeadBarComponent />
                 <LeuvenMapSmallComponent />
-                <div className="separation">
-                </div>
+                <div className="separation"></div>
                 <div className="page-content">
                     <LocationsComponent callBack={this.handleCheckin}/>
                 </div>

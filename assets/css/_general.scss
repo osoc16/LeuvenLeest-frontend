@@ -97,10 +97,11 @@ body {
 .separation {
     width: 100%;
     margin: 0;
-    height: 15px;
+    height: .4em;
     background-color: $light-grey;
     text-align: center;
     order: 2;
+    flex-shrink: 0;
 }
 
 .nav-button {
