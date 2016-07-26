@@ -1,24 +1,57 @@
 var React = require('react');
 
 var categoryId={
-    "Parc" : 1,
-    "Cafe" : 2,
-    "Restaurant" : 3,
+    "Park" : 1,
+    "Coffee shop" : 2,
+    "College library" : 3,
+    "Library" : 4,
 };
 
+
 module.exports = React.createClass({
- getInitialState : function(){
+   getInitialState : function(){
+    this.getEmail();
     return {
         type : '',
         name : '',
         address : '',
         openingHour : '',
-        lat:'',
-        lon:'',
+        latU:'',
+        lonU:'',
         categoryId :'',
-
-
+        email : '',
+        lat : '',
+        lon : '',
+        tot: '',
+        van : '',
+        openingHour : '',
     }
+},
+
+getEmail : function(){
+    var self = this;
+    var settings = {
+        "crossDomain": true,
+        "url": "http://95.85.15.210/user/current",
+        "method": "GET",
+        "headers": {
+               "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),       
+        },
+    }
+
+     $.ajax(settings)
+    .done(function (response, textStatus, xhr) {
+        console.log("getEmail");
+        console.log(response);
+        self.setState({email : response.email});
+        return response;
+    })
+    .fail(function(){
+        console.log('fail get email');
+
+    });
+
+
 },
 getCoordinate : function(){
     if(navigator.geolocation){
@@ -40,10 +73,8 @@ handleCoordinate : function(position) {
         lat : position.coords.latitude,
         lon : position.coords.longitude
     };
-    this.setState({lat : coordinate.lat, lon : coordinate.lon});
-
+    this.setState({latU : coordinate.lat, lonU : coordinate.lon});
     this.getAddressByCoordinate();
-
     return coordinate;
 },
 
@@ -58,20 +89,18 @@ render : function() {
     return (
         <div>
         <form>
-
-
-
         <label> 
         Type :
         </label>
 
+
+
         <input id="type" name="suggest" list="suggestions" onChange={this.handleChange} />
         <datalist id="suggestions">
-        <option value="Cafe" />
-        <option value="Restaurant" />
-        <option value="Parc" />
-        <option value="Blue" />
-        <option value="White" />
+        <option value="College library" />
+        <option value="Coffee shop" />
+        <option value="Park" />
+        <option value="Library" />
         </datalist>
         
         <br/>
@@ -85,11 +114,19 @@ render : function() {
         <input name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
         <label> 
         Opening hour :
-
-
-
         </label>
-        <input name='openingHour' type='text' onChange={this.handleChange} />
+        <br/>
+        <label>
+        Tot:
+        </label>
+        <input type='number' name='tot' min="00" max="23" step="1" onChange={this.handleChange}/>
+        <label>
+        van: 
+        </label>
+        <input type='number' name ='van' min="00" max="23" step="1" onChange={this.handleChange}/>
+
+
+        
 
         <input type='submit' onClick={this.addPlace} />
         </form>
@@ -124,6 +161,16 @@ handleChange : function(event) {
         case 'openingHour':
         this.setState({openingHour : value});
         break;
+
+        case 'tot':
+
+        this.setState({tot : value});
+        break;
+
+        case 'van':
+        
+        this.setState({van : value});
+        break;
     };
 
 },
@@ -132,7 +179,7 @@ getAddressByCoordinate : function(){
 
     var settings = {
         "crossDomain": true,
-        "url": "https://nominatim.openstreetmap.org/reverse.php?format=json&lat="+this.state.lat+"&lon="+this.state.lon,
+        "url": "https://nominatim.openstreetmap.org/reverse.php?format=json&lat="+this.state.latU+"&lon="+this.state.lonU,
         "method": "GET",
     }
      $.ajax(settings)
@@ -166,7 +213,7 @@ getAddressByCoordinate : function(){
 
         self.setState({address: address});
 
-        
+        self.getAddressByName();
 
 
         return response;
@@ -183,6 +230,7 @@ getAddressByName : function(){
     var self= this;
     
     var res = this.state.address.replace(new RegExp(" ", 'g'), "+");
+    console.log("Adress name in getAddressByName");
     console.log(res);
     //var res2 =res.replace(new RegExp(" ", 'g'), "+");
     //var res3 =res.replace(new RegExp(" ", 'g'), "");
@@ -191,15 +239,13 @@ getAddressByName : function(){
 
     var settings = {
         "crossDomain": true,
-        "url": " http://nominatim.openstreetmap.org/?format=json&addressdetails=1&q="+res,
+        "url": "http://nominatim.openstreetmap.org/?format=json&addressdetails=1&q="+res,
         "method": "GET",
     }
-     $.ajax(settings)
-    .done(function (response, textStatus, xhr) {
 
+     $.ajax(settings).done(function (response, textStatus, xhr) {
         console.log("in getaddrssbyName");
         console.log(response);
-        //self.setState({address: response.display_name});
         self.setState({lat : response[0].boundingbox[0], lon : response[0].boundingbox[2]});
         return response;
     })
@@ -207,12 +253,6 @@ getAddressByName : function(){
         console.log('fail the lookup');
 
     });
-
-
-
-
-
-
 },
 
 
@@ -220,7 +260,14 @@ getAddressByName : function(){
 
 addPlace : function(event) {
     event.preventDefault();
-    this.getAddressByName();
+    var tot = this.state.tot;
+    if(tot < 10)
+        tot = "0"+tot;
+
+    var openingH = tot +"-"+this.state.van;
+    console.log("Addplace openin2");
+    console.log(openingH);
+
 
 
     console.log(this.state);
@@ -231,6 +278,7 @@ addPlace : function(event) {
         "headers": {
                "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),       
         },
+
         'data': {
             'type' : this.state.type,
             'name' : this.state.name,
@@ -238,28 +286,26 @@ addPlace : function(event) {
             'openingHour': this.state.openingHour,
             'latitude': this.state.lat,
             'longitude': this.state.lon,
-
-            
-            'email':  'tets',
+            'email':  this.state.email,
             'categoryId' : this.state.categoryId,
-            
-
-            'email': localStorage.getItem('email'),
-            'categoryId' : 0
-
-
-
-
-            
+            'openingHour' : this.state.openingH,
             },
+
     }
+    
+    console.log("The state before sending");
+    console.log(this.state);
+    console.log("CatId");
+    console.log(this.state.categoryId);
+    console.log("email");
+    console.log(this.state.email);
+
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
 
-    console.log(response);
-    
-    document.location.href = '/';
-})
+        console.log(response);
+        //document.location.href = '/';
+    })
     .fail(function(){
         console.log('fail');
     });
