@@ -19,7 +19,11 @@ module.exports = React.createClass({
             if(this.props.data.openingHours !== undefined){
                 openingHourOfTheDay = openingArray[dayNumber];
                 if(openingHourOfTheDay == "")
-                    openingHourOfTheDay= "The opening hour is undefined";
+                    openingHourOfTheDay= "We kennen de openingstijden niet";
+
+                if(openingHourOfTheDay == "00:00 - 24:00")
+                        openingHourOfTheDay= "Deze plaats is 24u per dag open";
+
 
 
 

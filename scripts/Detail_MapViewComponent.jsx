@@ -11,53 +11,53 @@ Detail view (Map)
 module.exports = React.createClass({
 
    getInitialState: function() {
-        return {
-            place : {},
-            detailLocation: {},
-        };
-    },
+    return {
+        place : {},
+        detailLocation: {},
+    };
+},
 
-    /*Callback function that will be trigger when a location is available */
-    handleCoordinate : function(position) {
-        var msg = "Latitude: " + position.coords.latitude +
-        " Longitude: " + position.coords.longitude;
-        console.log(msg);
-
-
-        var coordinate =  {
-            lat : position.coords.latitude,
-            long : position.coords.longitude
-        };
-
-        return coordinate;
-    },
-
-    getCoordinate : function(){
-        if(navigator.geolocation){
-            return navigator.geolocation.getCurrentPosition(this.handleCoordinate);
-        }else{
-            console.log("Sorry the location is not available");
-        }
-    },
+/*Callback function that will be trigger when a location is available */
+handleCoordinate : function(position) {
+    var msg = "Latitude: " + position.coords.latitude +
+    " Longitude: " + position.coords.longitude;
+    console.log(msg);
 
 
-    componentWillMount:function(){
-        var self = this;
-        var currentURL = document.location.href;
-        var splitString = currentURL.split("/");
-        var idPlace = splitString[splitString.length-1];
-        var geolocation = this.getCoordinate();
+    var coordinate =  {
+        lat : position.coords.latitude,
+        long : position.coords.longitude
+    };
+
+    return coordinate;
+},
+
+getCoordinate : function(){
+    if(navigator.geolocation){
+        return navigator.geolocation.getCurrentPosition(this.handleCoordinate);
+    }else{
+        console.log("Sorry the location is not available");
+    }
+},
+
+
+componentWillMount:function(){
+    var self = this;
+    var currentURL = document.location.href;
+    var splitString = currentURL.split("/");
+    var idPlace = splitString[splitString.length-1];
+    var geolocation = this.getCoordinate();
 
 
 
-        var settings = {
-              "async": true,
-              "crossDomain": true,
+    var settings = {
+          "async": true,
+          "crossDomain": true,
                   "url": "http://95.85.15.210/places/"+idPlace, //+userLocation.lat+"/"+userLocation.lon,
                   "method": "GET",
                    "headers": {
                         "Authorization": "Bearer "+ localStorage.getItem('oAuth_token'),
-                                 "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
+                        "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
                 },
                 "processData": false,
@@ -67,21 +67,22 @@ module.exports = React.createClass({
 
 
              $.ajax(settings).done(function (response) {
+                console.log(response);
                 var data = JSON.parse(response);
                 self.setState({place : data});
-        });
-    },
+            });
+        },
 
-    render : function(){
-        return (
-            <div className="detail-page">
+        render : function(){
+            return (
+                <div className="detail-page">
                 <HeadBarComponent />
                 <div className="page-content">
-                    <LocationMapComponent data={this.state.place}/>
-                    <LocationDetailsComponent data={this.state.place}/>
+                <LocationMapComponent data={this.state.place}/>
+                <LocationDetailsComponent data={this.state.place}/>
                 </div>
                 <NavBarComponent />
-            </div>
-            )
-    }
-})
+                </div>
+                )
+        }
+    })
