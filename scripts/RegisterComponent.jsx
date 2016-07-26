@@ -60,7 +60,7 @@ module.exports = React.createClass({
              $.ajax(settings)
                 .done(function (response, textStatus, xhr) {
                     localStorage.setItem('oAuth_token', response.oAuth_token);
-                    document.location.href = '/home';
+                    document.location.href = '/';
 
                 })
                 .fail(function(){

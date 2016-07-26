@@ -1,33 +1,3 @@
-.aanmelden-button {
-    background-color: $light-grey;
-    color: $primary-white;
-    margin-left: auto;
-    margin-right: auto;
-    position: absolute;
-    left: 0;
-    right: 0;
-    width: 75%;
-    height: 3em;
-    top: 65%;
-    border-radius: .5em;
-
-    .fa {
-        float: left;
-        font-size: 3.5em;
-        position: relative;
-        left: .9em;
-        top: .55em;
-    }
-
-    p {
-        float: right;
-        font-size: 2.5em;
-        position: relative;
-        bottom: .2em;
-        right: 3.5em;
-    }
-}
-
 .fb-blue {
     background-color: $fb-blue;
 }

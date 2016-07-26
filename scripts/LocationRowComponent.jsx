@@ -23,6 +23,7 @@ module.exports = React.createClass({
             }
             return (
                 <div className="location-small" onClick={this.redirect} style={style} >
+                    <div className="location-overlay"><img src="../assets/img/bluegradient-overlay.svg"/></div>
                     <div className="location-text">
                         <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
                         <p> {this.props.data === undefined ? "" : this.props.data.name}</p>

@@ -34,8 +34,8 @@ var AuthorizationCheck = function(nextState, replace) {
 
 var routes = (
    <Router history={browserHistory}>
-   <Route path='/' component={SplashPageComponent} />
-   <Route path='/home' component={OntdekPage_NLI_Component}/>
+   <Route path='/' component={OntdekPage_NLI_Component} />
+   
    <Route path='/global' component={HalfNHalfComponent} onEnter={AuthorizationCheck} />
    <Route path='/map' component={MapViewComponent} onEnter={AuthorizationCheck}/>
    <Route path='/addLocation' component={Plaats_TV_Component}/>
