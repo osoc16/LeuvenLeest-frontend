@@ -3,7 +3,7 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 /*Map component */
 var idPos = 0;
-module.exports = React.createClass({
+var LeafletMapComponent = React.createClass({
     getInitialState: function() {
         return {
           locations : {},
@@ -28,7 +28,7 @@ handleCoordinate: function (position) {
         lat : position.coords.latitude,
         lon : position.coords.longitude
     };
-    
+
     this.setState({locations : coordinate});
     return coordinate;
 },
@@ -62,7 +62,7 @@ renderMap : function(){
                   "contentType": false,
                   "mimeType": "multipart/form-data",
                 'headers' : {
-                    'Authorization' : 'Bearer ' + localStorage.getItem('oAuth_token')
+                    'Authorization' : 'Bearer ' + sessionStorage.getItem('oAuth_token')
                 },
             };
 
@@ -95,7 +95,7 @@ renderMap : function(){
 
         {this.state.places.map(function(object, i) {
             var pos = [object.latitude, object.longitude];
-            return <Marker position={pos} opacity={0.6}>
+            return <Marker key={i} position={pos} opacity={0.6}>
             <Popup>
             <span><h4>{object.name}</h4> <i> {object.address}</i>
             <br/>
@@ -115,3 +115,5 @@ renderMap : function(){
 
 
 });
+
+export default LeafletMapComponent;
