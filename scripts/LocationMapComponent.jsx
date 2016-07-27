@@ -5,8 +5,9 @@ var LeuvenMapSmallComponent = require('./LeuvenMapSmallComponent.jsx');
     Map of a specific location on said location's page
     <LocationMapComponent />
 */
-module.exports = React.createClass({
+var LocationMapComponent = React.createClass({
     render : function(){
+        console.log(this.props);
         return (
             <div className="detail-map">
                 <LeuvenMapSmallComponent data={this.props.data}/>
@@ -26,3 +27,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default LocationMapComponent;
