@@ -30,6 +30,14 @@ var RecentComponent = React.createClass({
     },
 
     render : function(){
+        if (this.state.recentPlaces.length === 0){
+            return (
+                <div className='recent-act home-row'>
+                    <h3>Recent bezocht</h3>
+                    <p className="not-yet">Je bent nog nergens ingecheckt.</p>
+                </div>
+                )
+        }
         return (
             <div className='recent-act home-row'>
                 <h3>Recent bezocht</h3>

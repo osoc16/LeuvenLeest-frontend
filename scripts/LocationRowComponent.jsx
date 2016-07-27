@@ -16,35 +16,24 @@ var LocationRowComponent = React.createClass({
     },
 
     render : function(){
-
-        if (this.props.data) {
-            if (!this.state.photo) {
-                var locationPic = '../assets/img/placeholder_locations.jpg';
-            }
-            else {
-                var locationPic = this.state.photo;
-            }
-            var style = {
-                backgroundImage: 'url("'+ locationPic +'")'
-            }
-            return (
-                <div className="location-small" onClick={this.redirect} style={style} >
-                    <div className="location-overlay"><img src="../assets/img/bluegradient-overlay.svg"/></div>
-                    <div className="location-text">
-                        <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
-                        <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
-                    </div>
-                </div>
-            )
+        if (!this.state.photo) {
+            var locationPic = '../assets/img/placeholder_locations.jpg';
+        }
+        else {
+            var locationPic = this.state.photo;
+        }
+        var style = {
+            backgroundImage: 'url("'+ locationPic +'")'
         }
         return (
             <div className="location-small" onClick={this.redirect} style={style} >
+                <div className="location-overlay"><img src="../assets/img/bluegradient-overlay.svg"/></div>
                 <div className="location-text">
-                    <i>We are not able to show any places at the moment. Come back</i>
+                    <i> {this.props.data === undefined ? "" : this.props.data.category}</i>
+                    <p> {this.props.data === undefined ? "" : this.props.data.name}</p>
                 </div>
             </div>
         )
-
     }
 })
 
