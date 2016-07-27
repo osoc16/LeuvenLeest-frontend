@@ -19,12 +19,7 @@ var NavbarComponent = React.createClass({
             document.location.href="/profiel";
         },
 
-        isActivePage : function() {
-            console.log(document.location.href);
-        },
-
         render : function(){
-            this.isActivePage();
             return (
                 <div className="navbar">
                     <span className="discover-button nav-button" onClick={this.redirectHome}>

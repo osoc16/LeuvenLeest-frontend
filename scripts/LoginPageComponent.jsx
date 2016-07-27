@@ -64,11 +64,10 @@ module.exports = React.createClass({
 
         $.ajax(settings)
         .done(function (response, textStatus, xhr) {
-            localStorage.setItem('oAuth_token', response.oAuth_token);
+            sessionStorage.setItem('oAuth_token', response.oAuth_token);
             document.location.href = '/';
         })
         .fail(function(response, textStatus, xhr){
-            localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
         });
     }
 })
