@@ -19,10 +19,6 @@ var Detail_MapViewComponent = React.createClass({
 
 /*Callback function that will be trigger when a location is available */
 handleCoordinate : function(position) {
-    var msg = "Latitude: " + position.coords.latitude +
-    " Longitude: " + position.coords.longitude;
-    console.log(msg);
-
 
     var coordinate =  {
         lat : position.coords.latitude,
