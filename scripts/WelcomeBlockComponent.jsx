@@ -5,8 +5,28 @@ var React = require('react');
 <WelcomeBlockComponent />
 */
 var WelcomeBlockComponent = React.createClass({
-    propTypes : {
-        user: React.PropTypes.object.isRequired
+
+    getInitialState : function() {
+        return {
+            user : {},
+        }
+    },
+
+    componentWillMount: function() {
+        var self = this;
+        var settings = {
+            'crossDomain': true,
+            'url': 'http://95.85.15.210/user/current',
+            'method': 'GET',
+            'headers' : {
+                'Authorization' : sessionStorage.getItem('oAuth_token')
+            }
+        }
+
+        $.ajax(settings)
+        .done(function (response, textStatus, xhr) {
+            this.setState({user : response});
+        }.bind(this))
     },
 
     render : function(){
@@ -21,7 +41,7 @@ var WelcomeBlockComponent = React.createClass({
             <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
             <div className="welcome-text">
             <h2>Hey</h2>
-            <h1 className="user-name">{this.props.user.name}!</h1>
+            <h1 className="user-name">{this.state.user.name}!</h1>
             </div>
             </div>
             )
