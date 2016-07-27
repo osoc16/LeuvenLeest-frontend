@@ -26,6 +26,7 @@ var HeadBarComponent = React.createClass({
         var currentURL = document.location.href;
         var splitString = currentURL.split("/");
         var endURL = splitString[splitString.length-1];
+        var detailURL =splitString[splitString.length-2];
 
         return(
             <div className="headbar">
@@ -37,6 +38,8 @@ var HeadBarComponent = React.createClass({
             :<div></div>
         }
         {endURL == "global" ? <div><p className="back-button"><i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back</p>  <p className="title-text"> Aan't Lezen</p> <i className="lines-icon icon-map view-icon" onClick={this.redirectToMap}></i> </div>: <div></div> }
+
+        {detailURL == "details" ? <div><p className="back-button"><i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back</p>  <p className="title-text"> Details</p>  </div>: <div></div> }
 
 
             </div>
