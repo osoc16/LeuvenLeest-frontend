@@ -8,16 +8,11 @@ Dichtbij & Recent activity
 */
 var DichtbijCoComponent = React.createClass({
 
-    propTypes : {
-        nearbyPlaces : React.PropTypes.array.isRequired,
-        recentPlaces : React.PropTypes.array.isRequired
-    },
-
     render : function(){
         return (
             <div className="home-locations">
-                <RecentComponent places={this.props.recentPlaces} />
-                <DichtbijComponent places={this.props.nearbyPlaces}/>
+                <RecentComponent />
+                <DichtbijComponent />
             </div>
         )
     }

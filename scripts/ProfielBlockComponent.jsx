@@ -3,7 +3,7 @@ var React = require('react');
     Profiel block (photo + name + logout)
     <ProfielBlock/>
     */
-module.exports = React.createClass({
+var ProfielBlockComponent = React.createClass({
         render : function(){
             console.log(this.props.user);
             var user = this.props.user;
@@ -20,7 +20,7 @@ module.exports = React.createClass({
         },
 
         removeToken : function() {
-            localStorage.removeItem('oAuth_token');
+            sessionStorage.removeItem('oAuth_token');
         },
 
         logout : function(){
@@ -33,7 +33,7 @@ module.exports = React.createClass({
                 "contentType": false,
                 "mimeType": "multipart/form-data",
                 'header' : {
-                    'Authorization' : localStorage.getItem('oAuth_token')
+                    'Authorization' : sessionStorage.getItem('oAuth_token')
                 }
             }
 
@@ -47,3 +47,5 @@ module.exports = React.createClass({
             });
         }
     })
+
+export default ProfielBlockComponent;

@@ -20,21 +20,15 @@ var HeadBarComponent = React.createClass({
     redirectBack : function(){
         history.go(-1);
     },
-    
+
     render : function(){
         var currentURL = document.location.href;
         var currentURL = document.location.href;
         var splitString = currentURL.split("/");
-        console.log(splitString);
         var endURL = splitString[splitString.length-1];
-        console.log(endURL);
-        
-
 
         return(
             <div className="headbar">
-            
-
             {endURL == "map" ?
             <div id="banner">
             <i className="lines-icon icon-plus" onClick={this.redirectAdd}></i>  
@@ -45,10 +39,7 @@ var HeadBarComponent = React.createClass({
         {endURL == "global" ? <div><p className="back-button"><i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back</p>  <p className="title-text"> Aan't Lezen</p> <i className="lines-icon icon-map view-icon" onClick={this.redirectToMap}></i> </div>: <div></div> }
 
 
-
-
-
-        </div>
+            </div>
         )
     }
 })

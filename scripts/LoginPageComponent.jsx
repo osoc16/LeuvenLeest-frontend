@@ -5,15 +5,29 @@ var NavbarComponent = require('./NavbarComponent.jsx');
     Login page
     <LoginPage/>
 */
-module.exports = React.createClass({
+var LoginPageComponent = React.createClass({
     getInitialState : function() {
         return {
             email : '',
-            password : ''
+            password : '',
+            errors : false
         };
     },
 
-    render : function(){
+    triggerError : function() {
+        if (this.state.errors) {
+            var style = {
+                'BackgroundColor' : 'red'
+            };
+            return (
+                <div style={style} >
+                    <p>Uw e-mail of wachtwoord klopt niet.</p>
+                </div>
+            );
+        }
+    },
+
+    render : function() {
         return (
             <div className="login-page">
                 <div className="page-content">
@@ -29,6 +43,7 @@ module.exports = React.createClass({
                     <span className="register-link">Registeren</span>
                     <h1>Welcome terug!</h1>
                     <h2>Fijn dat je er weer bent.</h2>
+                    {this.triggerError()}
                     <form>
                         <div className="login-form">
                             <div className="form-field">
@@ -66,17 +81,21 @@ module.exports = React.createClass({
             "method": "POST",
             'data' : {
                 'email' : this.state.email,
-                'password' : this.state.password
+                'password' : this.state.password,
             }
         }
 
         $.ajax(settings)
         .done(function (response, textStatus, xhr) {
-            localStorage.setItem('oAuth_token', response.oAuth_token);
+            sessionStorage.setItem('oAuth_token', 'Bearer ' + response.oAuth_token);
             document.location.href = '/';
-        })
+        }.bind(this))
         .fail(function(response, textStatus, xhr){
-            localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
-        });
+            if (response.status === 404) {
+                this.setState({errors : true});
+            }
+        }.bind(this));
     }
 })
+
+export default LoginPageComponent;

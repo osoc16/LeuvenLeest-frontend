@@ -19,10 +19,6 @@ var React = require('react');
             document.location.href="/profiel";
         },
 
-        isActivePage : function() {
-            console.log(document.location.href);
-        },
-
         render : function(){
             this.isActivePage();
 
@@ -33,9 +29,6 @@ var React = require('react');
             var endURL = splitString[splitString.length-1];
             console.log(endURL);
             var html;
-
-
-
             return (
 
              <div className="navbar">

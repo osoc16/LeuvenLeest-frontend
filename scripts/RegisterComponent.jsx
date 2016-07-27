@@ -2,7 +2,7 @@ var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
 var HeadBarComponent  = require('./HeadBarComponent.jsx');
 
-module.exports = React.createClass({
+var RegisterComponent = React.createClass({
 
         getInitialState : function(){
             return {
@@ -15,26 +15,26 @@ module.exports = React.createClass({
 
         render : function() {
             return (
-                <div className="register-page" id="app">
+                <div className='register-page' id='app'>
                     <HeadBarComponent/>
-                    <div className="page-content">
+                    <div className='page-content'>
                         <form>
-                            <div className="register-form">
-                                <div className="form-field">
-                                    <label htmlFor="name">Naam</label>
-                                    <input name='name' type='text' onChange={this.handleChange} placeholder="John"/>
+                            <div className='register-form'>
+                                <div className='form-field'>
+                                    <label htmlFor='name'>Naam</label>
+                                    <input name='name' type='text' onChange={this.handleChange} placeholder='John'/>
                                 </div>
-                                <div className="form-field">
-                                    <label htmlFor="email">E-mail</label>
-                                    <input name='email' type='text' onChange={this.handleChange} placeholder="jouw.email@example.com"/>
+                                <div className='form-field'>
+                                    <label htmlFor='email'>E-mail</label>
+                                    <input name='email' type='text' onChange={this.handleChange} placeholder='jouw.email@example.com'/>
                                 </div>
-                                <div className="form-field">
-                                    <label htmlFor="password">Paswoord</label>
-                                    <input name='password' type='password' onChange={this.handleChange} placeholder="******"/>
+                                <div className='form-field'>
+                                    <label htmlFor='password'>Paswoord</label>
+                                    <input name='password' type='password' onChange={this.handleChange} placeholder='******'/>
                                 </div>
-                                <div className="form-field">
-                                    <label htmlFor="confirm_password"></label>
-                                    <input name='confirm_password' type='password' onChange={this.handleChange} placeholder="******"/>
+                                <div className='form-field'>
+                                    <label htmlFor='confirm_password'></label>
+                                    <input name='confirm_password' type='password' onChange={this.handleChange} placeholder='******'/>
                                 </div>
                             </div>
                             <button onClick={this.register}>Aanmelden</button>
@@ -67,9 +67,9 @@ module.exports = React.createClass({
         register : function(event) {
             event.preventDefault();
             var settings = {
-                "crossDomain": true,
-                "url": "http://95.85.15.210/auth/register",
-                "method": "PUT",
+                'crossDomain': true,
+                'url': 'http://95.85.15.210/auth/register',
+                'method': 'PUT',
                 'data': {
                     'name' : this.state.name,
                     'email': this.state.email,
@@ -79,7 +79,7 @@ module.exports = React.createClass({
             }
              $.ajax(settings)
                 .done(function (response, textStatus, xhr) {
-                    localStorage.setItem('oAuth_token', response.oAuth_token);
+                    sessionStorage.setItem('oAuth_token', response.oAuth_token);
                     document.location.href = '/';
 
                 })
@@ -88,3 +88,5 @@ module.exports = React.createClass({
                 });
         }
     })
+
+export default RegisterComponent;
