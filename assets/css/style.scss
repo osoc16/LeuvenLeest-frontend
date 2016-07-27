@@ -14,8 +14,6 @@ $accent-yellow        : #E5B10C;
 $accent-yellow-transp : rgba(229, 177, 12, 0.8);
 
 html {
-	height: auto;
-	width: 100vw;
 
 	* {
 		margin: 0;
@@ -30,9 +28,15 @@ body {
 	margin-left: auto;
 	margin-right: auto;
 	background-color: $primary-black;
-	background-image: url("../img/benches.png");
-	background-repeat: no-repeat;
-	background-size: 100% auto;
+
+	.benches {
+		max-width: 100%;
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 0;
+	}
+
 }
 
 header {
@@ -49,5 +53,6 @@ header {
 		color: $primary-white;
 		font-size: 5em;
 		font-weight: 400;
+		z-index: 3;
 	}
 }
