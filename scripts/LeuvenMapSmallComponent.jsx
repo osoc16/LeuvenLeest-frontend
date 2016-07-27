@@ -8,8 +8,8 @@ Map Small (half-screen)
 var LeuvenMapSmallComponent = React.createClass({
     render : function(){
         return (
-            <div className="map-container-small">
-                <LeafletMapComponent divClass="map-container-small-leaftlet" data={this.props.data}/>
+            <div className='map-container-small'>
+                <LeafletMapComponent divClass='map-container-small-leaftlet' data={this.props.data}/>
             </div>
         )
     }
