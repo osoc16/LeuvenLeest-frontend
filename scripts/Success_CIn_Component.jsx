@@ -25,7 +25,7 @@ var Success_CIn_Component = React.createClass({
     },
 
     close : function() {
-        document.location.href = '/global';
+        document.location.href = '/details/' + this.props.place.id;
     }
 })
 

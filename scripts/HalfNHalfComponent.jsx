@@ -14,7 +14,8 @@ var HalfNHalfComponent = React.createClass({
 
     getInitialState : function(){
         return {
-            succesfullCheckin : false
+            succesfullCheckin : false,
+            placeCheckedIn : {}
         }
     },
 
