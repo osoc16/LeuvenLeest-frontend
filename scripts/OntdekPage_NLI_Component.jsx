@@ -8,7 +8,7 @@ var NavbarComponent = require('./NavbarComponent.jsx');
 Home/Ontdek page not logged-in
 <OntdekPage_NLI/>
 */
-module.exports = React.createClass({
+var OntdekPage_NLI_Component = React.createClass({
     render : function(){
         if (true) {
             return (<OntdekPage_LI_Component />);
@@ -26,3 +26,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default OntdekPage_NLI_Component;
