@@ -10,7 +10,7 @@ Home/Ontdek page not logged-in
 */
 module.exports = React.createClass({
     render : function(){
-        if (localStorage.getItem('oAuth_token')) {
+        if (true) {
             return (<OntdekPage_LI_Component />);
         }
         return (

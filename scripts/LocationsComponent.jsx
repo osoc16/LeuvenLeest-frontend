@@ -62,7 +62,10 @@ var LocationsComponent = React.createClass({
 
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
-                this.setState({latest : JSON.parse(response)})
+                if (response.oAuth_token) {
+                    sessionStorage.setItem('oAuth_token', response.oAuth_token);
+                }
+                this.setState({latest : JSON.parse(response.data)})
             }.bind(this))
             .fail(function(response, textStatus, xhr){
                 console.log('fail');
