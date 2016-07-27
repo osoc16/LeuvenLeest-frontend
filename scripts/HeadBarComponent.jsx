@@ -29,31 +29,14 @@ var HeadBarComponent = React.createClass({
 
         return(
             <div className="headbar">
-                {endURL == "map" ?
-                    <div id="banner">
-                        <i className="lines-icon icon-plus" onClick={this.redirectAdd}></i>
-                        <p className="title-text">Kaart</p>
-                        <i className="lines-icon icon-list head-list view-icon" onClick={this.redirectToList}></i>
-                </div>
-                :
-                <div>
-                </div>
-                }
-                {endURL == "global" ?
-                    <div>
-                        <p className="back-button">
-                            <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i>
-                            Back
-                        </p>
-                        <p className="title-text">
-                            Aan't Lezen
-                        </p>
-                        <i className="lines-icon icon-map view-icon" onClick={this.redirectToMap}></i>
-                    </div>
-                    :
-                    <div>
-                    </div>
-                }
+            {endURL == "map" ?
+            <div id="banner">
+            <i className="lines-icon icon-plus" onClick={this.redirectAdd}></i>  
+            <p className="title-text">Kaart</p> 
+            <i className="lines-icon icon-list head-list view-icon" onClick={this.redirectToList}></i> </div> 
+            :<div></div>
+        }
+        {endURL == "global" ? <div><p className="back-button"><i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back</p>  <p className="title-text"> Aan't Lezen</p> <i className="lines-icon icon-map view-icon" onClick={this.redirectToMap}></i> </div>: <div></div> }
 
 
             </div>
