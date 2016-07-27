@@ -36,31 +36,33 @@ var LeafletMapComponent = React.createClass({
     render: function(){
         if (this.state.ready) {
             return (
-                <Map center={[this.state.coordinates.lat, this.state.coordinates.lon]} zoom={15}>
-                    <TileLayer
-                        url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-                        attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    />
-                    <Marker position={[this.state.coordinates.lat, this.state.coordinates.lon]}>
-                        <Popup>
-                            <span> <i>You're here</i></span>
-                        </Popup>
-                    </Marker>
+                <div className={this.props.divClass}>
+                    <Map center={[this.state.coordinates.lat, this.state.coordinates.lon]} zoom={15}>
+                        <TileLayer
+                            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
+                            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                        />
+                        <Marker position={[this.state.coordinates.lat, this.state.coordinates.lon]}>
+                            <Popup>
+                                <span> <i>You're here</i></span>
+                            </Popup>
+                        </Marker>
 
-                    {this.state.places.map(function(object, i) {
-                        var pos = [object.latitude, object.longitude];
-                        return (
-                            <Marker key={object.id} position={pos} opacity={0.6}>
-                                <Popup>
-                                    <span><h4>{object.name}</h4> <i> {object.address}</i>
-                                        <br/>
-                                        <a href={'/details/'+object.id}>Click for the detail</a>
-                                    </span>
-                                </Popup>
-                            </Marker>
-                        );
-                    })}
-                </Map>
+                        {this.state.places.map(function(object, i) {
+                            var pos = [object.latitude, object.longitude];
+                            return (
+                                <Marker key={object.id} position={pos} opacity={0.6}>
+                                    <Popup>
+                                        <span><h4>{object.name}</h4> <i> {object.address}</i>
+                                            <br/>
+                                            <a href={'/details/'+object.id}>Click for the detail</a>
+                                        </span>
+                                    </Popup>
+                                </Marker>
+                            );
+                        })}
+                    </Map>
+                </div>
             );
         }
         return null;
