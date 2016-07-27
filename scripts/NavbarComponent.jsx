@@ -22,7 +22,6 @@ var React = require('react');
         render : function(){
             var currentURL = document.location.href;
             var splitString = currentURL.split("/");
-            console.log(splitString);
             var endURL = splitString[splitString.length-1];
             return (
 
@@ -49,14 +48,9 @@ var React = require('react');
         componentWillMount:function(){
            var currentURL = document.location.href;
            var splitString = currentURL.split("/");
-           console.log(splitString);
            var endURL = splitString[splitString.length-1];
-           console.log(endURL);
-
-
-
-       }
+       },
 
    });
 
-    export default NavbarComponent;
+export default NavbarComponent;
