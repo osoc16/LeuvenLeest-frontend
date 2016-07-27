@@ -41,8 +41,6 @@ getEmail : function(){
 
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
-        console.log('getEmail');
-        console.log(response);
         self.setState({email : response.email});
         return response;
     })
