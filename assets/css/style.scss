@@ -124,7 +124,7 @@ section {
 	text-align: center;
 }
 
-a:* {
+a, a:active, a:visited {
 	text-decoration: none;
 	color: $accent-blue-transp;
 }

@@ -1,70 +1,100 @@
-/*
-Error: Invalid CSS after "a:": expected pseudoclass or pseudoelement, was "*"
-        on line 127 of style.scss
+html * {
+  margin: 0;
+  padding: 0;
+  font-family: 'Open Sans'; }
 
-122: 
-123: .center-p {
-124: 	text-align: center;
-125: }
-126: 
-127: a:* {
-128: 	text-decoration: none;
-129: 	color: $accent-blue-transp;
-130: }
-131: 
-132: a:hover {
+body {
+  height: 100%;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #272D2C; }
+  body .benches {
+    max-width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 0; }
 
-Backtrace:
-style.scss:127
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1162:in `expected'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1098:in `expected'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1093:in `tok!'
-/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:277:in `pseudo'
-/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:160:in `simple_selector_sequence'
-/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:112:in `selector'
-/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:86:in `selector_comma_sequence'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1076:in `expr!'
-/usr/lib/ruby/vendor_ruby/sass/scss/static_parser.rb:20:in `parse_selector'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:424:in `visit_rule'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `block in visit'
-/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `block in with_base'
-/usr/lib/ruby/vendor_ruby/sass/stack.rb:115:in `with_frame'
-/usr/lib/ruby/vendor_ruby/sass/stack.rb:79:in `with_base'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:158:in `visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `block in visit_children'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `map'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:52:in `visit_children'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:167:in `block in visit_children'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:179:in `with_environment'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:166:in `visit_children'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `block in visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:186:in `visit_root'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/base.rb:36:in `visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:157:in `visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/visitors/perform.rb:8:in `visit'
-/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:36:in `css_tree'
-/usr/lib/ruby/vendor_ruby/sass/tree/root_node.rb:29:in `render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:378:in `_render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:295:in `render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:490:in `update_stylesheet'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:470:in `on_file_changed'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:328:in `block in watch'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:115:in `_process_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:19:in `block in loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:84:in `_wait_for_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:42:in `block in setup'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `call'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"a:\": expected pseudoclass or pseudoelement, was \"*\"\A         on line 127 of style.scss\A \A 122: \A 123: .center-p {\A 124: 	text-align: center;\A 125: }\A 126: \A 127: a:* {\A 128: 	text-decoration: none;\A 129: 	color: $accent-blue-transp;\A 130: }\A 131: \A 132: a:hover {"; }
+header {
+  width: 38%;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto; }
+  header h1 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    font-family: 'Suez One';
+    color: #F2F4F4;
+    font-size: 3.5em;
+    font-weight: 400;
+    z-index: 3;
+    text-align: center; }
+  header h2 {
+    text-align: right;
+    z-index: 3;
+    font-family: 'Suez One';
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #979FA0;
+    position: relative;
+    right: .5em; }
+
+section {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
+  section p {
+    font-family: 'Open Sans';
+    color: #F2F4F4;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    position: relative;
+    z-index: 3; }
+  section h2 {
+    font-size: 1.9em;
+    font-weight: 400;
+    font-family: 'Suez One';
+    color: #16C4B3;
+    text-align: center;
+    position: relative;
+    z-index: 3; }
+
+.dimensions {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap; }
+
+.dim {
+  width: 25%;
+  flex-grow: 0;
+  flex-shrink: 0; }
+  .dim h3 {
+    font-size: 1.3em;
+    color: #16C4B3;
+    font-family: 'Suez One';
+    font-weight: 400;
+    text-align: center;
+    position: relative;
+    z-index: 3; }
+
+.center-p {
+  text-align: center; }
+
+a, a:active, a:visited {
+  text-decoration: none;
+  color: rgba(22, 169, 179, 0.7); }
+
+a:hover {
+  color: #16C4B3; }
+
+.fa {
+  margin-left: 10px;
+  margin-right: 10px; }
+
+/*# sourceMappingURL=style.css.map */
