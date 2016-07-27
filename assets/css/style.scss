@@ -35,14 +35,13 @@ body {
 		top: 0;
 		left: 0;
 		z-index: 0;
-		overflow-x: hidden;
 	}
 
 }
 
 header {
 	height: 300px;
-	width: 100%;
+	width: 80%;
 	position: relative;
 
 	h1 {
@@ -54,6 +53,54 @@ header {
 		color: $primary-white;
 		font-size: 3em;
 		font-weight: 400;
+		z-index: 3;
+		text-align: center;
+	}
+
+	h2 {
+		text-align: right;
+		z-index: 3;
+		font-family: 'Suez One';
+		font-size: 1.5em;
+		font-weight: 400;
+		color: $light-grey;
+	}
+}
+
+section {
+	width: 80%;
+
+	p {
+		font-family: 'Open Sans';
+		color: $primary-white;
+		margin-top: 2em;
+		margin-bottom: 2em;
+		position: relative;
+		z-index: 3;
+	}
+}
+
+.dimensions {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	justify-content: space-between;
+	align-items: flex-start;
+	flex-wrap: nowrap;
+}
+
+.dim {
+	width: 25%;
+	flex-grow: 0;
+	flex-shrink: 0;
+
+	h3 {
+		font-size: 1.3em;
+		color: $accent-blue;
+		font-family: 'Suez One';
+		font-weight: 400;
+		text-align: center;
+		position: relative;
 		z-index: 3;
 	}
 }

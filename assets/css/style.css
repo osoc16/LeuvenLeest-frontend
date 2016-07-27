@@ -14,12 +14,11 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    z-index: 0;
-    overflow-x: hidden; }
+    z-index: 0; }
 
 header {
   height: 300px;
-  width: 100%;
+  width: 80%;
   position: relative; }
   header h1 {
     position: relative;
@@ -30,6 +29,45 @@ header {
     color: #F2F4F4;
     font-size: 3em;
     font-weight: 400;
+    z-index: 3;
+    text-align: center; }
+  header h2 {
+    text-align: right;
+    z-index: 3;
+    font-family: 'Suez One';
+    font-size: 1.5em;
+    font-weight: 400;
+    color: #979FA0; }
+
+section {
+  width: 80%; }
+  section p {
+    font-family: 'Open Sans';
+    color: #F2F4F4;
+    margin-top: 2em;
+    margin-bottom: 2em;
+    position: relative;
+    z-index: 3; }
+
+.dimensions {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: nowrap; }
+
+.dim {
+  width: 25%;
+  flex-grow: 0;
+  flex-shrink: 0; }
+  .dim h3 {
+    font-size: 1.3em;
+    color: #16C4B3;
+    font-family: 'Suez One';
+    font-weight: 400;
+    text-align: center;
+    position: relative;
     z-index: 3; }
 
 /*# sourceMappingURL=style.css.map */
