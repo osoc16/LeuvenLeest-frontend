@@ -87,7 +87,7 @@ var LoginPageComponent = React.createClass({
 
         $.ajax(settings)
         .done(function (response, textStatus, xhr) {
-            sessionStorage.setItem('oAuth_token', 'Bearer ' + response.oAuth_token);
+            sessionStorage.setItem('oAuth_token', response.oAuth_token);
             document.location.href = '/';
         }.bind(this))
         .fail(function(response, textStatus, xhr){
