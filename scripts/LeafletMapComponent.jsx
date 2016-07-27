@@ -34,7 +34,6 @@ var LeafletMapComponent = React.createClass({
 },
 
 render: function(){
-    var self = this;
     if (this.state.ready) {
         return (
             <div className={this.props.divClass}>
@@ -51,8 +50,7 @@ render: function(){
 
             {this.state.places.map(function(object, i) {
                 /*The places won't be showed if you're in the detail page*/
-                if(self.props.data.id == undefined){
-                    console.log("There is no data");
+                if(this.props.data){
                     var pos = [object.latitude, object.longitude];
                     return (
                         <Marker key={object.id} position={pos} opacity={0.6}>
@@ -65,21 +63,20 @@ render: function(){
                         </Marker>
                         );
                 }else{
-                 console.log("There is data");
-                 var pos = [self.props.data.latitude, self.props.data.longitude];
+                 var pos = [this.props.data.latitude, this.props.data.longitude];
                  return (
                     <Marker key={object.id} position={pos} opacity={0.9} >
                     <Popup>
-                    <span><h4>{self.props.data.name}</h4> <i> {self.props.data.address}</i>
+                    <span><h4>{this.props.data.name}</h4> <i> {this.props.data.address}</i>
                     <br/>
-                    <a href={'/details/'+self.props.data.id}>Click for the detail</a>
+                    <a href={'/details/'+this.props.data.id}>Click for the detail</a>
                     </span>
                     </Popup>
                     </Marker>
                     );
 
              }
-         })}
+         }.bind(this))}
             </Map>
             </div>
             );

@@ -42,7 +42,6 @@ var LocationMapComponent = React.createClass({
     },
 
     checkin : function(event) {
-        var self = this;
         var settings = {
             'crossDomain': true,
             'url': 'http://95.85.15.210/checkin/',
@@ -75,7 +74,7 @@ var LocationMapComponent = React.createClass({
         }
         return (
             <div className="detail-map">
-                <LeuvenMapSmallComponent data={this.props.data}/>
+                <LeuvenMapSmallComponent data={this.props.place}/>
                 <div className="name-n-checkin">
                     <div className="location-text">
                         <i>{this.props.place.category}</i>
