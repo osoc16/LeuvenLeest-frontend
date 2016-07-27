@@ -1,31 +1,33 @@
-const source = require('vinyl-source-stream');
-const gulp = require('gulp');
-const gutil = require('gulp-util');
-const browserify = require('browserify');
-const babelify = require('babelify');
-const watchify = require('watchify');
-const notify = require('gulp-notify');
+var source = require('vinyl-source-stream');
+var gulp = require('gulp');
+var gutil = require('gulp-util');
+var browserify = require('browserify');
+var babelify = require('babelify');
+var watchify = require('watchify');
+var notify = require('gulp-notify');
 
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const uglify = require('gulp-uglify');
-const rename = require('gulp-rename');
-const buffer = require('vinyl-buffer');
+var sass = require('gulp-sass');
+var autoprefixer = require('gulp-autoprefixer');
+var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
+var buffer = require('vinyl-buffer');
 
-const browserSync = require('browser-sync');
-const reload = browserSync.reload;
-const historyApiFallback = require('connect-history-api-fallback')
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+var historyApiFallback = require('connect-history-api-fallback')
 
-/**
- * Styles
- */
 
-gulp.task('styles', function () {
+/*
+  Styles Task
+  */
+
+  gulp.task('styles',function() {
   // move over fonts
+
   gulp.src('css/fonts/**.*')
   .pipe(gulp.dest('build/css/fonts'))
 
-  // Compile CSS
+  // Compiles CSS
   gulp.src('assets/css/style.scss')
   .pipe(sass())
   .pipe(autoprefixer())
@@ -33,36 +35,34 @@ gulp.task('styles', function () {
   .pipe(reload({stream:true}))
 });
 
-/**
- * Images
- */
+/*
+  Images
+  */
+  gulp.task('images',function(){
+    gulp.src('css/images/**')
+    .pipe(gulp.dest('./build/css/images'))
+  });
 
-gulp.task('images', function () {
-  gulp.src('css/images/**')
-  .pipe(gulp.dest('./build/css/images'))
-});
+/*
+  Browser Sync
+  */
+  gulp.task('browser-sync', function() {
+    browserSync({
+        // we need to disable clicks and forms for when we test multiple rooms
+        server : {
+          port: 8000,
+        },
+        middleware : [ historyApiFallback() ],
+        ghostMode: false
+      });
+  });
 
-/**
- * BrowserSync
- */
-
-gulp.task('browser-sync', function () {
-  browserSync({
-      // we need to disable clicks and forms for when we test multiple rooms
-      server : {
-        port: 8000,
-      },
-      middleware : [ historyApiFallback() ],
-      ghostMode: false
-    });
-});
-
-function handleErrors() {
-  var args = Array.prototype.slice.call(arguments);
-  notify.onError({
-    title: 'Compile Error',
-    message: '<%= error.message %>'
-  }).apply(this, args);
+  function handleErrors() {
+    var args = Array.prototype.slice.call(arguments);
+    notify.onError({
+      title: 'Compile Error',
+      message: '<%= error.message %>'
+    }).apply(this, args);
   this.emit('end'); // Keep gulp from hanging on this task
 }
 
@@ -93,7 +93,7 @@ function buildScript(file, watch) {
     }
 
   // listen for an update and run rebundle
-  bundler.on('update', function () {
+  bundler.on('update', function() {
     rebundle();
     gutil.log('Rebundle...');
   });
@@ -102,12 +102,17 @@ function buildScript(file, watch) {
   return rebundle();
 }
 
-gulp.task('scripts', function () {
+gulp.task('scripts', function() {
   return buildScript('main.jsx', false); // this will run once because we set watch to false
 });
 
+gulp.task('copy-vendor-dependencies', function () {
+  gulp.src('node_modules/jquery/dist/jquery.min.js')
+  .pipe(gulp.dest('./build/'))
+});
+
 // run 'scripts' task first, then watch for future changes
-gulp.task('default', ['styles','scripts','browser-sync'], function () {
+gulp.task('default', ['styles', 'copy-vendor-dependencies', 'scripts','browser-sync'], function() {
   gulp.watch('assets/css/*', ['styles']); // gulp watch for stylus changes
   return buildScript('main.jsx', true); // browserify watch for JS changes
 });
