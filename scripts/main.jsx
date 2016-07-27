@@ -23,16 +23,16 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 
 var AuthorizationCheck = function(nextState, replace) {
-   if (false) {
-      //Endpooint says we aren't authenticated
-      //Get new oAuth_token
-      //IF not possible, go to login and delete oAuth_token
-       replace({
-         pathname: '/login',
-         state: { nextPathname: nextState.location.pathname }
-     })
+//    if (false) {
+//       //Endpooint says we aren't authenticated
+//       //Get new oAuth_token
+//       //IF not possible, go to login and delete oAuth_token
+//        replace({
+//          pathname: '/login',
+//          state: { nextPathname: nextState.location.pathname }
+//      })
 
-   }
+//    }
 }
 
 var routes = (
