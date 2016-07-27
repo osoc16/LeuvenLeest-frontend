@@ -4,7 +4,7 @@ var React = require('react');
 "Hey stranger, sign in" block on Ontdek Page when not logged in
 <NLI_WelcomeBlockComponent />
 */
-module.exports = React.createClass({
+var NLI_WelcomeBlockComponent = React.createClass({
     render : function(){
         return (
             <div className="welcome-block wb-NLI">
@@ -29,3 +29,5 @@ module.exports = React.createClass({
         document.location.href= '/login';
     },
 })
+
+export default NLI_WelcomeBlockComponent;
