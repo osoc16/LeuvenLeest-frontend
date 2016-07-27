@@ -49,7 +49,6 @@ header {
 		position: relative;
 		margin-left: auto;
 		margin-right: auto;
-		z-index: 1;
 		font-family: 'Suez One';
 		color: $primary-white;
 		font-size: 3.5em;
@@ -66,12 +65,14 @@ header {
 		font-weight: 400;
 		color: $light-grey;
 		position: relative;
-		right: .5em;
+		right: .2em;
+		bottom: .5em;
+		margin-bottom: 1em;
 	}
 }
 
 section {
-	width: 80%;
+	width: 70%;
 	margin-left: auto;
 	margin-right: auto;
 
@@ -82,10 +83,13 @@ section {
 		margin-bottom: 2em;
 		position: relative;
 		z-index: 3;
+		width: 80%;
+		line-height: 1.4em;
+		font-size: 1.2em;
 	}
 
 	h2 {
-		font-size: 1.9em;
+		font-size: 1.6em;
 		font-weight: 400;
 		font-family: 'Suez One';
 		color: $accent-blue;
@@ -105,7 +109,7 @@ section {
 }
 
 .dim {
-	width: 25%;
+	width: 30%;
 	flex-grow: 0;
 	flex-shrink: 0;
 
@@ -117,6 +121,13 @@ section {
 		text-align: center;
 		position: relative;
 		z-index: 3;
+	}
+
+	p {
+		margin-top: 1em;
+		width: 100%;
+		font-size: 1em;
+		line-height: 1.2em;
 	}
 }
 
