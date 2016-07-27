@@ -3,6 +3,7 @@ var HeadBarComponent  = require('./HeadBarComponent.jsx');
 var LocationMapComponent = require('./LocationMapComponent.jsx');
 var LocationDetailsComponent = require('./LocationDetailsComponent.jsx');
 var NavbarComponent = require('./NavbarComponent.jsx');
+var Success_CIn_Component = require('./Success_CIn_Component.jsx');
 
 import { browserHistory } from 'react-router';
 /*
