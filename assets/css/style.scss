@@ -11,6 +11,18 @@ $accent-yellow: #E5B10C;
 $accent-yellow-transp: rgba(229, 177, 12, 0.8);
 $fb-blue: #3C5193;
 
+html {
+	background-color: $clear-grey;
+
+	* {
+		margin: 0;
+		padding: 0;
+	}
+}
+
 body {
-	background: black;
+	height: 100%;
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
 }
