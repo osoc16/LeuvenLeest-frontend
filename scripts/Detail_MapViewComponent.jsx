@@ -65,8 +65,11 @@ componentWillMount:function(){
 
 
              $.ajax(settings).done(function (response) {
-                var data = JSON.parse(response);
-                self.setState({place : data});
+                if (response.oAuth_token) {
+                    sessionStorage.setItem('oAuth_token', response.oAuth_token);
+                }
+                var place = JSON.parse(JSON.parse(response).data);
+                self.setState({place : place});
             });
         },
 
