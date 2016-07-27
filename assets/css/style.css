@@ -88,6 +88,7 @@ section {
     z-index: 3; }
   .dim p {
     margin-top: 1em;
+    margin-bottom: 1em;
     width: 100%;
     font-size: 1em;
     line-height: 1.2em; }
