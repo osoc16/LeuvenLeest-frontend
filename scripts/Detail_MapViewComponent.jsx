@@ -62,7 +62,7 @@ var Detail_MapViewComponent = React.createClass({
 
          $.ajax(settings).done(function (response) {
             if (response.oAuth_token) {
-                sessionStorage.setItem('oAuth_token', response.oAuth_token);
+                sessionStorage.setItem('oAuth_token', 'Bearer' + response.oAuth_token);
             }
             var place = JSON.parse(JSON.parse(response).data);
             this.setState({place : place});

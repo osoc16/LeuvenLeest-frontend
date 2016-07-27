@@ -47,7 +47,7 @@ var ProfielComponent = React.createClass({
     $.ajax(settings)
         .done(function (response, textStatus, xhr) {
             if (response.oAuth_token) {
-                sessionStorage.setItem('oAuth_token', response.oAuth_token);
+                sessionStorage.setItem('oAuth_token', 'Bearer' + response.oAuth_token);
             }
             self.setState({user: response.data});
         })
