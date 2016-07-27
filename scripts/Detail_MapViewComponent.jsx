@@ -9,7 +9,7 @@ import { browserHistory } from 'react-router';
 Detail view (Map)
 <Detail_MapView/>
 */
-module.exports = React.createClass({
+var Detail_MapViewComponent = React.createClass({
 
    getInitialState: function() {
     return {
@@ -84,3 +84,5 @@ componentWillMount:function(){
             )
     }
 })
+
+export default Detail_MapViewComponent;
