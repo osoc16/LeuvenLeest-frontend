@@ -7,7 +7,7 @@ Success page (Added location)
 module.exports = React.createClass({
     render : function(){
         return (
-            <div className="success-page">
+            <div className="success-page" onClick={this.close}>
             <div className="benches">
                 <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
             </div>
@@ -18,5 +18,9 @@ module.exports = React.createClass({
             <h2>Sint-Donatuspark</h2>
             </div>
         )
+    },
+
+    close : function() {
+        document.location.href = '/global';
     }
 })

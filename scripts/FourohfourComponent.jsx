@@ -11,12 +11,12 @@ var FourohfourComponent = React.createClass({
 
     render : function(){
         return (
-            <div className="fourohfour">
+            <div className="fourohfour" onClick={this.close}>
             <div className="benches">
             <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
             </div>
             <div className="fourohfour-overlay"></div>
-            <i className="lines-icon icon-close" onClick={this.close}></i>
+            <i className="lines-icon icon-close"></i>
             <i className="lines-icon icon-exclamation"></i>
             <p>Oops, deze pagina bestaat niet.</p>
             <h2>404</h2>

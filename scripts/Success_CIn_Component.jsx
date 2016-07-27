@@ -11,12 +11,12 @@ var Success_CIn_Component = React.createClass({
 
     render : function(){
         return (
-            <div className="success-page">
+            <div className="success-page" onClick={this.close}>
             <div className="benches">
                 <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
             </div>
             <div className="success-overlay"></div>
-            <i className="lines-icon icon-close" onClick={this.close}></i>
+            <i className="lines-icon icon-close"></i>
             <i className="lines-icon icon-check"></i>
             <p>Aan't lezen bij</p>
             <h2>{this.props.place.name}</h2>
