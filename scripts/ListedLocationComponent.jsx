@@ -1,3 +1,4 @@
+
 var React = require('react');
 
 /*
@@ -51,7 +52,7 @@ var ListedLocationComponent = React.createClass({
             'url': 'http://95.85.15.210/checkin/',
             'method': 'PUT',
             'headers' : {
-                'Authorization' : localStorage.getItem('oAuth_token')
+                'Authorization' : sessionStorage.getItem('oAuth_token')
             },
             'data' : {
                 'id' : this.props.place.id,
@@ -63,10 +64,8 @@ var ListedLocationComponent = React.createClass({
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
                 this.props.callBack(true, this.props.place);
-                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
             }.bind(this))
             .fail(function(response, textStatus, xhr){
-                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                 console.log('fail');
             });
     },
