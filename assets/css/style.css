@@ -1,62 +1,50 @@
-/*
-Error: Invalid CSS after "		top": expected ";", was ": 0;"
-        on line 44 of style.scss
+html {
+  height: 100%; }
+  html * {
+    margin: 0;
+    padding: 0;
+    font-family: 'Open Sans'; }
 
-39: 	.benches {
-40: 		height: 100%;
-41: 		width: 100%;
-42: 		position: absolute;
-43: 		overflow: hidden
-44: 		top: 0;
-45: 		left: 0;
-46: 	}
-47: 
-48: 	.benches img {
-49: 		object-fit: cover;
+body {
+  height: 100%;
+  width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #F9F9F9; }
 
-Backtrace:
-style.scss:44
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1162:in `expected'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1098:in `expected'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1093:in `tok!'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:758:in `block in try_declaration'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1138:in `call'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1138:in `rethrow'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:763:in `try_declaration'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:693:in `declaration_or_ruleset'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:658:in `block_child'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:650:in `block_contents'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:639:in `block'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:708:in `declaration_or_ruleset'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:658:in `block_child'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:650:in `block_contents'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:639:in `block'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:632:in `ruleset'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:657:in `block_child'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:650:in `block_contents'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:117:in `stylesheet'
-/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:42:in `parse'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:403:in `_to_tree'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:378:in `_render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/engine.rb:295:in `render_with_sourcemap'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:490:in `update_stylesheet'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:470:in `on_file_changed'
-/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:328:in `block in watch'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:115:in `_process_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:19:in `block in loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop'
-/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop_for'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:84:in `_wait_for_changes'
-/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:42:in `block in setup'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `call'
-/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `block in add'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Error: Invalid CSS after \"		top\": expected \";\", was \": 0;\"\A         on line 44 of style.scss\A \A 39: 	.benches {\A 40: 		height: 100%;\A 41: 		width: 100%;\A 42: 		position: absolute;\A 43: 		overflow: hidden\A 44: 		top: 0;\A 45: 		left: 0;\A 46: 	}\A 47: \A 48: 	.benches img {\A 49: 		object-fit: cover;"; }
+header {
+  height: 300px;
+  width: 100%;
+  position: relative; }
+  header .benches {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    overflow: hidden;
+    top: 0;
+    left: 0; }
+  header .benches img {
+    object-fit: cover;
+    height: 100%;
+    width: 100%; }
+  header h1 {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+    font-family: 'Suez One';
+    color: #F2F4F4;
+    font-size: 5em;
+    font-weight: 400; }
+
+.black-overlay {
+  height: 100%;
+  width: 100%;
+  background-color: rgba(39, 45, 44, 0.7);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0; }
+
+/*# sourceMappingURL=style.css.map */
