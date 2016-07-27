@@ -1,18 +1,20 @@
-$primary-black: #272D2C;
-$primary-white: #F2F4F4;
-$primary-white-transp: rgba(242, 244, 244, 0.6);
-$clear-grey: #F9F9F9;
-$light-grey: #979FA0;
-$dark-grey: #5F6666;
-$accent-blue: #16C4B3;
-$accent-blue-transp: rgba(22, 169, 179, 0.5);
-$accent-red: #D32647;
-$accent-yellow: #E5B10C;
-$accent-yellow-transp: rgba(229, 177, 12, 0.8);
-$fb-blue: #3C5193;
+$primary-black        : #272D2C;
+$primary-black-transp : rgba(39, 45, 44, 0.7);
+$primary-white        : #F2F4F4;
+$primary-white-transp : rgba(242, 244, 244, 0.6);
+$clear-grey           : #F9F9F9;
+$light-grey           : #979FA0;
+$middle-grey          : #9BA3A4;
+$dark-grey            : #5F6666;
+$blueish-grey         : #657A78;
+$accent-blue          : #16C4B3;
+$accent-blue-transp   : rgba(22, 169, 179, 0.7);
+$accent-red           : #D32647;
+$accent-yellow        : #E5B10C;
+$accent-yellow-transp : rgba(229, 177, 12, 0.8);
 
 html {
-	background-color: $clear-grey;
+	height: 100%;
 
 	* {
 		margin: 0;
@@ -23,8 +25,27 @@ html {
 
 body {
 	height: 100%;
-	width: 90%;
+	width: 100%;
 	margin-left: auto;
 	margin-right: auto;
-	background-color: $light-grey;
+	background-color: $primary-black;
+	background-image: src('../img/benches.png');
+	background-position: center top;
+}
+
+header {
+	height: 300px;
+	width: 100%;
+	position: relative;
+
+	h1 {
+		position: relative;
+		margin-left: auto;
+		margin-right: auto;
+		z-index: 1;
+		font-family: 'Suez One';
+		color: $primary-white;
+		font-size: 5em;
+		font-weight: 400;
+	}
 }

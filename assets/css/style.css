@@ -10,23 +10,14 @@ body {
   width: 100%;
   margin-left: auto;
   margin-right: auto;
-  background-color: #F9F9F9; }
+  background-color: #272D2C;
+  background-image: src("../img/benches.png");
+  background-position: center top; }
 
 header {
   height: 300px;
   width: 100%;
   position: relative; }
-  header .benches {
-    height: 100%;
-    width: 100%;
-    position: absolute;
-    overflow: hidden;
-    top: 0;
-    left: 0; }
-  header .benches img {
-    object-fit: cover;
-    height: 100%;
-    width: 100%; }
   header h1 {
     position: relative;
     margin-left: auto;
@@ -36,15 +27,5 @@ header {
     color: #F2F4F4;
     font-size: 5em;
     font-weight: 400; }
-
-.black-overlay {
-  height: 100%;
-  width: 100%;
-  background-color: rgba(39, 45, 44, 0.7);
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; }
 
 /*# sourceMappingURL=style.css.map */
