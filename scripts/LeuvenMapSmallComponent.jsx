@@ -9,7 +9,7 @@ var LeuvenMapSmallComponent = React.createClass({
     render : function(){
         return (
             <div className='map-container-small'>
-                <LeafletMapComponent divClass='map-container-small-leaftlet' />
+                <LeafletMapComponent data={this.props.data} divClass='map-container-small-leaftlet' />
             </div>
         )
     }

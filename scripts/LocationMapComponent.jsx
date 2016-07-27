@@ -7,6 +7,8 @@ var LeuvenMapSmallComponent = require('./LeuvenMapSmallComponent.jsx');
 */
 var LocationMapComponent = React.createClass({
     render : function(){
+        console.log("data in locatopn map compo");
+        console.log(this.props.data);
         return (
             <div className="detail-map">
                 <LeuvenMapSmallComponent data={this.props.data}/>
