@@ -3,6 +3,7 @@
     width: 100%;
     background-color: $primary-black;
     order: 1;
+    position: relative;
 }
 
 .wb-NLI {
@@ -76,6 +77,7 @@
         font-weight: 500;
         margin: 0;
         padding: 0;
+        position: relative;
     }
 
     h1 {
@@ -97,6 +99,7 @@
     h2 {
         color: $primary-white;
         font-size: 2.5em;
+        position: relative;
     }
 
     h1 {

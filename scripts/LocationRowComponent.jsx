@@ -18,8 +18,14 @@ var LocationRowComponent = React.createClass({
     render : function(){
 
         if (this.props.data) {
+            if (!this.state.photo) {
+                var locationPic = '../assets/img/placeholder_locations.jpg';
+            }
+            else {
+                var locationPic = this.state.photo;
+            }
             var style = {
-                backgroundImage: 'url("'+ this.state.photo +'")'
+                backgroundImage: 'url("'+ locationPic +'")'
             }
             return (
                 <div className="location-small" onClick={this.redirect} style={style} >
