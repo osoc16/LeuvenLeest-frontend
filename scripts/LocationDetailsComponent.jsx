@@ -6,7 +6,7 @@ var OpeningsComponent = require('./OpeningsComponent.jsx');
     Details of a specific location on said location's page
     <LocationDetails/>
 */
-module.exports = React.createClass({
+var LocationDetailsComponent = React.createClass({
     render : function(){
         //The state will always contain 1 row
         return (
@@ -17,3 +17,5 @@ module.exports = React.createClass({
         )
     }
 })
+
+export default LocationDetailsComponent;
