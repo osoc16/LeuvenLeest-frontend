@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg width="3px" height="431px" viewBox="0 0 3 431" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 39 (31667) - http://www.bohemiancoding.com/sketch -->
+    <title>Fill 2 Copy 2</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50.7996964%" y1="19.9252338%" x2="50.7996964%" y2="92.3136382%" id="linearGradient-1">
+            <stop stop-color="#272D2C" stop-opacity="0.804772418" offset="0%"></stop>
+            <stop stop-color="#272D2C" stop-opacity="0.881567029" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#272D2C" stop-opacity="0.74963202" offset="0%"></stop>
+            <stop stop-color="#272D2C" stop-opacity="0.975288723" offset="100%"></stop>
+        </linearGradient>
+        <polygon id="path-3" points="0 429 1 429 1 0 0 0"></polygon>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="-1" y="-1" width="3" height="431">
+            <rect x="-1" y="-1" width="3" height="431" fill="white"></rect>
+            <use xlink:href="#path-3" fill="black"></use>
+        </mask>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Listview_item-Copy-12" transform="translate(1.000000, 1.000000)">
+            <g id="Fill-2-Copy-2">
+                <use fill="url(#linearGradient-1)" fill-rule="evenodd" style="mix-blend-mode: color;" xlink:href="#path-3"></use>
+                <use fill="url(#linearGradient-2)" fill-rule="evenodd" xlink:href="#path-3"></use>
+                <use stroke="#FFFFFF" mask="url(#mask-4)" stroke-width="2" xlink:href="#path-3"></use>
+            </g>
+        </g>
+    </g>
+</svg>
