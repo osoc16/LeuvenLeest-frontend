@@ -20,15 +20,10 @@ var React = require('react');
         },
 
         render : function(){
-            this.isActivePage();
-
-            var currentURL = document.location.href;
             var currentURL = document.location.href;
             var splitString = currentURL.split("/");
             console.log(splitString);
             var endURL = splitString[splitString.length-1];
-            console.log(endURL);
-            var html;
             return (
 
              <div className="navbar">
