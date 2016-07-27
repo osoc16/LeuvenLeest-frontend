@@ -66,8 +66,6 @@ componentWillMount:function(){
 
 
              $.ajax(settings).done(function (response) {
-                console.log(response);
-                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                 var data = JSON.parse(response);
                 self.setState({place : data});
             });
