@@ -97,9 +97,7 @@ section {
     font-size: 1em;
     line-height: 1.2em; }
   .dim br {
-    display: block;
-    height: 10px;
-    width: 100%; }
+    line-height: 30px; }
 
 .center-p {
   text-align: center; }
