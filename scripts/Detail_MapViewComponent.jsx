@@ -55,7 +55,7 @@ componentWillMount:function(){
                   "url": "http://95.85.15.210/places/"+idPlace, //+userLocation.lat+"/"+userLocation.lon,
                   "method": "GET",
                    "headers": {
-                        "Authorization": localStorage.getItem('oAuth_token'),
+                        "Authorization": sessionStorage.getItem('oAuth_token'),
                         "Content-Type" : "application/x-www-form-urlencoded; charset=UTF-8",
 
                 },
