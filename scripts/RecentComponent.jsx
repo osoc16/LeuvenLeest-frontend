@@ -6,8 +6,27 @@ Recent activity
 <Recent/>
 */
 var RecentComponent = React.createClass({
-    propTypes : {
-        places : React.PropTypes.array.isRequired
+
+    getInitialState : function() {
+        return {
+            recentPlaces : []
+        }
+    },
+
+    componentWillMount : function() {
+        var settings = {
+                'crossDomain': true,
+                'url': 'http://95.85.15.210/checkin/recent',
+                'method': 'GET',
+                'headers' : {
+                    'Authorization' : sessionStorage.getItem('oAuth_token'),
+                },
+            }
+
+             $.ajax(settings)
+                .done(function (response, textStatus, xhr) {
+                     this.setState({recentPlaces : response});
+            }.bind(this));
     },
 
     render : function(){
@@ -15,8 +34,8 @@ var RecentComponent = React.createClass({
             <div className='recent-act home-row'>
                 <h3>Recent bezocht</h3>
                 <div className="location-row">
-                    {this.props.places.map(function(place){
-                    return <LocationRowComponent key={place.id} data={place} />
+                    {this.state.recentPlaces.map(function(place){
+                        return <LocationRowComponent key={place.id} data={place} />
                     })}
                 </div>
             </div>
