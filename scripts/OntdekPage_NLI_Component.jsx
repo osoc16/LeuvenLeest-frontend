@@ -10,7 +10,7 @@ Home/Ontdek page not logged-in
 */
 var OntdekPage_NLI_Component = React.createClass({
     render : function(){
-        if (true) {
+        if (sessionStorage.getItem('oAuth_token')) {
             return (<OntdekPage_LI_Component />);
         }
         return (

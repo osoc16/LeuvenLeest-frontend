@@ -23,16 +23,28 @@ import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
 
 var AuthorizationCheck = function(nextState, replace) {
-//    if (false) {
-//       //Endpooint says we aren't authenticated
-//       //Get new oAuth_token
-//       //IF not possible, go to login and delete oAuth_token
-//        replace({
-//          pathname: '/login',
-//          state: { nextPathname: nextState.location.pathname }
-//      })
+    var self = this;
+        var settings = {
+        'crossDomain': true,
+        'url': 'http://95.85.15.210/user/current',
+        'method': 'GET',
+        "headers": {
+            "Authorization": sessionStorage.getItem('oAuth_token'),
+        },
+    }
 
-//    }
+    $.ajax(settings)
+        .done(function (response, textStatus, xhr) {
+            if (response.oAuth_token) {
+                sessionStorage.setItem('oAuth_token', 'Bearer' + response.oAuth_token);
+            }
+            return true;
+        })
+        .fail(function(response, textStatus, xhr){
+            sessionStorage.removeItem('oAuth_token');
+            return document.location.href= '/';
+        });
+
 }
 
 var routes = (
