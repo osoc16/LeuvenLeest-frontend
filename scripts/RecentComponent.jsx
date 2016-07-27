@@ -34,7 +34,8 @@ var RecentComponent = React.createClass({
             return (
                 <div className='recent-act home-row'>
                     <h3>Recent bezocht</h3>
-                    <p className="not-yet">Je bent nog nergens ingecheckt.</p>
+                    <p className="not-yet">Je bent nog nergens ingecheckt.<br/>
+                    <i onClick={this.toCheckin}>Leuke leeslocaties rondom jou ontdekken?</i></p>
                 </div>
                 )
         }
@@ -48,6 +49,10 @@ var RecentComponent = React.createClass({
                 </div>
             </div>
         )
+    },
+
+    toCheckin : function(){
+        document.location.href = '/global';
     }
 })
 

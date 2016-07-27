@@ -189,8 +189,14 @@
 }
 
 p.not-yet {
-    text-align: center;
+    text-align: left;
     font-family: 'Suez One';
-    color: $dark-grey;
-    font-size: 1.3em;
+    color: rgba(39, 45, 44, 0.3);
+    font-size: 1.05em;
+    padding-left: 1.6em;
+
+    i {
+        font-style: normal;
+        color: $accent-blue-transp;
+    }
 }
