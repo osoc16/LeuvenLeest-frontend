@@ -45,6 +45,10 @@ var ListedLocationComponent = React.createClass({
         )
     },
 
+    redirect: function(){
+        document.location.href="/details/"+this.props.place.id;
+    },
+
     checkin : function(event) {
         var self = this;
         var settings = {
