@@ -5,7 +5,6 @@ var React = require('react');
     */
 var ProfielBlockComponent = React.createClass({
         render : function(){
-            console.log(this.props.user);
             var user = this.props.user;
             return (
                 <div className="profiel-block">
