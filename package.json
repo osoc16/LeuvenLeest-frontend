@@ -40,6 +40,7 @@
     "watchify": "3.4.0"
   },
   "dependencies": {
+    "jquery": "^3.1.0",
     "leaflet": "^0.7.7",
     "react-leaflet": "^0.12.1",
     "react-router": "^2.6.0"
