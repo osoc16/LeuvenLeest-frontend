@@ -21,19 +21,19 @@ module.exports = React.createClass({
                         <form>
                             <div className="register-form">
                                 <div className="form-field">
-                                    <label for="name">Naam</label>
+                                    <label htmlFor="name">Naam</label>
                                     <input name='name' type='text' onChange={this.handleChange} placeholder="John"/>
                                 </div>
                                 <div className="form-field">
-                                    <label for="email">E-mail</label>
+                                    <label htmlFor="email">E-mail</label>
                                     <input name='email' type='text' onChange={this.handleChange} placeholder="jouw.email@example.com"/>
                                 </div>
                                 <div className="form-field">
-                                    <label for="password">Paswoord</label>
+                                    <label htmlFor="password">Paswoord</label>
                                     <input name='password' type='password' onChange={this.handleChange} placeholder="******"/>
                                 </div>
                                 <div className="form-field">
-                                    <label for="confirm_password"></label>
+                                    <label htmlFor="confirm_password"></label>
                                     <input name='confirm_password' type='password' onChange={this.handleChange} placeholder="******"/>
                                 </div>
                             </div>
