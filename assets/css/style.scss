@@ -134,6 +134,12 @@ section {
 		font-size: 1em;
 		line-height: 1.2em;
 	}
+
+	br {
+		display: block;
+		height: 10px;
+		width: 100%;
+	}
 }
 
 .center-p {
@@ -152,4 +158,8 @@ a:hover {
 .fa {
 	margin-left: 10px;
 	margin-right: 10px;
+}
+
+#contact {
+	border-bottom: none;
 }

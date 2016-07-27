@@ -96,6 +96,10 @@ section {
     width: 100%;
     font-size: 1em;
     line-height: 1.2em; }
+  .dim br {
+    display: block;
+    height: 10px;
+    width: 100%; }
 
 .center-p {
   text-align: center; }
@@ -110,5 +114,8 @@ a:hover {
 .fa {
   margin-left: 10px;
   margin-right: 10px; }
+
+#contact {
+  border-bottom: none; }
 
 /*# sourceMappingURL=style.css.map */
