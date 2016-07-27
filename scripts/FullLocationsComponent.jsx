@@ -6,7 +6,7 @@ var ListedLocationComponent = require('./ListedLocationComponent.jsx');
 Locations on the whole screen
 <FullLocations/>
 */
-module.exports = React.createClass({
+var FullLocationsComponent = React.createClass({
 
     getInitialState : function() {
         return {
@@ -42,7 +42,6 @@ module.exports = React.createClass({
 
         $.ajax(settings)
             .done(function (response, textStatus, xhr) {
-                localStorage.setItem('oAuth_token', xhr.getResponseHeader('Authorization'));
                 self.setState({places: response});
             })
             .fail(function(response, textStatus, xhr){
@@ -51,3 +50,5 @@ module.exports = React.createClass({
         }
 
 })
+
+export default FullLocationsComponent;
