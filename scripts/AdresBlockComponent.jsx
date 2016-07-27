@@ -11,8 +11,7 @@ module.exports = React.createClass({
             <div className="adres-text">
             <h3>{this.props.data === undefined ? "" : this.props.data.name}</h3>
             <p>
-            {this.props.data === undefined ? "" : this.props.data.address}<br/>
-            3000
+            {this.props.data === undefined ? "" : this.props.data.address}<br/>            
             </p>
             </div>
             <div className="route-button">

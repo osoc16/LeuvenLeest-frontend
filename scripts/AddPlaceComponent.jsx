@@ -156,6 +156,8 @@ handleChange : function(event) {
 
         case 'address':
         this.setState({address : value});
+                this.getAddressByName();
+
         break;
 
         case 'openingHour':
@@ -190,7 +192,6 @@ getAddressByCoordinate : function(){
 
         else if(response.address.road !== undefined){
             var subAd = response.address.road .substring(0, response.address.road .indexOf('-'));
-
             address = response.address.road;
         }
 
@@ -205,8 +206,8 @@ getAddressByCoordinate : function(){
         if(response.address.postcode !== undefined)
             address+= ' '+response.address.postcode;
 
+        console.log(address);
         this.setState({address: address});
-        this.getAddressByName();
 
 
 
@@ -231,6 +232,8 @@ getAddressByName : function(){
 
      $.ajax(settings).done(function (response, textStatus, xhr) {
         this.setState({lat : response[0].boundingbox[0], lon : response[0].boundingbox[2]});
+        console.log("Response coordinate");
+        console.log(response);
         return response;
     }.bind(this))
     .fail(function(){
