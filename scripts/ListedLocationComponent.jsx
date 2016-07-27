@@ -29,7 +29,7 @@ var ListedLocationComponent = React.createClass({
         }
 
         return (
-            <div className="listed-location" style={style}>
+            <div className="listed-location" style={style} onClick={this.redirect} >
                 <div className="location-overlay"><img src="../assets/img/bluegradient-overlay.svg"/></div>
                 <div className="location-text">
                     <i>{this.props.place.category}</i>
