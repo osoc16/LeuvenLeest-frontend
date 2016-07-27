@@ -2,7 +2,7 @@ var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
 var HeadBarComponent  = require('./HeadBarComponent.jsx');
 
-module.exports = React.createClass({
+var RegisterComponent = React.createClass({
 
         getInitialState : function(){
             return {
@@ -79,7 +79,7 @@ module.exports = React.createClass({
             }
              $.ajax(settings)
                 .done(function (response, textStatus, xhr) {
-                    localStorage.setItem('oAuth_token', response.oAuth_token);
+                    sessionStorage.setItem('oAuth_token', response.oAuth_token);
                     document.location.href = '/';
 
                 })
@@ -88,3 +88,5 @@ module.exports = React.createClass({
                 });
         }
     })
+
+export default RegisterComponent;
