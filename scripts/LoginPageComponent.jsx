@@ -16,25 +16,33 @@ module.exports = React.createClass({
     render : function(){
         return (
             <div className="login-page">
-                <p className="back-button">
-                    <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
-                </p>
-                <span className="register-link">Registeren</span>
-                <h1>Welcome terug!</h1>
-                <h2>Fijn dat je er weer bent.</h2>
-                <form>
-                    <div className="login-form">
-                        <div className="form-field">
-                            <label htmlFor="email">E-mail</label>
-                            <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@example.be"/>
-                        </div>
-                        <div className="form-field">
-                            <label htmlFor="password">Paswoord</label>
-                            <input type='password' name='password' onChange={this.handleChange} placeholder="*****"/>
-                        </div>
+                <div className="page-content">
+                    <div className="benches">
+                        <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
                     </div>
-                    <button onClick={this.login}>Aanmelden</button>
-                </form>
+                    <div className="login-overlay">
+                        {/*<img src="../assets/img/overlay_black.svg"/>*/}
+                    </div>
+                    <p className="back-button">
+                        <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
+                    </p>
+                    <span className="register-link">Registeren</span>
+                    <h1>Welcome terug!</h1>
+                    <h2>Fijn dat je er weer bent.</h2>
+                    <form>
+                        <div className="login-form">
+                            <div className="form-field">
+                                <label htmlFor="email">E-mail</label>
+                                <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@example.be"/>
+                            </div>
+                            <div className="form-field">
+                                <label htmlFor="password">Paswoord</label>
+                                <input type='password' name='password' onChange={this.handleChange} placeholder="*****"/>
+                            </div>
+                        </div>
+                        <button onClick={this.login}>Aanmelden</button>
+                    </form>
+                </div>
                 <NavbarComponent/>
             </div>
             )
