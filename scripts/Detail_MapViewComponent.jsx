@@ -14,7 +14,6 @@ var Detail_MapViewComponent = React.createClass({
    getInitialState: function() {
     return {
         place : {},
-        detailLocation: {},
     };
 },
 
