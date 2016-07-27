@@ -77,19 +77,17 @@ var LoginPageComponent = React.createClass({
         var self = this;
          var settings = {
             'crossDomain': true,
-            //'url': 'http://95.85.15.210/auth/login',
-            'url' : 'http://localhost:8000/auth/login',
+            'url': 'http://95.85.15.210/auth/login',
             "method": "POST",
             'data' : {
                 'email' : this.state.email,
-                'password' : this.state.password
+                'password' : this.state.password,
             }
         }
 
         $.ajax(settings)
         .done(function (response, textStatus, xhr) {
-            sessionStorage.setItem('oAuth_token', response.oAuth_token);
-            console.log(response);
+            sessionStorage.setItem('oAuth_token', 'Bearer ' + response.oAuth_token);
             document.location.href = '/';
         }.bind(this))
         .fail(function(response, textStatus, xhr){
