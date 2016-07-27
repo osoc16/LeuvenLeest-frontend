@@ -50,7 +50,7 @@ render: function(){
 
             {this.state.places.map(function(object, i) {
                 /*The places won't be showed if you're in the detail page*/
-                if(this.props.data){
+                if(this.props.data === undefined){
                     var pos = [object.latitude, object.longitude];
                     return (
                         <Marker key={object.id} position={pos} opacity={0.6}>
