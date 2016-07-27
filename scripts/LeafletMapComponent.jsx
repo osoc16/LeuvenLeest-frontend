@@ -1,6 +1,7 @@
 var React = require('react');
 import { Map, Marker, Popup, TileLayer } from 'react-leaflet';
 
+
 /*Map component */
 var idPos = 0;
 var LeafletMapComponent = React.createClass({
@@ -34,6 +35,7 @@ var LeafletMapComponent = React.createClass({
 },
 
 render: function(){
+
     if (this.state.ready) {
         return (
             <div className={this.props.divClass}>
@@ -49,34 +51,44 @@ render: function(){
             </Marker>
 
             {this.state.places.map(function(object, i) {
-                /*The places won't be showed if you're in the detail page*/
-                if(this.props.data === undefined){
-                    var pos = [object.latitude, object.longitude];
-                    return (
-                        <Marker key={object.id} position={pos} opacity={0.6}>
-                        <Popup>
-                        <span><h4>{object.name}</h4> <i> {object.address}</i>
-                        <br/>
-                        <a href={'/details/'+object.id}>Click for the detail</a>
-                        </span>
-                        </Popup>
-                        </Marker>
-                        );
-                }else{
-                 var pos = [this.props.data.latitude, this.props.data.longitude];
-                 return (
-                    <Marker key={object.id} position={pos} opacity={0.9} >
-                    <Popup>
-                    <span><h4>{this.props.data.name}</h4> <i> {this.props.data.address}</i>
-                    <br/>
-                    <a href={'/details/'+this.props.data.id}>Click for the detail</a>
-                    </span>
-                    </Popup>
-                    </Marker>
-                    );
 
-             }
-         }.bind(this))}
+                console.log("addPlaceData");
+                console.log(this.props.addPlaceData);
+               
+                    /*The places won't be showed if you're in the detail page*/
+                    if(this.props.data === undefined && this.props.addPlaceData !== true ){
+                        var pos = [object.latitude, object.longitude];
+                        console.log("global");
+                        return (
+                            <Marker key={object.id} position={pos} opacity={0.6}>
+                            <Popup>
+                            <span><h4>{object.name}</h4> <i> {object.address}</i>
+                            <br/>
+                            <a href={'/details/'+object.id}>Click for the detail</a>
+                            </span>
+                            </Popup>
+                            </Marker>
+                            );
+                    }else{
+                        if(this.props.addPlaceData !== true){
+                        console.log("detail");
+                        var pos = [this.props.data.latitude, this.props.data.longitude];
+                        return (
+                            <Marker key={object.id} position={pos} opacity={0.9} >
+                            <Popup>
+                            <span><h4>{this.props.data.name}</h4> <i> {this.props.data.address}</i>
+                            <br/>
+                            <a href={'/details/'+this.props.data.id}>Click for the detail</a>
+                            </span>
+                            </Popup>
+                            </Marker>
+                            );
+                    }}
+                
+
+
+            }
+            .bind(this))}
             </Map>
             </div>
             );

@@ -1,4 +1,5 @@
 var React = require('react');
+var LeafletMapComponent = require('./LeafletMapComponent.jsx');
 
 var categoryId={
     'Park' : 1,
@@ -9,7 +10,7 @@ var categoryId={
 
 
 module.exports = React.createClass({
- getInitialState : function(){
+   getInitialState : function(){
     this.getEmail();
     return {
         type : '',
@@ -41,7 +42,9 @@ getEmail : function(){
 
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
-        self.setState({email : response.email});
+        self.setState({email : response.data.email});
+        console.log(response.data.email);
+        console.log(response);
         return response;
     })
     .fail(function(){
@@ -75,43 +78,49 @@ handleCoordinate : function(position) {
 
 render : function() {
     var pos = this.getCoordinate();
-    return (
-        <div>
-            <form>
-                <label>
-                    Type :
-                </label>
-                <input id='type' name='suggest' list='suggestions' onChange={this.handleChange} />
-                <datalist id='suggestions'>
-                <option value='College library' />
-                <option value='Coffee shop' />
-                <option value='Park' />
-                <option value='Library' />
-                </datalist>
 
-                <br/>
-                <label>
-                    Name :
-                </label>
-                <input name='name' type='text' onChange={this.handleChange} /> <br/>
-                <label>
-                    Adress :
-                </label>
-                <input name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
-                <label>
-                    Opening hour :
-                </label>
-                <br/>
-                <label>
-                    Tot:
-                </label>
-                <input type='number' name='tot' min='00' max='23' step='1' onChange={this.handleChange}/>
-                <label>
-                    van:
-                </label>
-                <input type='number' name ='van' min='00' max='23' step='1' onChange={this.handleChange}/>
-                <input type='submit' onClick={this.addPlace} />
-            </form>
+    return (
+        <div className="detail-map">
+        <div className="map-container-small">
+        <LeafletMapComponent addPlaceData = {true} divClass='map-container-small-leaftlet'/>
+        </div>
+
+
+        <form>
+        <label>
+        Type :
+        </label>
+        <input id='type' name='suggest' list='suggestions' onChange={this.handleChange} />
+        <datalist id='suggestions'>
+        <option value='College library' />
+        <option value='Coffee shop' />
+        <option value='Park' />
+        <option value='Library' />
+        </datalist>
+
+        <br/>
+        <label>
+        Name :
+        </label>
+        <input name='name' type='text' onChange={this.handleChange} /> <br/>
+        <label>
+        Adress :
+        </label>
+        <input name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
+        <label>
+        Opening hour :
+        </label>
+        <br/>
+        <label>
+        Tot:
+        </label>
+        <input type='number' name='tot' min='00' max='23' step='1' onChange={this.handleChange}/>
+        <label>
+        van:
+        </label>
+        <input type='number' name ='van' min='00' max='23' step='1' onChange={this.handleChange}/>
+        <input type='submit' onClick={this.addPlace} />
+        </form>
         </div>
         );
 
@@ -260,6 +269,7 @@ addPlace : function(event) {
 
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
+        console.log(response);
         document.location.href = '/';
     })
     .fail(function(){
