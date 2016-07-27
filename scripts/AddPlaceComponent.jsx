@@ -1,5 +1,6 @@
 var React = require('react');
 var LeafletMapComponent = require('./LeafletMapComponent.jsx');
+var Success_AddLoc_Component = require('./Success_AddLoc_Component.jsx');
 
 var categoryId={
     'Park' : 1,
@@ -9,7 +10,11 @@ var categoryId={
 };
 
 
-module.exports = React.createClass({
+
+
+
+var AddPlaceComponent = React.createClass({
+
    getInitialState : function(){
     this.getEmail();
     return {
@@ -26,6 +31,8 @@ module.exports = React.createClass({
         tot: '',
         van : '',
         openingHour : '',
+        succesfullCreation : false,
+        createdAPlace : {},
     }
 },
 
@@ -78,6 +85,9 @@ handleCoordinate : function(position) {
 
 render : function() {
     var pos = this.getCoordinate();
+
+    if(this.state.succesfullCreation)
+        return <Success_AddLoc_Component place={this.state.createdAPlace} lat={this.state.lat} lon={this.state.lon}/>
 
     return (
         <div className="detail-map">
@@ -165,7 +175,6 @@ handleChange : function(event) {
 
 },
 getAddressByCoordinate : function(){
-    var self= this;
 
     var settings = {
         'crossDomain': true,
@@ -196,14 +205,13 @@ getAddressByCoordinate : function(){
         if(response.address.postcode !== undefined)
             address+= ' '+response.address.postcode;
 
-        self.setState({address: address});
-
-        self.getAddressByName();
+        this.setState({address: address});
+        this.getAddressByName();
 
 
 
         return response;
-    })
+    }.bind(this))
     .fail(function(){
         console.log('fail');
     });
@@ -212,8 +220,6 @@ getAddressByCoordinate : function(){
 },
 
 getAddressByName : function(){
-
-    var self= this;
 
     var res = this.state.address.replace(new RegExp(' ', 'g'), '+');
 
@@ -224,9 +230,9 @@ getAddressByName : function(){
     }
 
      $.ajax(settings).done(function (response, textStatus, xhr) {
-        self.setState({lat : response[0].boundingbox[0], lon : response[0].boundingbox[2]});
+        this.setState({lat : response[0].boundingbox[0], lon : response[0].boundingbox[2]});
         return response;
-    })
+    }.bind(this))
     .fail(function(){
         console.log('fail the lookup');
 
@@ -263,17 +269,27 @@ addPlace : function(event) {
             'categoryId' : this.state.categoryId,
             'openingHour' : this.state.openingH,
             },
-
-
     }
 
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
         console.log(response);
-        document.location.href = '/';
-    })
+        console.log(textStatus);
+
+        if(response.data !==undefined){
+           // document.location.href = '/';
+           this.setState({createdAPlace : JSON.parse(response.data)})
+           this.setState({succesfullCreation : true}); 
+
+       }
+
+
+   }.bind(this))
     .fail(function(){
         console.log('fail');
     });
 }
 });
+
+
+export default AddPlaceComponent;
