@@ -19,7 +19,9 @@ body {
 header {
   height: 300px;
   width: 80%;
-  position: relative; }
+  position: relative;
+  margin-left: auto;
+  margin-right: auto; }
   header h1 {
     position: relative;
     margin-left: auto;
@@ -40,7 +42,9 @@ header {
     color: #979FA0; }
 
 section {
-  width: 80%; }
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto; }
   section p {
     font-family: 'Open Sans';
     color: #F2F4F4;
