@@ -52,7 +52,7 @@ var LoginPageComponent = React.createClass({
                                 <input type='text' name='email' onChange={this.handleChange} placeholder="Typ e-mailadres"/>
                             </div>
                             <div className="form-field">
-                                <label htmlFor="password">Paswoord</label>
+                                <label htmlFor="password">Wachtwoord</label>
                                 <input type='password' name='password' onChange={this.handleChange} placeholder="*****"/>
                             </div>
                         </div>

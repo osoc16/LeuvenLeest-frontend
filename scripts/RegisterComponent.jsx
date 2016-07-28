@@ -28,7 +28,7 @@ var RegisterComponent = React.createClass({
                                     <input name='email' type='text' onChange={this.handleChange} placeholder='Typ e-mailadres'/>
                                 </div>
                                 <div className='form-field'>
-                                    <label htmlFor='password'>Paswoord</label>
+                                    <label htmlFor='password'>Wachtwoord</label>
                                     <input name='password' type='password' onChange={this.handleChange} placeholder='******'/>
                                 </div>
                                 <div className='form-field'>
@@ -36,7 +36,7 @@ var RegisterComponent = React.createClass({
                                     <input name='confirm_password' type='password' onChange={this.handleChange} placeholder='******'/>
                                 </div>
                             </div>
-                            <button onClick={this.register}>Aanmelden</button>
+                            <button onClick={this.register}>Registreer</button>
                         </form>
                     </div>
                     <NavbarComponent/>
