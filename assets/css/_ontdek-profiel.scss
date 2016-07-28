@@ -175,9 +175,9 @@
 }
 
 .ontdek-login {
-    display: inline-block;
+    display: block;
     color: $accent-blue;
-    position: relative;
-    bottom: 1.1em;
-    left: 14em;
+    position: absolute;
+    right: 1em;
+    top: 2.75em;
 }

@@ -18,7 +18,7 @@ var NLI_WelcomeBlockComponent = React.createClass({
             <div className="ontdek-aanmelden">
             <div className="aanmelden-button">
             <i className="lines-icon icon-user-follow"></i>
-            <p><a onClick={this.toRegister}>Aanmelden met email</a></p>
+            <p><a onClick={this.toRegister}>Registreer</a></p>
             </div>
             </div>
             </div>
