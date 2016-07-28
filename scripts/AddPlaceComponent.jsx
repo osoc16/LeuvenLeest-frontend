@@ -296,7 +296,7 @@ addPlace : function(event) {
         if(response.data !==undefined){
            // document.location.href = '/';
            this.setState({createdAPlace : JSON.parse(response.data)})
-           this.setState({succesfullCreation : true}); 
+           this.setState({succesfullCreation : true});   
        }
 
 
