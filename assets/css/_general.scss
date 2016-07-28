@@ -200,7 +200,8 @@ body {
     .confirm {
         @extend .back-button;
         @extend .icon-map;
-        top: .5em;
+        width: 5em;
+        left: 17.5em;
     }
 }
 

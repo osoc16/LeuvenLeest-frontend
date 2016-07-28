@@ -1,6 +1,8 @@
 var React = require('react');
 var LeafletMapComponent = require('./LeafletMapComponent.jsx');
 var Success_AddLoc_Component = require('./Success_AddLoc_Component.jsx');
+var NavbarComponent = require('./NavbarComponent.jsx');
+var HeadBarComponent = require('./HeadBarComponent.jsx');
 
 var categoryId={
     'Park' : 1,
@@ -86,17 +88,21 @@ render : function() {
         return <Success_AddLoc_Component place={this.state.createdAPlace} lat={this.state.lat} lon={this.state.lon}/>
 
     return (
+        <div className="addPlace-page">
+        <HeadBarComponent callback={this.addPlace}/>
+        <div className="page-content">
+        <form>
         <div className="detail-map">
         <div className="map-container-small">
         <LeafletMapComponent addPlaceData = {true} divClass='map-container-small-leaftlet'/>
         </div>
 
-
-        <form>
-        <label>
+        <div className="name-n-checkin">
+        <div className="location-text">
+        {/*<label>
         Type :
-        </label>
-        <input id='type' name='suggest' list='suggestions' onChange={this.handleChange} />
+        </label>*/}
+        <input id='type' name='suggest' list='suggestions' onChange={this.handleChange} placeholder="Type"/>
         <datalist id='suggestions'>
         <option value='College library' />
         <option value='Coffee shop' />
@@ -105,28 +111,39 @@ render : function() {
         </datalist>
 
         <br/>
-        <label>
+        {/*<label>
         Name :
-        </label>
-        <input name='name' type='text' onChange={this.handleChange} /> <br/>
+        </label>*/}
+        <input id="locname" name='name' type='text' onChange={this.handleChange} placeholder="Name"/> <br/>
+        </div>
+        </div>
+        </div>
+
+        <div className="adres-block">
         <label>
-        Adress :
+        <h3>Adres</h3>
         </label>
-        <input name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
+        <input id="adres-field" name='address' type='text' value={this.state.address} onChange={this.handleChange} /> <br/>
+        </div>
+        <div className="openingsuren">
         <label>
-        Opening hour :
+        <h3>Openingsuren</h3>
         </label>
-        <br/>
-        <label>
+        {/*<label>
         Tot:
-        </label>
-        <input type='number' name='tot' min='00' max='23' step='1' onChange={this.handleChange}/>
-        <label>
+        </label>*/}
+        <div className="op-text">
+        <input type='number' name='tot' min='00' max='23' step='1' onChange={this.handleChange} placeholder="00"/>
+        {/*<label>
         van:
-        </label>
-        <input type='number' name ='van' min='00' max='23' step='1' onChange={this.handleChange}/>
-        <input type='submit' onClick={this.addPlace} />
+        </label>*/}
+         -
+        <input type='number' name ='van' min='00' max='23' step='1' onChange={this.handleChange} placeholder="24"/>
+        </div>
+        </div>
         </form>
+        </div>
+        <NavbarComponent/>
         </div>
         );
 
@@ -152,8 +169,6 @@ handleChange : function(event) {
 
         case 'address':
         this.setState({address : value});
-                this.getAddressByName();
-
         break;
 
         case 'openingHour':
@@ -188,6 +203,7 @@ getAddressByCoordinate : function(){
 
         else if(response.address.road !== undefined){
             var subAd = response.address.road .substring(0, response.address.road .indexOf('-'));
+
             address = response.address.road;
         }
 
@@ -202,8 +218,8 @@ getAddressByCoordinate : function(){
         if(response.address.postcode !== undefined)
             address+= ' '+response.address.postcode;
 
-        console.log(address);
         this.setState({address: address});
+        this.getAddressByName();
 
 
 
@@ -228,8 +244,6 @@ getAddressByName : function(){
 
      $.ajax(settings).done(function (response, textStatus, xhr) {
         this.setState({lat : response[0].boundingbox[0], lon : response[0].boundingbox[2]});
-        console.log("Response coordinate");
-        console.log(response);
         return response;
     }.bind(this))
     .fail(function(){
@@ -279,7 +293,6 @@ addPlace : function(event) {
            // document.location.href = '/';
            this.setState({createdAPlace : JSON.parse(response.data)})
            this.setState({succesfullCreation : true});
-
        }
 
 

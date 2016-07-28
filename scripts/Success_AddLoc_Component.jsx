@@ -1,14 +1,15 @@
 var React = require('react');
+var LeafletMapComponent = require('./LeafletMapComponent.jsx');
 var Success_CIn_Component = require('./Success_CIn_Component.jsx');
 
-
-/*
-Success page (Added location)
-<Success_AddLoc/>
-*/
+var categoryId={
+    'Park' : 1,
+    'Coffee shop' : 2,
+    'College library' : 3,
+    'Library' : 4,
+};
 
 var Success_AddLoc_Component = React.createClass({
-
     propTypes :
     {
         place : React.PropTypes.object.isRequired,
@@ -45,15 +46,6 @@ var Success_AddLoc_Component = React.createClass({
        console.log('fail');
    });
 },
-
-
-
-close : function() {
-    document.location.href = '/global';
-
-},
-
-
 render : function(){
 
     if(this.state.succesfullCheckin)
@@ -73,7 +65,13 @@ render : function(){
         )
 },
 
-})
+
+close : function() {
+    document.location.href = '/global';
+},
+
+
+});
 
 
 export default Success_AddLoc_Component;

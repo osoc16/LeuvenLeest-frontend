@@ -1,0 +1,194 @@
+.detail-map {
+    height: 52vh;
+    position: relative;
+    margin-top: 4.05em;
+    border-bottom: 1px solid $dark-grey;
+
+    .map-container-small {
+        height: 100%;
+        margin: 0;
+    }
+}
+
+.name-n-checkin {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 27%;
+    background-color: $primary-white-transp;
+
+    #type {
+        font-size: 1.1em;
+        font-weight: 100;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        border-bottom: 1px solid $light-grey;
+    }
+
+    #locname {
+        font-family: 'Suez One';
+        font-weight: 300;
+        font-size: 1.8em;
+        margin-top: .2em;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        border-bottom: 1px solid $light-grey;
+    }
+
+    *:focus {
+        border-bottom: 1px solid $accent-blue;
+        color: $accent-blue;
+        font-weight: 600;
+        outline: none;
+    }
+
+    i {
+        font-size: 1.1em;
+        font-weight: 100;
+    }
+
+    p {
+        font-family: 'Suez One';
+        font-weight: 300;
+        font-size: 1.8em;
+        margin-top: .2em;
+    }
+
+    .location-text {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+    }
+
+    .checkin {
+        color: $primary-white;
+        font-size: .4em;
+        background-color: $accent-blue;
+        width: 11.2em;
+    }
+
+    .button-content {
+        margin-top: 1.2em;
+    }
+
+    .button-content .icon-eyeglass {
+        font-size: 5.6em;
+    }
+
+    .button-content p {
+        font-family: 'Open Sans';
+        font-size: 1.8em;
+    }
+}
+
+.detail-infos {
+    height: 12.4em;
+}
+
+.adres-block {
+    height: 50%;
+    border-bottom: 1px solid $light-grey;
+    font-size: 2em;
+    position: relative;
+    padding-left: .5em;
+    padding-bottom: 1em;
+
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    h3 {
+        color: $dark-grey;
+        margin-bottom: .5em;
+        font-size: .45em;
+        font-weight: 600;
+    }
+
+    #adres-field {
+        font-size: .5em;
+        font-weight: 100;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        border-bottom: 1px solid $light-grey;
+        width: 90%;
+    }
+
+    #adres-field:focus {
+        border-bottom: 1px solid $accent-blue;
+        color: $accent-blue;
+        font-weight: 600;
+        outline: none;
+    }
+
+    .route-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+        height: 100%;
+        color: $dark-grey;
+        text-align: center;
+        width: 5.6em;
+        font-size: .4em;
+        height: 100%;
+    }
+
+    .route-button .lines-icon {
+        font-size: 3em;
+    }
+
+    .route-button p {
+        font-size: .8em;
+    }
+
+    .route-content {
+        position: relative;
+        top: 1.3em;
+    }
+
+    .adres-text {
+        position: relative;
+        top: .6em;
+        left: .7em;
+    }
+}
+
+.openingsuren {
+    @extend .adres-block;
+    border: none;
+
+    .op-text {
+        @extend .adres-text;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        top: 0;
+        left: 0;
+    }
+
+    .op-text input{
+        font-size: .5em;
+        font-weight: 100;
+        border: none;
+        background-color: rgba(0,0,0,0);
+        border-bottom: 1px solid $light-grey;
+        margin-right: .5em;
+        margin-left: .5em;
+        text-align: center;
+    }
+}
+
+.add-place {
+    .checkin {
+        display: none;
+    }
+
+    .route-button {
+        display: none;
+    }
+
+    .detail-map {
+        margin-top: 16em;
+        height: calc(52vh - 6em);
+    }
+}
