@@ -18,21 +18,21 @@
 .start-button {
     color: $primary-white;
     width: 50%;
-    border: .2em solid $primary-white;
-    height: 7em;
-    border-radius: 1em;
+    border: .12em solid $primary-white;
+    height: 2.8em;
+    border-radius: .5em;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10em;
+    margin-top: 3em;
 
     .button-content {
         position: relative;
-        bottom: 3.5em;
+        bottom: 1.2em;
     }
 
     p {
         display: inline-block;
-        font-size: 4em;
+        font-size: 1.5em;
         font-weight: 600;
         position: relative;
         bottom: 0em;
@@ -40,8 +40,8 @@
 
     .lines-icon {
         display: inline-block;
-        font-size : 4em;
-        font-weight: 700;
+        font-size : 1.5em;
+        font-weight: 800;
         position: relative;
         left: .3em;
         top: .15em;
@@ -49,12 +49,16 @@
 }
 
 .add-home {
-    font-size: 3em;
+    font-size: 1em;
     color: $light-grey;
     position: fixed;
     bottom: 0;
-    background: url("../css/img/oval.svg");
-    background-repeat: no-repeat;
+    left: 0;
+    right: 0;
+    background: url("../../assets/img/oval.svg") no-repeat;
+    background-size: 100%;
+    width: 100%;
+    
 
     p {
         width: 59%;
@@ -91,7 +95,7 @@
 
 .logo-small {
     opacity: 0.4;
-    height: 9em;
-    margin-left: 5em;
-    margin-top: 5em;
+    height: 3em;
+    margin-left: 2em;
+    margin-top: 2em;
 }

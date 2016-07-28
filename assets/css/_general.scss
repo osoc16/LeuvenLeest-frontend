@@ -9,6 +9,7 @@ body {
     padding: 0;
     height: 100%;
     overflow: hidden;
+    
 }
 
 #main {
@@ -32,7 +33,8 @@ body {
     display: flex;
     flex-direction: column;
     order: 3;
-
+    padding-bottom: 3.5em;
+    
     * {
         flex-shrink: 0;
     }
@@ -67,16 +69,18 @@ body {
 }
 
 .navbar {
+    position: fixed;
+    bottom: 0;
     width: 100%;
-    height: 9em;
+    height: 3.5em;
     background-color: $primary-white;
     text-align: center;
     order: 6;
     flex-grow: 1;
-    border-top: 2px solid $light-grey;
+    border-top: 1px solid $light-grey;
 
     .lines-icon {
-        font-size: 5em;
+        font-size: 1.8em;
         display: inline-block;
         margin-top: .1em;
     }
@@ -88,28 +92,27 @@ body {
     .highlight {
         color: $accent-blue;
     }
+
+    .highlightMap {
+        color: $accent-blue;
+    }
+    .highlightProfiel {
+        color: $accent-blue;
+    }
+    .highlightHome {
+        color: $accent-blue;
+    }
 }
 
-.swiper {
+.separation {
     width: 100%;
     margin: 0;
-    height: 1.5em;
+    height: .4em;
     background-color: $light-grey;
     text-align: center;
     order: 2;
+    flex-shrink: 0;
 }
-
-.swiper-center {
-    width: 5%;
-    margin-left: auto;
-    margin-right: auto;
-    background-color: $primary-white;
-    height: .8em;
-    margin-top: .3em;
-    display: inline-block;
-    border-radius: .01em;
-}
-
 
 .nav-button {
     font-family: 'Open Sans';
@@ -117,17 +120,17 @@ body {
     text-align: center;
     color: $dark-grey;
     width: 25%;
-    margin-top: .5em;
+    margin-top: .3em;
 
     p {
-        font-size: 1.8em;
+        font-size: .7em;
         margin-top: 0;
         display: block;
     }
 }    
 
 .headbar {
-    height: 9em;
+    height: 3em;
     background-color: $clear-grey;
     border-bottom: 1px solid $light-grey;
     font-family: 'Suez One';
@@ -141,19 +144,19 @@ body {
     right: 0;
     order: 1;
 
-    .lines-icon {
+    .view-icon {
         display: inline-block;
         margin-top: 0;
         position: relative;
         top: .2em;
-        font-size: 5em;
+        font-size: 2em;
         margin-right: .3em;
     }
 
     .title-text {
         display: inline-block;
         margin-top: .8em;
-        font-size: 3em;
+        font-size: 1em;
     }
 
     .icon-map {
@@ -171,6 +174,7 @@ body {
     }
 
     .icon-plus {
+        @extend .view-icon;
         position: absolute;
         left: .6em;
         top: .6em;
@@ -178,22 +182,26 @@ body {
 
     .back-button {
         font-family: 'Open Sans';
-        font-size: 2.5em;
+        font-size: 1em;
         position: absolute;
         color: $accent-blue;
+        top: .7em;
+        left: 1em;
     }
 
     .icon-arrow-left {
         font-size: 1.2em;
         font-weight: 900;
         position: relative;
-        left: .3em;
+        left: 0em;
+        top: .15em;
     }
 
     .confirm {
         @extend .back-button;
         @extend .icon-map;
-        top: .5em;
+        width: 5em;
+        left: 17.5em;
     }
 }
 
