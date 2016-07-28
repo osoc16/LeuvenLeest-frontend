@@ -9,10 +9,6 @@ var categoryId={
     'Library' : 4,
 };
 
-
-
-
-
 var AddPlaceComponent = React.createClass({
 
    getInitialState : function(){
@@ -279,10 +275,10 @@ addPlace : function(event) {
         console.log(response);
         console.log(textStatus);
 
-        if(response.data !==undefined){
+        if(response.data){
            // document.location.href = '/';
            this.setState({createdAPlace : JSON.parse(response.data)})
-           this.setState({succesfullCreation : true}); 
+           this.setState({succesfullCreation : true});
 
        }
 

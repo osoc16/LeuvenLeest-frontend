@@ -9,7 +9,7 @@ Success page (Added location)
 
 var Success_AddLoc_Component = React.createClass({
 
-    propTypes : 
+    propTypes :
     {
         place : React.PropTypes.object.isRequired,
         lat : React.PropTypes.string.isRequired,
@@ -18,53 +18,39 @@ var Success_AddLoc_Component = React.createClass({
 
     getInitialState : function(){
         return {
-         succesfullCheckin : false,   
+         succesfullCheckin : false,
      }
  },
-
  checkin : function(event) {
-    var settings = {
-        'crossDomain': true,
-        'url': 'http://95.85.15.210/checkin/',
-        'method': 'PUT',
-        'headers' : {
-            'Authorization' : sessionStorage.getItem('oAuth_token')
-        },
-        'data' : {
-            'id' : this.props.place.id,
-            'longitude' : this.props.lon,
-            'latitude': this.props.lat
-        }
+   var settings = {
+       'crossDomain': true,
+       'url': 'http://95.85.15.210/checkin/',
+       'method': 'PUT',
+       'headers' : {
+           'Authorization' : sessionStorage.getItem('oAuth_token')
+       },
+       'data' : {
+           'id' : this.props.place.id,
+           'longitude' : this.props.lon,
+           'latitude': this.props.lat
+       }
+   }
 
-module.exports = React.createClass({
-    render : function(){
-        return (
-            <div className="success-page" onClick={this.close}>
-            <div className="benches">
-                <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
-            </div>
-            <div className="success-overlay"></div>
-            <i className="lines-icon icon-close"></i>
-            <i className="lines-icon icon-check"></i>
-            <p>Nieuwe Locatie aangemaakt</p>
-            <h2>Sint-Donatuspark</h2>
-            </div>
-        )
-    },
+   $.ajax(settings)
+   .done(function (response, textStatus, xhr) {
+       this.setState({succesfullCheckin : true });
 
-    close : function() {
-        document.location.href = '/global';
+   }.bind(this))
+   .fail(function(response, textStatus, xhr){
+       console.log('fail');
+   });
+},
 
-    }
 
-    $.ajax(settings)
-    .done(function (response, textStatus, xhr) {
-        this.setState({succesfullCheckin : true });
 
-    }.bind(this))
-    .fail(function(response, textStatus, xhr){
-        console.log('fail');
-    });
+close : function() {
+    document.location.href = '/global';
+
 },
 
 
