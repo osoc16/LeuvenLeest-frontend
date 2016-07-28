@@ -9,7 +9,7 @@ body {
     padding: 0;
     height: 100%;
     overflow: hidden;
-    
+
 }
 
 #main {
@@ -34,7 +34,7 @@ body {
     flex-direction: column;
     order: 3;
     padding-bottom: 3.5em;
-    
+
     * {
         flex-shrink: 0;
     }
@@ -78,6 +78,7 @@ body {
     order: 6;
     flex-grow: 1;
     border-top: 1px solid $light-grey;
+    z-index: 9999;
 
     .lines-icon {
         font-size: 1.8em;
@@ -127,7 +128,7 @@ body {
         margin-top: 0;
         display: block;
     }
-}    
+}
 
 .headbar {
     height: 3em;
