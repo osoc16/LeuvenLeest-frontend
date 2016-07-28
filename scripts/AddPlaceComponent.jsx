@@ -38,7 +38,7 @@ getEmail : function(){
     var self = this;
     var settings = {
         'crossDomain': true,
-        'url': 'http://95.85.15.210/user/current',
+        'url': '//95.85.15.210/user/current',
         'method': 'GET',
         'headers': {
                'Authorization': sessionStorage.getItem('oAuth_token'),       
@@ -238,7 +238,7 @@ getAddressByName : function(){
 
     var settings = {
         'crossDomain': true,
-        'url': 'http://nominatim.openstreetmap.org/?format=json&addressdetails=1&q='+res,
+        'url': '//nominatim.openstreetmap.org/?format=json&addressdetails=1&q='+res,
         'method': 'GET',
     }
 
@@ -265,7 +265,7 @@ addPlace : function(event) {
 
     var settings = {
         'crossDomain': true,
-        'url': 'http://95.85.15.210/places/add',
+        'url': '//95.85.15.210/places/add',
         'method': 'PUT',
         'headers': {
                'Authorization':  sessionStorage.getItem('oAuth_token'),       

@@ -67,7 +67,7 @@ var RegisterComponent = React.createClass({
             event.preventDefault();
             var settings = {
                 'crossDomain': true,
-                'url': 'http://95.85.15.210/auth/register',
+                'url': '//95.85.15.210/auth/register',
                 'method': 'PUT',
                 'data': {
                     'name' : this.state.name,

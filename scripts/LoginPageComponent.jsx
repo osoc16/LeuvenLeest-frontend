@@ -85,7 +85,7 @@ var LoginPageComponent = React.createClass({
         var self = this;
          var settings = {
             'crossDomain': true,
-            'url': 'http://95.85.15.210/auth/login',
+            'url': '//95.85.15.210/auth/login',
             "method": "POST",
             'data' : {
                 'email' : this.state.email,

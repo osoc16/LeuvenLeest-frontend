@@ -27,7 +27,7 @@ var AuthorizationCheck = function(nextState, replace) {
     var self = this;
         var settings = {
         'crossDomain': true,
-        'url': 'http://95.85.15.210/user/current',
+        'url': '//95.85.15.210/user/current',
         'method': 'GET',
         "headers": {
             "Authorization": sessionStorage.getItem('oAuth_token'),
