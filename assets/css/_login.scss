@@ -133,6 +133,12 @@
     flex-direction: row;
     z-index: 3;
     background-color: #fff;
+    border-radius: .5em .5em 0 0;
+
+    &:last-child {
+        border-radius: 0 0 .5em .5em;
+        border-top: 1px solid #ddd;
+    }
 
     label {
         width: 85px;
@@ -149,24 +155,21 @@
 
     input {
         width: calc(100% - 85px);
-        flex-grow: 0;
-        flex-shrink: 0;
+        // flex-grow: 0;
+        // flex-shrink: 0;
         border: none;
         font-family: 'Open Sans';
         font-size: 1em;
         padding-left: 5px;
         box-sizing: border-box;
         z-index: 3;
+        background: transparent;
     }
 
     input:focus {
         outline: none;
         color: $accent-blue;
         font-weight: 600;
-    }
-
-    input::placeholder {
-        font-style: italic;
     }
 }
 
