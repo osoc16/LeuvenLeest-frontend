@@ -9,6 +9,7 @@ $dark-grey            : #5F6666;
 $blueish-grey         : #657A78;
 $accent-blue          : #16C4B3;
 $accent-blue-transp   : rgba(22, 169, 179, 0.7);
+$accent-blue-darker   : rgba(22, 169, 179, 0.4);
 $accent-red           : #D32647;
 $accent-yellow        : #E5B10C;
 $accent-yellow-transp : rgba(229, 177, 12, 0.8);
@@ -163,12 +164,14 @@ a:hover {
 }
 
 .subteams {
-	width: 100%;
+	width: 95%;
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 	justify-content: space-between;
 	align-items: flex-start;
+	margin-left: auto;
+	margin-right;
 }
 
 .subt {
@@ -176,7 +179,13 @@ a:hover {
 	flex-grow: 0;
 
 	.fa-3x {
-		height: 3em;
+		text-align: center;
+		height: 1.3em;
+		margin-left: auto;
+		margin-right: auto;
+		width: 100%;
+		border-bottom: 1px solid $light-grey;
+		margin-bottom: .3em;
 	}
 }
 
@@ -192,7 +201,12 @@ a:hover {
 		font-size: 1.5em;
 		font-family: 'Open Sans';
 		font-weight: 600;
-		font-color: $light-grey;
+		font-color: $accent-blue-darker;
+		text-align: center;
+	}
+
+	p {
+		text-align: center;
 	}
 }
 
