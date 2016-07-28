@@ -1,119 +1,58 @@
-html * {
-  margin: 0;
-  padding: 0;
-  font-family: 'Open Sans'; }
+/*
+Error: Invalid CSS after "	align:items": expected ";", was ": flex-start;"
+        on line 188 of style.scss
 
-body {
-  height: 100%;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  background-color: #272D2C; }
-  body .benches {
-    max-width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: 0; }
+183: .members {
+184: 	display: flex;
+185: 	flex-direction: row;
+186: 	flex-wrap: wrap;
+187: 	justify-content: space-between;
+188: 	align:items: flex-start;
+189: 	width: 100%;
+190: 
+191: 	h3 {
+192: 		font-size: 1.5em;
+193: 		font-family: 'Open Sans';
 
-header {
-  width: 38%;
-  position: relative;
-  margin-left: auto;
-  margin-right: auto; }
-  header h1 {
-    position: relative;
-    margin-left: auto;
-    margin-right: auto;
-    font-family: 'Suez One';
-    color: #F2F4F4;
-    font-size: 3.5em;
-    font-weight: 400;
-    z-index: 3;
-    text-align: center; }
-  header h2 {
-    text-align: right;
-    z-index: 3;
-    font-family: 'Suez One';
-    font-size: 1.5em;
-    font-weight: 400;
-    color: #979FA0;
-    position: relative;
-    right: .2em;
-    bottom: .5em;
-    margin-bottom: 1em; }
-
-section {
-  width: 70%;
-  margin-left: auto;
-  margin-right: auto;
-  border-bottom: 1px solid rgba(242, 244, 244, 0.6);
-  margin-bottom: 2em; }
-  section p {
-    font-family: 'Open Sans';
-    color: #F2F4F4;
-    margin-top: 2em;
-    margin-bottom: 2em;
-    position: relative;
-    z-index: 3;
-    width: 80%;
-    line-height: 1.4em;
-    font-size: 1.2em;
-    margin-left: auto;
-    margin-right: auto; }
-  section h2 {
-    font-size: 1.6em;
-    font-weight: 400;
-    font-family: 'Suez One';
-    color: #16C4B3;
-    text-align: center;
-    position: relative;
-    z-index: 3; }
-
-.dimensions {
-  display: flex;
-  flex-direction: row;
-  width: 100%;
-  justify-content: space-between;
-  align-items: flex-start;
-  flex-wrap: nowrap; }
-
-.dim {
-  width: 30%;
-  flex-grow: 0;
-  flex-shrink: 0; }
-  .dim h3 {
-    font-size: 1.3em;
-    color: #16C4B3;
-    font-family: 'Suez One';
-    font-weight: 400;
-    text-align: center;
-    position: relative;
-    z-index: 3; }
-  .dim p {
-    margin-top: 1em;
-    margin-bottom: 1em;
-    width: 100%;
-    font-size: 1em;
-    line-height: 1.2em; }
-  .dim br {
-    line-height: 30px; }
-
-.center-p {
-  text-align: center; }
-
-a, a:active, a:visited {
-  text-decoration: none;
-  color: rgba(22, 169, 179, 0.7); }
-
-a:hover {
-  color: #16C4B3; }
-
-.fa {
-  margin-left: 10px;
-  margin-right: 10px; }
-
-#contact {
-  border-bottom: none; }
-
-/*# sourceMappingURL=style.css.map */
+Backtrace:
+style.scss:188
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1162:in `expected'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1098:in `expected'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1093:in `tok!'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:758:in `block in try_declaration'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1138:in `call'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:1138:in `rethrow'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:768:in `try_declaration'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:693:in `declaration_or_ruleset'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:658:in `block_child'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:650:in `block_contents'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:639:in `block'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:632:in `ruleset'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:657:in `block_child'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:650:in `block_contents'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:117:in `stylesheet'
+/usr/lib/ruby/vendor_ruby/sass/scss/parser.rb:42:in `parse'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:403:in `_to_tree'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:378:in `_render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/engine.rb:295:in `render_with_sourcemap'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:490:in `update_stylesheet'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:215:in `block in update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `each'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:209:in `update_stylesheets'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:470:in `on_file_changed'
+/usr/lib/ruby/vendor_ruby/sass/plugin/compiler.rb:328:in `block in watch'
+/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
+/usr/lib/ruby/vendor_ruby/listen/event/config.rb:23:in `call'
+/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:115:in `_process_changes'
+/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:19:in `block in loop_for'
+/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop'
+/usr/lib/ruby/vendor_ruby/listen/event/processor.rb:15:in `loop_for'
+/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:84:in `_wait_for_changes'
+/usr/lib/ruby/vendor_ruby/listen/event/loop.rb:42:in `block in setup'
+/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `call'
+/usr/lib/ruby/vendor_ruby/listen/internals/thread_pool.rb:6:in `block in add'
+*/
+body:before {
+  white-space: pre;
+  font-family: monospace;
+  content: "Error: Invalid CSS after \"	align:items\": expected \";\", was \": flex-start;\"\A         on line 188 of style.scss\A \A 183: .members {\A 184: 	display: flex;\A 185: 	flex-direction: row;\A 186: 	flex-wrap: wrap;\A 187: 	justify-content: space-between;\A 188: 	align:items: flex-start;\A 189: 	width: 100%;\A 190: \A 191: 	h3 {\A 192: 		font-size: 1.5em;\A 193: 		font-family: 'Open Sans';"; }

@@ -158,6 +158,56 @@ a:hover {
 	margin-right: 10px;
 }
 
-#contact {
+#team {
 	border-bottom: none;
+}
+
+.subteams {
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align-items: flex-start;
+}
+
+.subt {
+	flex-shrink: 0;
+	flex-grow: 0;
+
+	.fa-3x {
+		height: 3em;
+	}
+}
+
+.members {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-between;
+	align:items: flex-start;
+	width: 100%;
+
+	h3 {
+		font-size: 1.5em;
+		font-family: 'Open Sans';
+		font-weight: 600;
+		font-color: $light-grey;
+	}
+}
+
+#design, #comm, #pics {
+	width: 30%;
+}
+
+.member {
+	width: 100%;
+}
+
+#coders {
+	width: 100%;
+
+	.member {
+		width: 30%;
+	}
 }
