@@ -7,12 +7,16 @@ var OpeningsComponent = require('./OpeningsComponent.jsx');
     <LocationDetails/>
 */
 var LocationDetailsComponent = React.createClass({
+
+    propTypes : {
+        place : React.PropTypes.object.isRequired,
+    },
+
     render : function(){
-        //The state will always contain 1 row
         return (
             <div className="detail-infos">
-                <AdresBlockComponent data={this.props.data}/>
-                <OpeningsComponent data={this.props.data}/>
+                <AdresBlockComponent place={this.props.place}/>
+                <OpeningsComponent place={this.props.place}/>
             </div>
         )
     }
