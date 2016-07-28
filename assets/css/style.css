@@ -124,7 +124,8 @@ a:hover {
   justify-content: space-between;
   align-items: flex-start;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-top: 2em; }
 
 .subt {
   flex-shrink: 0;
@@ -159,6 +160,10 @@ a:hover {
 
 .member {
   width: 100%; }
+  .member p {
+    margin-top: 1em; }
+  .member .fa-2x {
+    font-size: 1.5em; }
 
 #coders {
   width: 100%; }
