@@ -26,7 +26,7 @@ var ProfielBlockComponent = React.createClass({
             var self = this;
             var settings = {
                 "crossDomain": true,
-                "url": "//95.85.15.210/auth/logout",
+                "url": "//leuvenleestapp.be/auth/logout",
                 "method": "POST",
                 "processData": false,
                 "contentType": false,

@@ -37,7 +37,7 @@ var ProfielComponent = React.createClass({
         var self = this;
         var settings = {
         'crossDomain': true,
-        'url': '//95.85.15.210/user/current',
+        'url': '//leuvenleestapp.be/user/current',
         'method': 'GET',
         "headers": {
             "Authorization": sessionStorage.getItem('oAuth_token'),

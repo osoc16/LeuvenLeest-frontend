@@ -67,7 +67,7 @@ var RegisterComponent = React.createClass({
             event.preventDefault();
             var settings = {
                 'crossDomain': true,
-                'url': '//95.85.15.210/auth/register',
+                'url': '//leuvenleestapp.be/auth/register',
                 'method': 'PUT',
                 'data': {
                     'name' : this.state.name,

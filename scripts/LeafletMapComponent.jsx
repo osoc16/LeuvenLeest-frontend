@@ -23,7 +23,7 @@ var LeafletMapComponent = React.createClass({
         var settings = {
             'async' : true,
             'crossDomain': true,
-            'url': '//95.85.15.210/places/' + this.state.coordinates.lat + '/' + this.state.coordinates.lon,
+            'url': '//leuvenleestapp.be/places/' + this.state.coordinates.lat + '/' + this.state.coordinates.lon,
             'method': 'GET',
         };
 

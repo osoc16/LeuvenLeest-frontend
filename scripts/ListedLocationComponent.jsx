@@ -58,7 +58,7 @@ var ListedLocationComponent = React.createClass({
         var self = this;
         var settings = {
             'crossDomain': true,
-            'url': '//95.85.15.210/checkin/',
+            'url': '//leuvenleestapp.be/checkin/',
             'method': 'PUT',
             'headers' : {
                 'Authorization' : sessionStorage.getItem('oAuth_token')

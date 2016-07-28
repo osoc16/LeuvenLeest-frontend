@@ -34,7 +34,7 @@ var LocationsComponent = React.createClass({
         this.setState({coordinates : coordinates });
         var settings = {
             'crossDomain': true,
-            'url': '//95.85.15.210/places/' + response.coords.latitude + '/' + response.coords.longitude,
+            'url': '//leuvenleestapp.be/places/' + response.coords.latitude + '/' + response.coords.longitude,
             'method': 'GET',
         }
 
@@ -53,7 +53,7 @@ var LocationsComponent = React.createClass({
     getLatestCheckin : function() {
         var settings = {
             'crossDomain': true,
-            'url': '//95.85.15.210/checkin/latest',
+            'url': '//leuvenleestapp.be/checkin/latest',
             'method': 'GET',
             'headers' : {
                 'Authorization' : sessionStorage.getItem('oAuth_token')
