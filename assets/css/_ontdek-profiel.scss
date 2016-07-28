@@ -88,6 +88,9 @@
         padding: 0;
         position: relative;
         bottom: .2em;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
     }
 }
 
