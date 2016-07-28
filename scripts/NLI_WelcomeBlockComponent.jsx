@@ -9,7 +9,7 @@ var NLI_WelcomeBlockComponent = React.createClass({
         return (
             <div className="welcome-block wb-NLI">
             <img src="../assets/img/LeuvenLeestLogo.svg" className="logo-small"/>
-            <span className="ontdek-login" onClick={this.redirectLogin}>Log in</span>
+            <span className="ontdek-login" onClick={this.toLogin}>Log in</span>
             <div className="welcome-text wt-NLI">
             <h2>Hey</h2>
             <h1>Lezer!</h1>
@@ -18,20 +18,20 @@ var NLI_WelcomeBlockComponent = React.createClass({
             <div className="ontdek-aanmelden">
             <div className="aanmelden-button">
             <i className="lines-icon icon-user-follow"></i>
-            <p><a onClick={this.redirectRegister}>Aanmelden</a></p>
+            <p><a onClick={this.toRegister}>Aanmelden met email</a></p>
             </div>
             </div>
             </div>
             )
     },
 
-    redirectRegister : function(){
-        document.location.href= '/register';
+    toRegister  : function(){
+        document.location.href = '/register';
     },
 
-    redirectLogin : function(){
-        document.location.href= '/login';
-    },
+    toLogin : function(){
+        document.location.href = '/login';
+    }
 })
 
 export default NLI_WelcomeBlockComponent;

@@ -6,6 +6,7 @@ var Success_CIn_Component = require('./Success_CIn_Component.jsx');
 Success page (Added location)
 <Success_AddLoc/>
 */
+
 var Success_AddLoc_Component = React.createClass({
 
     propTypes : 
@@ -34,6 +35,26 @@ var Success_AddLoc_Component = React.createClass({
             'longitude' : this.props.lon,
             'latitude': this.props.lat
         }
+
+module.exports = React.createClass({
+    render : function(){
+        return (
+            <div className="success-page" onClick={this.close}>
+            <div className="benches">
+                <img className="benches" src="../assets/img/placeholder_home.jpeg"/>
+            </div>
+            <div className="success-overlay"></div>
+            <i className="lines-icon icon-close"></i>
+            <i className="lines-icon icon-check"></i>
+            <p>Nieuwe Locatie aangemaakt</p>
+            <h2>Sint-Donatuspark</h2>
+            </div>
+        )
+    },
+
+    close : function() {
+        document.location.href = '/global';
+
     }
 
     $.ajax(settings)

@@ -33,6 +33,15 @@ var RecentComponent = React.createClass({
     },
 
     render : function(){
+        if (this.state.recentPlaces.length === 0){
+            return (
+                <div className='recent-act home-row'>
+                    <h3>Recent bezocht</h3>
+                    <p className="not-yet">Je bent nog nergens ingecheckt.<br/>
+                    <i onClick={this.toCheckin}>Leuke leeslocaties rondom jou ontdekken?</i></p>
+                </div>
+                )
+        }
         return (
             <div className='recent-act home-row'>
                 <h3>Recent bezocht</h3>
@@ -43,6 +52,10 @@ var RecentComponent = React.createClass({
                 </div>
             </div>
         )
+    },
+
+    toCheckin : function(){
+        document.location.href = '/global';
     }
 })
 

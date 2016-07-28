@@ -12,6 +12,7 @@ var HalfNHalfComponent = require('./HalfNHalfComponent.jsx');
 var Plaats_TV_Component = require('./Plaats_TV_Component.jsx');
 var LoginPageComponent = require('./LoginPageComponent.jsx');
 var AddPlaceComponent = require('./AddPlaceComponent.jsx');
+var FourohfourComponent = require('./FourohfourComponent.jsx');
 
 /*Route related var*/
 var ReactRouter = require('react-router');
@@ -59,6 +60,7 @@ var routes = (
    <Route path='/details/:placeId' component={Detail_MapViewComponent} onEnter={AuthorizationCheck} />
    <Route path='/register' component={RegisterComponent} />
    <Route path='/addPlace' component={AddPlaceComponent} onEnter={AuthorizationCheck} />
+   <Route path='/*' component={FourohfourComponent} />
    </Router>);
 
 ReactDOM.render(routes, document.querySelector('#main'));
