@@ -44,8 +44,8 @@ var HeadBarComponent = React.createClass({
                     <i className="lines-icon icon-arrow-left"></i> Back
                 </p>
                 <p className="title-text">Plaats toevoegen</p>
-                <p className="confirm">Aanmaken</p>
-                <SearchBarComponent />
+                <p className="confirm" onClick={this.props.callback}>Aanmaken</p>
+                {/*<SearchBarComponent />*/}
                 </div> : <div></div>}
 
         {detailURL == "details" ? <div><p className="back-button"><i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back</p>  <p className="title-text"> Details</p>  </div>: <div></div> }
