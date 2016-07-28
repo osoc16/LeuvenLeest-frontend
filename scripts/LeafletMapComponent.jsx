@@ -23,7 +23,7 @@ var LeafletMapComponent = React.createClass({
         var settings = {
             'async' : true,
             'crossDomain': true,
-            'url': 'http://95.85.15.210/places/' + this.state.coordinates.lat + '/' + this.state.coordinates.lon,
+            'url': '//95.85.15.210/places/' + this.state.coordinates.lat + '/' + this.state.coordinates.lon,
             'method': 'GET',
         };
 
@@ -41,8 +41,8 @@ render: function(){
             <div className={this.props.divClass}>
             <Map center={[this.state.coordinates.lat, this.state.coordinates.lon]} zoom={15}>
             <TileLayer
-            url='http://{s}.tile.osm.org/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url='//{s}.tile.osm.org/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
             />
             <Marker position={[this.state.coordinates.lat, this.state.coordinates.lon]}>
             <Popup>
@@ -54,7 +54,7 @@ render: function(){
 
                 console.log("addPlaceData");
                 console.log(this.props.addPlaceData);
-               
+
                     /*The places won't be showed if you're in the detail page*/
                     if(this.props.data === undefined && this.props.addPlaceData !== true ){
                         var pos = [object.latitude, object.longitude];
@@ -84,7 +84,7 @@ render: function(){
                             </Marker>
                             );
                     }}
-                
+
 
 
             }

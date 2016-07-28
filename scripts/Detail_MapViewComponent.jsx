@@ -52,7 +52,7 @@ var Detail_MapViewComponent = React.createClass({
 
         var settings = {
             "crossDomain": true,
-            "url": "http://95.85.15.210/places/" + idPlace,
+            "url": "//95.85.15.210/places/" + idPlace,
             "method": "GET",
             "headers": {
                 "Authorization": sessionStorage.getItem('oAuth_token'),
