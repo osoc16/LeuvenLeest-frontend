@@ -53,7 +53,8 @@ var historyApiFallback = require('connect-history-api-fallback')
           port: 8000,
         },
         middleware : [ historyApiFallback() ],
-        ghostMode: false
+        ghostMode: false,
+        notify: false
       });
   });
 

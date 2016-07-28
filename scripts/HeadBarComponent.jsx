@@ -27,7 +27,7 @@ var HeadBarComponent = React.createClass({
         var splitString = currentURL.split("/");
         var endURL = splitString[splitString.length-1];
         var detailURL =splitString[splitString.length-2];
-
+        
         return(
             <div className="headbar">
             {endURL == "map" ?
