@@ -117,8 +117,3 @@ gulp.task('default', ['styles', 'copy-vendor-dependencies', 'scripts','browser-s
   gulp.watch('assets/css/*', ['styles']); // gulp watch for stylus changes
   return buildScript('main.jsx', true); // browserify watch for JS changes
 });
-
-gulp.task('production', ['styles', 'copy-vendor-dependencies', 'scripts'], function() {
-  gulp.watch('assets/css/*', ['styles']); // gulp watch for stylus changes
-  return buildScript('main.jsx', true); // browserify watch for JS changes
-});
