@@ -22,7 +22,7 @@ var LocationMapComponent = React.createClass({
     componentWillMount : function() {
         var settings = {
             'crossDomain': true,
-            'url': '//leuvenleestapp.be/checkin/latest',
+            'url': '//api.leuvenleestapp.be/checkin/latest',
             'method': 'GET',
             'headers' : {
                 'Authorization' : sessionStorage.getItem('oAuth_token')
@@ -44,7 +44,7 @@ var LocationMapComponent = React.createClass({
     checkin : function(event) {
         var settings = {
             'crossDomain': true,
-            'url': '//leuvenleestapp.be/checkin/',
+            'url': '//api.leuvenleestapp.be/checkin/',
             'method': 'PUT',
             'headers' : {
                 'Authorization' : sessionStorage.getItem('oAuth_token')

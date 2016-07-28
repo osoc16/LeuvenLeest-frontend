@@ -22,7 +22,7 @@ var DichtbijComponent = React.createClass({
                 this.setState({userLocation : coordinate}, function() {
                 var settings = {
                     'crossDomain': true,
-                    'url': '//leuvenleestapp.be/places/'+this.state.userLocation['lat']+'/'+this.state.userLocation['lon'],
+                    'url': '//api.leuvenleestapp.be/places/'+this.state.userLocation['lat']+'/'+this.state.userLocation['lon'],
                     'method': 'GET',
                 }
                  $.ajax(settings).done(function (response, status, xhr) {

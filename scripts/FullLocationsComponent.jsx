@@ -36,7 +36,7 @@ var FullLocationsComponent = React.createClass({
         var self = this;
         var settings = {
             'crossDomain': true,
-            'url': '//leuvenleestapp.be/places',
+            'url': '//api.leuvenleestapp.be/places',
             'method': 'GET',
         }
 

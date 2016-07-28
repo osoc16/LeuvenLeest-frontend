@@ -16,7 +16,7 @@ var RecentComponent = React.createClass({
     componentWillMount : function() {
         var settings = {
                 'crossDomain': true,
-                'url': '//leuvenleestapp.be/checkin/recent',
+                'url': '//api.leuvenleestapp.be/checkin/recent',
                 'method': 'GET',
                 'headers' : {
                     'Authorization' : sessionStorage.getItem('oAuth_token'),

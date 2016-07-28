@@ -85,7 +85,7 @@ var LoginPageComponent = React.createClass({
         var self = this;
          var settings = {
             'crossDomain': true,
-            'url': '//leuvenleestapp.be/auth/login',
+            'url': '//api.leuvenleestapp.be/auth/login',
             "method": "POST",
             'data' : {
                 'email' : this.state.email,

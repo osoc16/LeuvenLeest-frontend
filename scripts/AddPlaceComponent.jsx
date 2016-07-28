@@ -38,7 +38,7 @@ getEmail : function(){
     var self = this;
     var settings = {
         'crossDomain': true,
-        'url': '//leuvenleestapp.be/user/current',
+        'url': '//api.leuvenleestapp.be/user/current',
         'method': 'GET',
         'headers': {
                'Authorization': sessionStorage.getItem('oAuth_token'),       
@@ -265,7 +265,7 @@ addPlace : function(event) {
 
     var settings = {
         'crossDomain': true,
-        'url': '//leuvenleestapp.be/places/add',
+        'url': '//api.leuvenleestapp.be/places/add',
         'method': 'PUT',
         'headers': {
                'Authorization':  sessionStorage.getItem('oAuth_token'),       

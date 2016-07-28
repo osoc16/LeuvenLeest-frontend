@@ -52,7 +52,7 @@ var Detail_MapViewComponent = React.createClass({
 
         var settings = {
             "crossDomain": true,
-            "url": "//leuvenleestapp.be/places/" + idPlace,
+            "url": "//api.leuvenleestapp.be/places/" + idPlace,
             "method": "GET",
             "headers": {
                 "Authorization": sessionStorage.getItem('oAuth_token'),

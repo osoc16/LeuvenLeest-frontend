@@ -25,7 +25,7 @@ var Success_AddLoc_Component = React.createClass({
  checkin : function(event) {
    var settings = {
        'crossDomain': true,
-       'url': '//leuvenleestapp.be/checkin/',
+       'url': '//api.leuvenleestapp.be/checkin/',
        'method': 'PUT',
        'headers' : {
            'Authorization' : sessionStorage.getItem('oAuth_token')
