@@ -68,6 +68,7 @@
     font-family: 'Suez One';
     margin-top: 4em;
     margin-left: 2em;
+    margin-bottom: 1em;
 
     h2 {
         font-size: 2em;
@@ -175,9 +176,9 @@
 }
 
 .ontdek-login {
-    display: inline-block;
+    display: block;
     color: $accent-blue;
-    position: relative;
-    bottom: 1.1em;
-    left: 14em;
+    position: absolute;
+    right: 1em;
+    top: 2.75em;
 }
