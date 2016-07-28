@@ -113,6 +113,8 @@
 
     .listed-location {
         height: 6em;
+        background-size: cover;
+        background-position-y: 40%;
     }
 }
 
@@ -183,5 +185,18 @@
         bottom: 0;
         width: calc(100% - 1.8em);
 
+    }
+}
+
+p.not-yet {
+    text-align: left;
+    font-family: 'Suez One';
+    color: rgba(39, 45, 44, 0.3);
+    font-size: 1.05em;
+    padding-left: 1.6em;
+
+    i {
+        font-style: normal;
+        color: $accent-blue-transp;
     }
 }

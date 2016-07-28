@@ -23,9 +23,14 @@ var ListedLocationComponent = React.createClass({
              checkedIn = 'checkin';
         }
         if (this.props.place.photo) {
-            var style = {
-                backgroundImage: 'url("'+ this.props.place.photo +'")'
-            }
+            var placepic = this.props.place.photo;
+        }
+        else {
+            var placepic = '../assets/img/placeholder_locations.jpg'
+        }
+
+        var style = {
+            backgroundImage: 'url("'+ placepic +'")'
         }
 
         return (
