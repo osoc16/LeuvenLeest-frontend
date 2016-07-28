@@ -1,7 +1,6 @@
 var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
 var HeadBarComponent  = require('./HeadBarComponent.jsx');
-
 var RegisterComponent = React.createClass({
 
         getInitialState : function(){

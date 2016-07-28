@@ -1,5 +1,6 @@
 var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
+import { browserHistory } from 'react-router';
 
 /*
     Login page
@@ -20,7 +21,7 @@ var LoginPageComponent = React.createClass({
                 'BackgroundColor' : 'red'
             };
             return (
-                <div style={style} >
+                <div style={style} className='error' >
                     <p>Uw e-mail of wachtwoord klopt niet.</p>
                 </div>
             );
@@ -37,10 +38,10 @@ var LoginPageComponent = React.createClass({
                     <div className="login-overlay">
                         {/*<img src="../assets/img/overlay_black.svg"/>*/}
                     </div>
-                    <p className="back-button">
-                        <i className="lines-icon icon-arrow-left" onClick={this.redirectBack}></i> Back
+                    <p className="back-button" onClick={this.redirectBack}>
+                        <i className="lines-icon icon-arrow-left"></i> Back
                     </p>
-                    <span className="register-link">Registeren</span>
+                    <span className="register-link" onClick={this.redirectRegister} >Registeren</span>
                     <h1>Welcome terug!</h1>
                     <h2>Fijn dat je er weer bent.</h2>
                     {this.triggerError()}
@@ -48,7 +49,7 @@ var LoginPageComponent = React.createClass({
                         <div className="login-form">
                             <div className="form-field">
                                 <label htmlFor="email">E-mail</label>
-                                <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@example.be"/>
+                                <input type='text' name='email' onChange={this.handleChange} placeholder="jouw.email@voorbeeld.be"/>
                             </div>
                             <div className="form-field">
                                 <label htmlFor="password">Paswoord</label>
@@ -61,6 +62,13 @@ var LoginPageComponent = React.createClass({
                 <NavbarComponent/>
             </div>
             )
+    },
+    redirectRegister : function() {
+        document.location.href = '/register';
+    },
+
+    redirectBack : function() {
+        browserHistory.go(-1);
     },
 
     handleChange : function(event) {

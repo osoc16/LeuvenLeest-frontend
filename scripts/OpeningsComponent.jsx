@@ -4,19 +4,19 @@ var React = require('react');
 'Openingsuren' block on location's page
 <Openings/>
 */
-module.exports = React.createClass({
+var OpeningsComponent = React.createClass({
 
     render : function(){
 
-        var openingHourOfTheDay;            
-        if(this.props.data == undefined){
+        var openingHourOfTheDay;
+        if(!this.props.place){
             console.log("the opening data is undefined")
         }else{
             var date = new Date();
-            var dayNumber = date.getDay(); 
-            var openingArray = this.props.data.openingHours;
+            var dayNumber = date.getDay();
+            var openingArray = this.props.place.openingHours;
 
-            if(this.props.data.openingHours !== undefined){
+            if(this.props.place.openingHours){
                 openingHourOfTheDay = openingArray[dayNumber];
                 if(openingHourOfTheDay == "")
                     openingHourOfTheDay= "We kennen de openingstijden niet";
@@ -49,3 +49,4 @@ module.exports = React.createClass({
     }
 });
 
+export default OpeningsComponent;
