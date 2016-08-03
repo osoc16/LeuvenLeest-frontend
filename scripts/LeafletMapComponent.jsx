@@ -41,8 +41,8 @@ render: function(){
             <div className={this.props.divClass}>
             <Map center={[this.state.coordinates.lat, this.state.coordinates.lon]} zoom={15}>
             <TileLayer
-            url='//{s}.tile.osm.org/{z}/{x}/{y}.png'
-            attribution='&copy; <a href="//osm.org/copyright">OpenStreetMap</a> contributors'
+            url='//{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+            attribution='&copy; <a href="//openstreetmap.org/copyright">OpenStreetMap</a> contributors'
             />
             <Marker position={[this.state.coordinates.lat, this.state.coordinates.lon]}>
             <Popup>
