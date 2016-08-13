@@ -11,7 +11,8 @@ var RegisterComponent = React.createClass({
                 email : '',
                 password : '',
                 confirm_password : '',
-                errors : false
+                errors : false,
+                ErrorMessage : {}
             }
         },
 
@@ -73,68 +74,47 @@ var RegisterComponent = React.createClass({
             }
         },
 
-        isEmpty : function(string) {
-            return (!string || 0 === string.length);
-        },
-
-        checkForm : function() {
-            if (this.isEmpty(this.state.name)) {
-                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
-                return false;
-            }
-
-            if (this.isEmpty(this.state.email)) {
-                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
-                return false;
-            }
-
-            if (this.isEmpty(this.state.password)) {
-                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
-                return false;
-            }
-
-            if (this.isEmpty(this.state.confirm_password)) {
-                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
-                return false;
-            }
-
-            if (this.state.password !== this.state.confirm_password) {
-                this.setState({errorMessage : 'De ingegeven wachtwoorden zijn niet hetzelfde.'});
-                return false;
-            }
-
-            return true;
-
-        },
-
         register : function(event) {
+            this.setState({errors : false});
             event.preventDefault();
-            console.log(this.checkForm());
-            if (!this.checkForm()) {
-                this.setState({errors : true});
-            } else {
-                var settings = {
-                'crossDomain': true,
-                'url': '//95.85.15.210/auth/register',
-                'method': 'PUT',
-                'data': {
-                    'name' : this.state.name,
-                    'email': this.state.email,
-                    'password': this.state.password,
-                    'password_confirmation' : this.state.confirm_password
+            var settings = {
+            'crossDomain': true,
+            'url': '//95.85.15.210/auth/register',
+            'method': 'PUT',
+            'data': {
+                'name' : this.state.name,
+                'email': this.state.email,
+                'password': this.state.password,
+                'password_confirmation' : this.state.confirm_password
                 },
             }
-             $.ajax(settings)
+            $.ajax(settings)
                 .done(function (response, textStatus, xhr) {
                     sessionStorage.setItem('oAuth_token', 'Bearer' + response.oAuth_token);
                     document.location.href = '/';
 
                 })
-                .fail(function(){
+                .fail(function(response, textStatus, xhr){
+                    this.buildErrorMessage(response.responseJSON);
                     this.setState({errors : true});
-                });
+                }.bind(this));
+            },
+
+            buildErrorMessage : function(response) {
+                console.log(response);
+                if (response.password[1]) {
+                    this.setState({errorMessage : response.password[0]});
+                }
+                if (response.password[0]) {
+                    this.setState({errorMessage : response.password[0]});
+                }
+                if (response.email) {
+                    this.setState({errorMessage : response.email[0]});
+                }
+                if (response.name) {
+                    this.setState({errorMessage : response.name[0]});
+                }
             }
-        }
     })
 
 export default RegisterComponent;
