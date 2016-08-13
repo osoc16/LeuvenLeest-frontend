@@ -1,6 +1,8 @@
 var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
 var HeadBarComponent  = require('./HeadBarComponent.jsx');
+var ErrorComponent = require('./ErrorComponent.jsx');
+
 var RegisterComponent = React.createClass({
 
         getInitialState : function(){
@@ -8,7 +10,8 @@ var RegisterComponent = React.createClass({
                 name : '',
                 email : '',
                 password : '',
-                confirm_password : ''
+                confirm_password : '',
+                errors : false
             }
         },
 
@@ -18,6 +21,7 @@ var RegisterComponent = React.createClass({
                     <HeadBarComponent/>
                     <div className='page-content'>
                         <form>
+                        {this.renderError()}
                             <div className='register-form'>
                                 <div className='form-field'>
                                     <label htmlFor='name'>Naam</label>
@@ -63,9 +67,53 @@ var RegisterComponent = React.createClass({
 
         },
 
+        renderError : function() {
+            if (this.state.errors) {
+                return <ErrorComponent errorMessage = {this.state.errorMessage} />
+            }
+        },
+
+        isEmpty : function(string) {
+            return (!string || 0 === string.length);
+        },
+
+        checkForm : function() {
+            if (this.isEmpty(this.state.name)) {
+                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
+                return false;
+            }
+
+            if (this.isEmpty(this.state.email)) {
+                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
+                return false;
+            }
+
+            if (this.isEmpty(this.state.password)) {
+                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
+                return false;
+            }
+
+            if (this.isEmpty(this.state.confirm_password)) {
+                this.setState({errorMessage : 'Niet alle gegevens zijn ingevuld.'});
+                return false;
+            }
+
+            if (this.state.password !== this.state.confirm_password) {
+                this.setState({errorMessage : 'De ingegeven wachtwoorden zijn niet hetzelfde.'});
+                return false;
+            }
+
+            return true;
+
+        },
+
         register : function(event) {
             event.preventDefault();
-            var settings = {
+            console.log(this.checkForm());
+            if (!this.checkForm()) {
+                this.setState({errors : true});
+            } else {
+                var settings = {
                 'crossDomain': true,
                 'url': '//95.85.15.210/auth/register',
                 'method': 'PUT',
@@ -74,7 +122,7 @@ var RegisterComponent = React.createClass({
                     'email': this.state.email,
                     'password': this.state.password,
                     'password_confirmation' : this.state.confirm_password
-                },
+                },
             }
              $.ajax(settings)
                 .done(function (response, textStatus, xhr) {
@@ -83,8 +131,9 @@ var RegisterComponent = React.createClass({
 
                 })
                 .fail(function(){
-                    console.log('fail');
+                    this.setState({errors : true});
                 });
+            }
         }
     })
 
