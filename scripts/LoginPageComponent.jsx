@@ -1,5 +1,6 @@
 var React = require('react');
 var NavbarComponent = require('./NavbarComponent.jsx');
+var ErrorComponent = require('./ErrorComponent.jsx');
 import { browserHistory } from 'react-router';
 
 /*
@@ -20,11 +21,7 @@ var LoginPageComponent = React.createClass({
             var style = {
                 'BackgroundColor' : 'red'
             };
-            return (
-                <div style={style} className='error' >
-                    <p>Uw e-mail of wachtwoord klopt niet.</p>
-                </div>
-            );
+            return <ErrorComponent errorMessage = 'Uw e-mail of wachtwoord klopt niet.' />
         }
     },
 
