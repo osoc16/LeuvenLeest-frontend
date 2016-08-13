@@ -15,7 +15,8 @@ var ErrorComponent = React.createClass({
 
     render : function() {
         var style = {
-            'BackgroundColor' : 'red'
+            'BackgroundColor' : 'red',
+            'textAlign' : 'center',
         };
         return (
             <div style={style} className='error' >
