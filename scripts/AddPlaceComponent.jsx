@@ -48,8 +48,6 @@ getEmail : function(){
      $.ajax(settings)
     .done(function (response, textStatus, xhr) {
         self.setState({email : response.data.email});
-        console.log(response.data.email);
-        console.log(response);
         return response;
     })
     .fail(function(){
